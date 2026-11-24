@@ -973,3 +973,33 @@ TEST(WindowTest, PrepareFrameHandlerRunsBeforeTheFrameLaysOut)
     EXPECT_EQ(prepared, 1);
     EXPECT_EQ(child->geometry().width, 50);
 }
+
+TEST(WindowTest, AFullscreenHeaderLeavesTheWindowControlsToTheDesktop)
+{
+    Window window;
+    auto column = std::make_unique<Column>();
+    WindowHeader* header = column->addChild<WindowHeader>();
+    header->setLayoutHints({.fillWidth = true});
+    HeaderRow* row = header->setContent<HeaderRow>();
+    window.resize({400, 300});
+    window.setContentView(std::move(column));
+    window.show();
+    window.grab();
+    const double withControls = header->leadingInset();
+    ASSERT_GT(withControls, 3 * 22.0);
+    EXPECT_EQ(row->geometry().x, withControls);
+
+    TestInput::configure(window, 1280, 800, {.fullScreen = true});
+    window.grab();
+    // No controls of its own: the desktop's title bar carries them.
+    EXPECT_LT(header->leadingInset(), 22.0);
+    EXPECT_EQ(row->geometry().x, header->leadingInset());
+    // Where the maximize control was, nothing is.
+    TestInput::click(window, {9 + 2 * (22 + 1) + 11, 20});
+    EXPECT_FALSE(window.states().maximized);
+
+    TestInput::configure(window, 400, 300, {});
+    window.grab();
+    EXPECT_EQ(header->leadingInset(), withControls);
+    EXPECT_EQ(row->geometry().x, withControls);
+}

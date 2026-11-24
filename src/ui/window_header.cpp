@@ -176,6 +176,22 @@ double WindowHeader::buttonsTop() const
 
 void WindowHeader::layout()
 {
+    // Fullscreen, the window's controls are the desktop's: its top bar carries a title bar with
+    // them over a fullscreen window, so the header shows none of its own.
+    const Window* window = this->window();
+    const bool fullScreen = window && window->states().fullScreen && !m_closeOnly;
+    m_zone->setVisible(!fullScreen);
+    if (fullScreen) {
+        m_leadingInset = std::floor(m_buttonMargin + 0.5);
+        if (m_content) {
+            if (m_contentUnderButtons)
+                m_content->setGeometry({0, 0, geometry().width, geometry().height});
+            else
+                m_content->setGeometry({m_leadingInset, 0, std::max(0.0, geometry().width - m_leadingInset),
+                                        geometry().height});
+        }
+        return;
+    }
     const bool colored = Theme::current().coloredWindowControls;
     // Coloured dots keep one size in every window.
     const double size = m_closeOnly || colored ? kButton : m_buttonSize;
