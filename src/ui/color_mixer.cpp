@@ -7,7 +7,7 @@
 
 #include "ui/color_provider.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 ColorRecipe::ColorRecipe(Color color)
     : m_make([color](const ColorProvider&) { return color; })
@@ -68,4 +68,4 @@ ColorRecipe& ColorMixer::recipe(uint16_t id)
     return m_recipes.try_emplace(id, Color{}).first->second;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -5,7 +5,7 @@
 
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 FrameClient::FrameClient(Window* window)
     : m_window(window)
@@ -40,4 +40,4 @@ void FrameClient::deferHover()
         m_window->deferHover();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

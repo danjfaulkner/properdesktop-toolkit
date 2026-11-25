@@ -14,7 +14,7 @@
 #include "modules/skunicode/include/SkUnicode.h"
 #include "src/core/SkUTF.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 namespace {
 
@@ -512,4 +512,4 @@ sk_sp<SkUnicode> makeLineBreakUnicode(sk_sp<SkUnicode> icu)
     return sk_make_sp<LineBreakUnicode>(std::move(icu));
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -9,7 +9,7 @@
 #include "ui/application.h"
 #include "wayland/connection.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 std::unique_ptr<TrustedConnection> TrustedConnection::fromFd(int fd)
 {
@@ -53,4 +53,4 @@ bool TrustedConnection::hasShell() const
     return m_connection->shell() != nullptr;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

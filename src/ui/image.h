@@ -9,7 +9,7 @@
 
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Unpremultiplied 8-bit RGBA pixels, row by row.
 class Image
@@ -43,4 +43,4 @@ private:
     std::vector<uint32_t> m_pixels;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

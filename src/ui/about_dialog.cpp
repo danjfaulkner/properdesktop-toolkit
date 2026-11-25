@@ -22,7 +22,7 @@
 #include "ui/window_controls.h"
 #include "ui/window_header.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // As wide as it is; as tall as its contents, which makes it taller than wide.
 static constexpr double kWidth = 280;
@@ -217,4 +217,4 @@ void AboutDialog::close()
         onClosed();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

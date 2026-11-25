@@ -27,7 +27,7 @@
 #include "base/paths.h"
 #include "ui/image_decoder.h"
 
-namespace cutefish::ui::thumbnails {
+namespace properdesktop::ui::thumbnails {
 
 namespace {
 
@@ -221,7 +221,7 @@ static bool locate(const std::string& filePath, int width, int height, Entry* en
     entry->size = int64_t(info.st_size);
     entry->directory = entry->root + "/" + flavor->name;
     entry->target = entry->directory + "/" + name;
-    entry->failDirectory = entry->root + "/fail/cutefish";
+    entry->failDirectory = entry->root + "/fail/properdesktop";
     entry->failTarget = entry->failDirectory + "/" + name;
     return true;
 }
@@ -451,4 +451,4 @@ sk_sp<SkImage> request(const std::string& path, int width, int height)
     return image;
 }
 
-} // namespace cutefish::ui::thumbnails
+} // namespace properdesktop::ui::thumbnails

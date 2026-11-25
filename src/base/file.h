@@ -8,7 +8,7 @@
 #include <string_view>
 #include <sys/types.h>
 
-namespace cutefish::base::file {
+namespace properdesktop::base::file {
 
 // The whole file; empty when it cannot be read.
 std::optional<std::string> read(const std::string& path);
@@ -67,4 +67,4 @@ private:
     int m_fd = -1;
 };
 
-} // namespace cutefish::base::file
+} // namespace properdesktop::base::file

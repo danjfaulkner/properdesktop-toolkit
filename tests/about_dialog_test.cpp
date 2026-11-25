@@ -19,7 +19,7 @@
 #include "ui/window.h"
 #include "ui/window_header.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 namespace {
 
@@ -53,7 +53,7 @@ struct Fixture
         dialog.setName("Calendar");
         dialog.setDescription("Keeps track of your events.");
         dialog.setIconSource("office-calendar");
-        dialog.setLink("https://github.com/cutefishos/calendar");
+        dialog.setLink("https://github.com/danjfaulkner/properdesktop-calendar");
         dialog.onLinkActivated = [this](const std::string& link) { links.push_back(link); };
         dialog.onClosed = [this] { ++closed; };
         dialog.show();
@@ -152,7 +152,7 @@ TEST(AboutDialogTest, OpensTheLinkAndCloses)
     Label* link = viewsOf<Label>(window).back();
     const RectF rect = link->geometry();
     TestInput::click(*window, link->mapToWindow({rect.width / 2, rect.height / 2}));
-    EXPECT_EQ(f.links, std::vector<std::string>{"https://github.com/cutefishos/calendar"});
+    EXPECT_EQ(f.links, std::vector<std::string>{"https://github.com/danjfaulkner/properdesktop-calendar"});
 
     // Shown again: the same window, raised.
     f.dialog.show();

@@ -11,7 +11,7 @@
 
 #include "modules/skcms/skcms.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The colours a decoder's RGB pixels are in, for turning them into the sRGB
 // everything is drawn in.
@@ -45,4 +45,4 @@ private:
     skcms_ICCProfile m_profile;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

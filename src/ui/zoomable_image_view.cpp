@@ -12,7 +12,7 @@
 #include "ui/scroll_bar.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The largest texture to ask for; a 50 MP photo stays inside common GPU limits.
 static SizeF cappedSize(double width, double height)
@@ -473,4 +473,4 @@ void ZoomableImageView::hoverMove(const PointerEvent& event)
     m_pointer = event.position;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

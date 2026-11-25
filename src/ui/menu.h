@@ -13,7 +13,7 @@
 #include "ui/bubble_shape.h"
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class View;
 class Window;
@@ -226,4 +226,4 @@ private:
     std::function<void()> m_changed;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

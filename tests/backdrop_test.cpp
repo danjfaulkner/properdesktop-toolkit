@@ -11,7 +11,7 @@
 #include "ui/test_input.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 static constexpr uint64_t kFrameNs = 16666667;
 

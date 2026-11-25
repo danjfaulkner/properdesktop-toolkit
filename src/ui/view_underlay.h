@@ -9,7 +9,7 @@
 
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class View;
 
@@ -81,4 +81,4 @@ struct UnderlayDrawn
 using UnderlayDrawnHandler = void (*)(const UnderlayDrawn& layer);
 void setUnderlayDrawnHandler(UnderlayDrawnHandler handler);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

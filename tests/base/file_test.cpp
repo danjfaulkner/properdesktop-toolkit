@@ -17,7 +17,7 @@
 #include "base/file_watcher.h"
 #include "base/paths.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 using namespace std::chrono_literals;
 
 namespace {
@@ -185,7 +185,7 @@ TEST(PathsTest, StandardDirectories)
 {
     EXPECT_FALSE(paths::home().empty());
     EXPECT_EQ(paths::configHome(), paths::home() + "/.config");
-    EXPECT_EQ(paths::cutefishConfig("calendar"), paths::home() + "/.config/cutefish/calendar.conf");
+    EXPECT_EQ(paths::properdesktopConfig("calendar"), paths::home() + "/.config/properdesktop/calendar.conf");
     EXPECT_EQ(paths::findExecutable("sh").empty(), false);
     EXPECT_TRUE(paths::findExecutable("no-such-program-anywhere").empty());
 }

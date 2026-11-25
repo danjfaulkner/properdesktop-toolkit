@@ -11,7 +11,7 @@
 #include "wayland/data_device.h"
 #include "wayland/primary_selection.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 void MimeData::setData(const std::string& mimeType, std::string bytes)
 {
@@ -222,4 +222,4 @@ bool Clipboard::supportsSelection()
     return headless() || selectionFor(ClipboardMode::Selection) != nullptr;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

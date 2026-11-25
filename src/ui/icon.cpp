@@ -14,7 +14,7 @@
 #include "ui/painter.h"
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The square, in device pixels, an icon of the size takes in the view: its
 // raster centred on the view, then snapped.
@@ -191,4 +191,4 @@ void ThemeIcon::setImageProviderLookup(bool provider)
     requestPaint();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

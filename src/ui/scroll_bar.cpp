@@ -13,7 +13,7 @@
 #include "ui/painter.h"
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Two lines of the default font, so long content keeps a handle to grab.
 static constexpr double kMinimumHandleLength = 32;
@@ -217,4 +217,4 @@ void ScrollBar::fadeTo(double opacity)
     m_fade->start();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

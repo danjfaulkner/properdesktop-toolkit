@@ -11,7 +11,7 @@
 
 struct UCollator;
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 // Locale-aware string order through ICU, with options: numeric mode compares
 // digit runs by value, so "Episode 2" sorts before "Episode 10";
@@ -55,4 +55,4 @@ private:
     mutable std::shared_ptr<UCollator> m_collator;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

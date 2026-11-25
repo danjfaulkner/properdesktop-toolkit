@@ -17,7 +17,7 @@
 
 #include "ui/embedded_files.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 namespace {
 
@@ -171,7 +171,7 @@ static sk_sp<SkShader> makeShader(const RoundedShapeSpec& spec)
     static const sk_sp<SkRuntimeEffect> effect = [] {
         SkRuntimeEffect::Result result = SkRuntimeEffect::MakeForShader(SkString(embeddedText("rounded_shape.sksl").c_str()));
         if (!result.effect)
-            fprintf(stderr, "cutefish-toolkit: %s\n", result.errorText.c_str());
+            fprintf(stderr, "properdesktop-toolkit: %s\n", result.errorText.c_str());
         return result.effect;
     }();
     if (!effect)
@@ -313,4 +313,4 @@ void drawRoundedShape(SkCanvas* canvas, const RoundedShapeSpec& spec)
     fillRect(quad.right() - border, innerTop, quad.right(), innerBottom, spec.border);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

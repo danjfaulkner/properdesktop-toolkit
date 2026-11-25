@@ -19,7 +19,7 @@
 #include "include/gpu/ganesh/gl/GrGLBackendSurface.h"
 #include "include/gpu/ganesh/gl/GrGLTypes.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr uint64_t invalidModifier = 0x00ffffffffffffffULL;
 
@@ -262,4 +262,4 @@ bool Canvas2D::drawDmaBufImage(const DmaBufImage& image, const RectF& rect, bool
     return true;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

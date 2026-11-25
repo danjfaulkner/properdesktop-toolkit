@@ -10,15 +10,15 @@
 
 #include "ui/menu.h"
 
-struct cutefish_menu_v1;
-struct cutefish_menu_item_v1;
+struct properdesktop_menu_v1;
+struct properdesktop_menu_item_v1;
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 class Connection;
 struct MainMenuListeners;
 
-// One ui::Menu as a cutefish_menu_v1, its rows as items and their submenus
+// One ui::Menu as a properdesktop_menu_v1, its rows as items and their submenus
 // mirrored in turn. Rows follow the menu on the next loop turn after it
 // changes; before the menu bar opens it, the menu's onAboutToShow runs
 // and the rows follow at once. Every row is mirrored, hidden ones too, so
@@ -32,7 +32,7 @@ public:
     MainMenuMirror(const MainMenuMirror&) = delete;
     MainMenuMirror& operator=(const MainMenuMirror&) = delete;
 
-    cutefish_menu_v1* proxy() const { return m_proxy; }
+    properdesktop_menu_v1* proxy() const { return m_proxy; }
     Menu* menu() const { return m_menu; }
     // The menu still exists.
     bool isAlive() const { return !m_alive.expired(); }
@@ -46,7 +46,7 @@ private:
     struct Row
     {
         MainMenuMirror* owner = nullptr;
-        cutefish_menu_item_v1* proxy = nullptr;
+        properdesktop_menu_item_v1* proxy = nullptr;
         bool separator = false;
         Menu* submenuSource = nullptr;
         std::unique_ptr<MainMenuMirror> submenu;
@@ -59,9 +59,9 @@ private:
         MenuItemState state = MenuItemState::Off;
     };
 
-    static void willOpen(void* data, cutefish_menu_v1* menu, uint32_t serial);
-    static void closed(void* data, cutefish_menu_v1* menu);
-    static void activated(void* data, cutefish_menu_item_v1* item, uint32_t serial);
+    static void willOpen(void* data, properdesktop_menu_v1* menu, uint32_t serial);
+    static void closed(void* data, properdesktop_menu_v1* menu);
+    static void activated(void* data, properdesktop_menu_item_v1* item, uint32_t serial);
 
     void scheduleSync();
     void rebuild();
@@ -71,11 +71,11 @@ private:
     Connection& m_connection;
     Menu* m_menu;
     std::weak_ptr<bool> m_alive;
-    cutefish_menu_v1* m_proxy = nullptr;
+    properdesktop_menu_v1* m_proxy = nullptr;
     std::vector<std::unique_ptr<Row>> m_rows;
     MenuRole m_role = MenuRole::None;
     bool m_syncPosted = false;
     std::shared_ptr<bool> m_self = std::make_shared<bool>(true);
 };
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

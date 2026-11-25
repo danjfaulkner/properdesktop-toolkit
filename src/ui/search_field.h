@@ -8,7 +8,7 @@
 
 #include "ui/text_field.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Icon;
 
@@ -46,4 +46,4 @@ private:
     ClearButton* m_clear;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

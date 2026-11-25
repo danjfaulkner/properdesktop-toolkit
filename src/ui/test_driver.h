@@ -13,7 +13,7 @@
 #include "ui/event.h"
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class View;
 class Window;
@@ -141,4 +141,4 @@ private:
     FailureHandler m_onFailure;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

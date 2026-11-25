@@ -5,7 +5,7 @@
 
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr Color kWhite = Color::rgb(0xFFFFFF);
 static constexpr Color kBlack = Color::rgb(0x000000);
@@ -117,4 +117,4 @@ void addToolkitColors(ColorMixer& mixer, const Theme& theme)
     mixer[ColorId::ToastShadow] = kBlack.withAlpha(0.14);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

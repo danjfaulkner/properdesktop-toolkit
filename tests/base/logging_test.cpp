@@ -12,7 +12,7 @@
 #include "base/geometry.h"
 #include "base/logging.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 
 namespace {
 
@@ -108,11 +108,11 @@ TEST_F(LoggingTest, DisabledMessagesAreNotEvaluated)
 
 TEST_F(LoggingTest, Rules)
 {
-    const LogCategory input("cutefish.input");
-    const LogCategory transitions("cutefish.input.transitions");
-    const LogCategory drm("cutefish.drm", LogLevel::Warning);
+    const LogCategory input("properdesktop.input");
+    const LogCategory transitions("properdesktop.input.transitions");
+    const LogCategory drm("properdesktop.drm", LogLevel::Warning);
 
-    logging::setRules("cutefish.input*.debug=true\ncutefish.drm=true; cutefish.drm.warning=false");
+    logging::setRules("properdesktop.input*.debug=true\nproperdesktop.drm=true; properdesktop.drm.warning=false");
     EXPECT_TRUE(input.isEnabled(LogLevel::Debug));
     EXPECT_TRUE(transitions.isEnabled(LogLevel::Debug));
     EXPECT_TRUE(drm.isEnabled(LogLevel::Debug));
@@ -121,7 +121,7 @@ TEST_F(LoggingTest, Rules)
     EXPECT_TRUE(drm.isEnabled(LogLevel::Critical));
 
     // A category created later gets the rules too.
-    const LogCategory later("cutefish.input.later");
+    const LogCategory later("properdesktop.input.later");
     EXPECT_TRUE(later.isEnabled(LogLevel::Debug));
 
     // New rules replace the old ones.
@@ -154,9 +154,9 @@ TEST_F(LoggingTest, ProgrammaticLevels)
 
 TEST_F(LoggingTest, LineFormat)
 {
-    const LogCategory category("cutefish.session");
-    EXPECT_EQ(logging::formatLine(category, LogLevel::Info, "started"), "cutefish.session: started");
-    EXPECT_EQ(logging::formatLine(category, LogLevel::Warning, "x"), "cutefish.session: warning: x");
+    const LogCategory category("properdesktop.session");
+    EXPECT_EQ(logging::formatLine(category, LogLevel::Info, "started"), "properdesktop.session: started");
+    EXPECT_EQ(logging::formatLine(category, LogLevel::Warning, "x"), "properdesktop.session: warning: x");
     EXPECT_EQ(logging::formatLine(LogCategory::defaultCategory(), LogLevel::Critical, "y"), "critical: y");
 }
 

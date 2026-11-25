@@ -8,7 +8,7 @@
 
 #include "ui/application.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 TEST(LanguageChangeTest, OnlyAChangeNotifies)
 {

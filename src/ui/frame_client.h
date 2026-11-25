@@ -5,7 +5,7 @@
 
 #include <cstdint>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Window;
 
@@ -54,4 +54,4 @@ private:
     bool m_ticking = false;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

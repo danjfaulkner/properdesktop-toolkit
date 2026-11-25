@@ -8,7 +8,7 @@
 #include <string_view>
 #include <vector>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 struct DesktopAction
 {
@@ -71,4 +71,4 @@ struct DesktopEntry
     static std::vector<std::string> parseExec(const std::string& exec);
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

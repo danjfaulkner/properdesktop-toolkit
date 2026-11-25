@@ -18,7 +18,7 @@
 #include <wayland-client.h>
 #include <wayland-server.h>
 
-#include "cutefish-status-item-v1-server-protocol.h"
+#include "properdesktop-status-item-v1-server-protocol.h"
 #include "fractional-scale-v1-server-protocol.h"
 #include "viewporter-server-protocol.h"
 #include "xdg-shell-server-protocol.h"
@@ -27,8 +27,8 @@
 #include "wayland/connection.h"
 #include "wayland/shell_surface.h"
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 
 namespace {
 
@@ -57,7 +57,7 @@ public:
         global(&xdg_wm_base_interface, 3);
         global(&wp_viewporter_interface, 1);
         global(&wp_fractional_scale_manager_v1_interface, 1);
-        global(&cutefish_status_item_manager_v1_interface, 1);
+        global(&properdesktop_status_item_manager_v1_interface, 1);
         global(&wl_seat_interface, 5);
         m_client = wl_client_create(m_display, fds[0]);
         m_thread = std::thread([this] {
@@ -123,7 +123,7 @@ private:
     {
         wl_resource* resource = wl_resource_create(m_client, &interface, version, id);
         wl_resource_set_dispatcher(resource, dispatch, nullptr, this, nullptr);
-        if (&interface == &cutefish_status_item_v1_interface)
+        if (&interface == &properdesktop_status_item_v1_interface)
             m_item = resource;
     }
 
@@ -269,10 +269,10 @@ TEST(StatusItemProtocolTest, AnItemHearsTheBarAndAcknowledgesItsConfigure)
     settle(compositor, connection->display());
 
     compositor.post([&compositor] {
-        cutefish_status_item_v1_send_appearance(compositor.item(), CUTEFISH_STATUS_ITEM_V1_APPEARANCE_DARK, 0xffffffff);
-        cutefish_status_item_v1_send_highlight(compositor.item(), 1);
-        cutefish_status_item_v1_send_placed(compositor.item(), 700, 0, 40, 32);
-        cutefish_status_item_v1_send_configure(compositor.item(), 7, 32, 300);
+        properdesktop_status_item_v1_send_appearance(compositor.item(), PROPERDESKTOP_STATUS_ITEM_V1_APPEARANCE_DARK, 0xffffffff);
+        properdesktop_status_item_v1_send_highlight(compositor.item(), 1);
+        properdesktop_status_item_v1_send_placed(compositor.item(), 700, 0, 40, 32);
+        properdesktop_status_item_v1_send_configure(compositor.item(), 7, 32, 300);
     });
     settle(compositor, connection->display());
     EXPECT_TRUE(target.dark);
@@ -292,19 +292,19 @@ TEST(StatusItemProtocolTest, AnItemHearsTheBarAndAcknowledgesItsConfigure)
 
     const std::vector<FakeCompositor::Request> requests = compositor.requests();
     EXPECT_TRUE(only(requests, "xdg_wm_base.get_xdg_surface").empty());
-    ASSERT_EQ(1u, only(requests, "cutefish_status_item_manager_v1.get_status_item").size());
-    const std::vector<FakeCompositor::Request> item = only(requests, "cutefish_status_item_v1.");
+    ASSERT_EQ(1u, only(requests, "properdesktop_status_item_manager_v1.get_status_item").size());
+    const std::vector<FakeCompositor::Request> item = only(requests, "properdesktop_status_item_v1.");
     ASSERT_EQ(3u, item.size());
-    EXPECT_EQ("cutefish_status_item_v1.set_identifier", item[0].name);
-    EXPECT_EQ("cutefish_status_item_v1.set_highlight", item[1].name);
+    EXPECT_EQ("properdesktop_status_item_v1.set_identifier", item[0].name);
+    EXPECT_EQ("properdesktop_status_item_v1.set_highlight", item[1].name);
     EXPECT_EQ((std::vector<int64_t>{1}), item[1].arguments);
-    EXPECT_EQ("cutefish_status_item_v1.ack_configure", item[2].name);
+    EXPECT_EQ("properdesktop_status_item_v1.ack_configure", item[2].name);
     EXPECT_EQ((std::vector<int64_t>{7}), item[2].arguments);
 
     shell.reset();
     connection->flush();
     settle(compositor, connection->display());
-    EXPECT_EQ("cutefish_status_item_v1.destroy", only(compositor.requests(), "cutefish_status_item_v1.").back().name);
+    EXPECT_EQ("properdesktop_status_item_v1.destroy", only(compositor.requests(), "properdesktop_status_item_v1.").back().name);
 }
 
 // A popup of the item is made without an xdg parent, hung from the item, and
@@ -331,13 +331,13 @@ TEST(StatusItemProtocolTest, APopupHangsFromTheItemBeforeItsGrab)
 
     std::vector<FakeCompositor::Request> requests = compositor.requests();
     std::erase_if(requests, [](const FakeCompositor::Request& request) {
-        return request.name != "xdg_surface.get_popup" && request.name != "cutefish_status_item_v1.get_popup"
+        return request.name != "xdg_surface.get_popup" && request.name != "properdesktop_status_item_v1.get_popup"
                 && request.name != "xdg_popup.grab";
     });
     ASSERT_EQ(3u, requests.size());
     EXPECT_EQ("xdg_surface.get_popup", requests[0].name);
     // A null parent, then the positioner.
     EXPECT_EQ((std::vector<int64_t>{0, 1}), requests[0].arguments);
-    EXPECT_EQ("cutefish_status_item_v1.get_popup", requests[1].name);
+    EXPECT_EQ("properdesktop_status_item_v1.get_popup", requests[1].name);
     EXPECT_EQ("xdg_popup.grab", requests[2].name);
 }

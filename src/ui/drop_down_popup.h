@@ -10,7 +10,7 @@
 
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class View;
 class Window;
@@ -69,4 +69,4 @@ private:
     Surface* m_surface = nullptr;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -16,7 +16,7 @@
 #include "base/process.h"
 #include "base/timer.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 using namespace std::chrono_literals;
 
 namespace {
@@ -87,7 +87,7 @@ TEST(ProcessTest, RefusesMissingPrograms)
 {
     EventLoop loop;
     Process process(&loop);
-    EXPECT_FALSE(process.start("cutefish-no-such-program"));
+    EXPECT_FALSE(process.start("properdesktop-no-such-program"));
     EXPECT_FALSE(process.isRunning());
 }
 
@@ -110,8 +110,8 @@ TEST(ProcessTest, UsesTheGivenEnvironment)
 {
     EventLoop loop;
     Process process(&loop);
-    process.setEnvironment({"CUTEFISH_TEST_VALUE=given", "PATH=/usr/bin:/bin"});
-    ASSERT_TRUE(process.start("sh", {"-c", "printf '%s' \"$CUTEFISH_TEST_VALUE\"; printf '%s' \"${HOME:-none}\""}));
+    process.setEnvironment({"PROPERDESKTOP_TEST_VALUE=given", "PATH=/usr/bin:/bin"});
+    ASSERT_TRUE(process.start("sh", {"-c", "printf '%s' \"$PROPERDESKTOP_TEST_VALUE\"; printf '%s' \"${HOME:-none}\""}));
     ASSERT_TRUE(runUntilFinished(loop, process));
     EXPECT_EQ(process.standardOutput(), "givennone");
 }
@@ -342,9 +342,9 @@ TEST(ProcessTest, DetachedProgramsGetTheGivenEnvironment)
     file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string());
     const std::string written = directory.path() + "/environment";
     ASSERT_GT(Process::startDetached("sh",
-                                     {"-c", "printf '%s %s %s' \"$CUTEFISH_GIVEN\" \"$HOME\" \"${PATH:+path}\" > "
+                                     {"-c", "printf '%s %s %s' \"$PROPERDESKTOP_GIVEN\" \"$HOME\" \"${PATH:+path}\" > "
                                                     + written + ".part; mv " + written + ".part " + written},
-                                     {}, {"CUTEFISH_GIVEN=token", "HOME=/given"}),
+                                     {}, {"PROPERDESKTOP_GIVEN=token", "HOME=/given"}),
               0);
     Timer poll(&loop);
     poll.onTimeout = [&] {
@@ -362,7 +362,7 @@ TEST(ProcessTest, DetachedProgramsGetTheGivenEnvironment)
 
 TEST(ProcessTest, DetachedStartsReportFailures)
 {
-    EXPECT_EQ(Process::startDetached("cutefish-no-such-program"), -1);
+    EXPECT_EQ(Process::startDetached("properdesktop-no-such-program"), -1);
     EXPECT_EQ(Process::startDetached("true", {}, "/nonexistent/directory"), -1);
 }
 

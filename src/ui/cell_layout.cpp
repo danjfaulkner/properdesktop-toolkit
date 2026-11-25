@@ -8,7 +8,7 @@
 #include <cmath>
 #include <limits>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 namespace rounding {
 
@@ -514,4 +514,4 @@ void CellLayout::layout()
     }
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -3,7 +3,7 @@
 
 #include "ui/navigation_buttons.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 NavigationButtons::NavigationButtons()
     : m_back(addButton("chevron-left"))
@@ -11,4 +11,4 @@ NavigationButtons::NavigationButtons()
 {
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

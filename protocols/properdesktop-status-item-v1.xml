@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<protocol name="cutefish_status_item_v1">
-  <interface name="cutefish_status_item_manager_v1" version="1">
+<protocol name="properdesktop_status_item_v1">
+  <interface name="properdesktop_status_item_manager_v1" version="1">
     <description summary="items an application draws in the menu bar">
       A status item is a surface of the client's that the menu bar shows
       among its items, at the bar's height and any width the client draws:
@@ -29,12 +29,12 @@
         commits a buffer, the item has no place in the bar. A surface that
         already has a role is the role error.
       </description>
-      <arg name="id" type="new_id" interface="cutefish_status_item_v1"/>
+      <arg name="id" type="new_id" interface="properdesktop_status_item_v1"/>
       <arg name="surface" type="object" interface="wl_surface"/>
     </request>
   </interface>
 
-  <interface name="cutefish_status_item_v1" version="1">
+  <interface name="properdesktop_status_item_v1" version="1">
     <description summary="one item in the menu bar">
       The item's width is the width of its surface's content, in surface
       coordinates, as wp_viewporter or the buffer scale give it; its height is
@@ -145,7 +145,7 @@
         sent whenever it moves or changes size, with width and height 0 when
         the item has no place in the bar. A window that cannot be a popup of
         the item can open next to it with
-        cutefish_window_hints_v1.set_placement_anchor.
+        properdesktop_window_hints_v1.set_placement_anchor.
       </description>
       <arg name="x" type="int"/>
       <arg name="y" type="int"/>

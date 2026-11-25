@@ -9,7 +9,7 @@
 
 #include "wayland/connection.h"
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 struct PrimarySelectionListeners
 {
@@ -90,4 +90,4 @@ void PrimarySelection::destroyOffer(void* offer)
     zwp_primary_selection_offer_v1_destroy(static_cast<zwp_primary_selection_offer_v1*>(offer));
 }
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

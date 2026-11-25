@@ -24,14 +24,14 @@ struct xdg_popup;
 struct xdg_surface;
 struct xdg_toplevel;
 struct zxdg_imported_v2;
-struct cutefish_shell_surface_v1;
-struct cutefish_status_item_v1;
+struct properdesktop_shell_surface_v1;
+struct properdesktop_status_item_v1;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class DropOffer;
 }
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 class Connection;
 struct ShellSurfaceListeners;
@@ -176,16 +176,16 @@ public:
     void setPlacementAnchor(const std::optional<PlacementAnchor>& anchor);
     // A toplevel's resize edges, which the compositor owns; on by default.
     void setServerResize(bool enabled);
-    // See cutefish_window_hints_v1.set_body_shape; empty unsets it.
+    // See properdesktop_window_hints_v1.set_body_shape; empty unsets it.
     void setBodyShape(const Path& path);
-    // See cutefish_window_hints_v1.set_shadow.
+    // See properdesktop_window_hints_v1.set_shadow.
     void setCastsShadow(bool castsShadow);
-    // See cutefish_window_hints_v1.set_opacity.
+    // See properdesktop_window_hints_v1.set_opacity.
     void setOpacity(double opacity);
     // An empty input region, or the whole surface; lands with the next
     // commit.
     void setInputTransparent(bool transparent);
-    // See cutefish_window_hints_v1.set_fullscreen_bars.
+    // See properdesktop_window_hints_v1.set_fullscreen_bars.
     void setFullScreenBars(int height, bool push);
     // A toplevel's top left at a point in the compositor's global logical
     // coordinates, the next time it maps or at once when it is mapped; false
@@ -194,7 +194,7 @@ public:
     // A status item's identifier and highlight request; at once.
     void setStatusItemIdentifier(const std::string& identifier);
     void setStatusItemHighlight(bool highlighted);
-    // cutefish_shell_v1 on a trusted connection: the desktop role on the
+    // properdesktop_shell_v1 on a trusted connection: the desktop role on the
     // output, normal focus; before map().
     bool setDesktop(const std::string& outputName);
     void setShellOutput(const std::string& outputName);
@@ -228,8 +228,8 @@ private:
     xdg_popup* m_xdgPopup = nullptr;
     xdg_dialog_v1* m_dialog = nullptr;
     zxdg_imported_v2* m_imported = nullptr;
-    cutefish_shell_surface_v1* m_shellSurface = nullptr;
-    cutefish_status_item_v1* m_statusItem = nullptr;
+    properdesktop_shell_surface_v1* m_shellSurface = nullptr;
+    properdesktop_status_item_v1* m_statusItem = nullptr;
     wl_callback* m_frameCallback = nullptr;
     ShellSurface* m_parent = nullptr;
     // The outputs the surface is on, the first entered first.
@@ -247,4 +247,4 @@ private:
     bool m_committedOpaque = false;
 };
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

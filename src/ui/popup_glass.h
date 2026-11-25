@@ -7,7 +7,7 @@
 
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The glass of menus and drop-downs, frosted enough that text reads over any
 // backdrop; the lens is kept to the lip and the edge is the compositor's
@@ -30,4 +30,4 @@ private:
     std::optional<bool> m_darkMode;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

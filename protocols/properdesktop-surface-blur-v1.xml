@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<protocol name="cutefish_surface_blur_v1">
-  <interface name="cutefish_surface_blur_v1" version="1">
+<protocol name="properdesktop_surface_blur_v1">
+  <interface name="properdesktop_surface_blur_v1" version="1">
     <description summary="compositor background blur for translucent surfaces">
-      A Cutefish extension inspired by Chromium ui::Layer backdrop filters.
+      A Proper Desktop extension inspired by Chromium ui::Layer backdrop filters.
       This is not a ChromeOS wire protocol. Requests modify pending wl_surface
       state, applied atomically on wl_surface.commit, including synchronized
       subsurface commits. Blur samples content behind the surface, before the

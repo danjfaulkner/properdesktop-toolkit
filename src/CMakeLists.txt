@@ -1,10 +1,10 @@
 # Generated protocol marshalling; the sources live in the build tree.
-set(CUTEFISH_PROTOCOL_DIR ${CMAKE_CURRENT_BINARY_DIR}/wayland-protocols)
-file(MAKE_DIRECTORY ${CUTEFISH_PROTOCOL_DIR})
+set(PROPERDESKTOP_PROTOCOL_DIR ${CMAKE_CURRENT_BINARY_DIR}/wayland-protocols)
+file(MAKE_DIRECTORY ${PROPERDESKTOP_PROTOCOL_DIR})
 
-function(cutefish_wayland_protocol name xml)
-    set(code ${CUTEFISH_PROTOCOL_DIR}/${name}-protocol.c)
-    set(client ${CUTEFISH_PROTOCOL_DIR}/${name}-client-protocol.h)
+function(properdesktop_wayland_protocol name xml)
+    set(code ${PROPERDESKTOP_PROTOCOL_DIR}/${name}-protocol.c)
+    set(client ${PROPERDESKTOP_PROTOCOL_DIR}/${name}-client-protocol.h)
     add_custom_command(OUTPUT ${code}
         COMMAND ${WAYLAND_SCANNER} private-code ${xml} ${code}
         DEPENDS ${xml} VERBATIM)
@@ -14,55 +14,55 @@ function(cutefish_wayland_protocol name xml)
     set(${name}_SOURCES ${code} ${client} PARENT_SCOPE)
 endfunction()
 
-cutefish_wayland_protocol(xdg-shell
+properdesktop_wayland_protocol(xdg-shell
     ${WAYLAND_PROTOCOLS_DATADIR}/stable/xdg-shell/xdg-shell.xml)
-cutefish_wayland_protocol(viewporter
+properdesktop_wayland_protocol(viewporter
     ${WAYLAND_PROTOCOLS_DATADIR}/stable/viewporter/viewporter.xml)
-cutefish_wayland_protocol(presentation-time
+properdesktop_wayland_protocol(presentation-time
     ${WAYLAND_PROTOCOLS_DATADIR}/stable/presentation-time/presentation-time.xml)
-cutefish_wayland_protocol(fractional-scale-v1
+properdesktop_wayland_protocol(fractional-scale-v1
     ${WAYLAND_PROTOCOLS_DATADIR}/staging/fractional-scale/fractional-scale-v1.xml)
-cutefish_wayland_protocol(cursor-shape-v1
+properdesktop_wayland_protocol(cursor-shape-v1
     ${WAYLAND_PROTOCOLS_DATADIR}/staging/cursor-shape/cursor-shape-v1.xml)
-cutefish_wayland_protocol(xdg-dialog-v1
+properdesktop_wayland_protocol(xdg-dialog-v1
     ${WAYLAND_PROTOCOLS_DATADIR}/staging/xdg-dialog/xdg-dialog-v1.xml)
-cutefish_wayland_protocol(xdg-activation-v1
+properdesktop_wayland_protocol(xdg-activation-v1
     ${WAYLAND_PROTOCOLS_DATADIR}/staging/xdg-activation/xdg-activation-v1.xml)
-cutefish_wayland_protocol(xdg-foreign-unstable-v2
+properdesktop_wayland_protocol(xdg-foreign-unstable-v2
     ${WAYLAND_PROTOCOLS_DATADIR}/unstable/xdg-foreign/xdg-foreign-unstable-v2.xml)
-cutefish_wayland_protocol(text-input-unstable-v3
+properdesktop_wayland_protocol(text-input-unstable-v3
     ${WAYLAND_PROTOCOLS_DATADIR}/unstable/text-input/text-input-unstable-v3.xml)
-cutefish_wayland_protocol(xdg-toplevel-drag-v1
+properdesktop_wayland_protocol(xdg-toplevel-drag-v1
     ${WAYLAND_PROTOCOLS_DATADIR}/staging/xdg-toplevel-drag/xdg-toplevel-drag-v1.xml)
-cutefish_wayland_protocol(primary-selection-unstable-v1
+properdesktop_wayland_protocol(primary-selection-unstable-v1
     ${WAYLAND_PROTOCOLS_DATADIR}/unstable/primary-selection/primary-selection-unstable-v1.xml)
-cutefish_wayland_protocol(pointer-gestures-unstable-v1
+properdesktop_wayland_protocol(pointer-gestures-unstable-v1
     ${WAYLAND_PROTOCOLS_DATADIR}/unstable/pointer-gestures/pointer-gestures-unstable-v1.xml)
-cutefish_wayland_protocol(xdg-output-unstable-v1
+properdesktop_wayland_protocol(xdg-output-unstable-v1
     ${WAYLAND_PROTOCOLS_DATADIR}/unstable/xdg-output/xdg-output-unstable-v1.xml)
 # cursor-shape-v1 refers to the tablet tool interface.
-cutefish_wayland_protocol(tablet-unstable-v2
+properdesktop_wayland_protocol(tablet-unstable-v2
     ${WAYLAND_PROTOCOLS_DATADIR}/unstable/tablet/tablet-unstable-v2.xml)
-# Not in wayland-protocols; the same copy as cutefish-compositor's.
-cutefish_wayland_protocol(virtual-keyboard-unstable-v1
+# Not in wayland-protocols; the same copy as properdesktop-compositor's.
+properdesktop_wayland_protocol(virtual-keyboard-unstable-v1
     ${PROJECT_SOURCE_DIR}/protocols/virtual-keyboard-unstable-v1.xml)
-# Copies of cutefish-compositor's protocols; the copies must stay identical.
-cutefish_wayland_protocol(cutefish-window-hints-v1
-    ${PROJECT_SOURCE_DIR}/protocols/cutefish-window-hints-v1.xml)
-cutefish_wayland_protocol(cutefish-surface-blur-v1
-    ${PROJECT_SOURCE_DIR}/protocols/cutefish-surface-blur-v1.xml)
-cutefish_wayland_protocol(cutefish-shell-v1
-    ${PROJECT_SOURCE_DIR}/protocols/cutefish-shell-v1.xml)
-cutefish_wayland_protocol(cutefish-main-menu-v1
-    ${PROJECT_SOURCE_DIR}/protocols/cutefish-main-menu-v1.xml)
-cutefish_wayland_protocol(cutefish-status-item-v1
-    ${PROJECT_SOURCE_DIR}/protocols/cutefish-status-item-v1.xml)
-cutefish_wayland_protocol(cutefish-window-placement-v1
-    ${PROJECT_SOURCE_DIR}/protocols/cutefish-window-placement-v1.xml)
+# Copies of properdesktop-compositor's protocols; the copies must stay identical.
+properdesktop_wayland_protocol(properdesktop-window-hints-v1
+    ${PROJECT_SOURCE_DIR}/protocols/properdesktop-window-hints-v1.xml)
+properdesktop_wayland_protocol(properdesktop-surface-blur-v1
+    ${PROJECT_SOURCE_DIR}/protocols/properdesktop-surface-blur-v1.xml)
+properdesktop_wayland_protocol(properdesktop-shell-v1
+    ${PROJECT_SOURCE_DIR}/protocols/properdesktop-shell-v1.xml)
+properdesktop_wayland_protocol(properdesktop-main-menu-v1
+    ${PROJECT_SOURCE_DIR}/protocols/properdesktop-main-menu-v1.xml)
+properdesktop_wayland_protocol(properdesktop-status-item-v1
+    ${PROJECT_SOURCE_DIR}/protocols/properdesktop-status-item-v1.xml)
+properdesktop_wayland_protocol(properdesktop-window-placement-v1
+    ${PROJECT_SOURCE_DIR}/protocols/properdesktop-window-placement-v1.xml)
 
 add_subdirectory(base)
 
-set(CUTEFISH_TOOLKIT_PUBLIC_HEADERS
+set(PROPERDESKTOP_TOOLKIT_PUBLIC_HEADERS
     ui/about_dialog.h
     ui/animated_image.h
     ui/animation.h
@@ -148,7 +148,7 @@ set(CUTEFISH_TOOLKIT_PUBLIC_HEADERS
     ui/zoomable_image_view.h
 )
 
-add_library(cutefish-toolkit SHARED
+add_library(properdesktop-toolkit SHARED
     gpu/egl_context.cpp
     gpu/program_cache.cpp
     wayland/connection.cpp
@@ -275,54 +275,54 @@ add_library(cutefish-toolkit SHARED
     ${xdg-output-unstable-v1_SOURCES}
     ${tablet-unstable-v2_SOURCES}
     ${virtual-keyboard-unstable-v1_SOURCES}
-    ${cutefish-window-hints-v1_SOURCES}
-    ${cutefish-surface-blur-v1_SOURCES}
-    ${cutefish-shell-v1_SOURCES}
-    ${cutefish-main-menu-v1_SOURCES}
-    ${cutefish-status-item-v1_SOURCES}
-    ${cutefish-window-placement-v1_SOURCES}
+    ${properdesktop-window-hints-v1_SOURCES}
+    ${properdesktop-surface-blur-v1_SOURCES}
+    ${properdesktop-shell-v1_SOURCES}
+    ${properdesktop-main-menu-v1_SOURCES}
+    ${properdesktop-status-item-v1_SOURCES}
+    ${properdesktop-window-placement-v1_SOURCES}
 )
 
 # The glyph icons and the runtime shaders, built in so they need no install
 # location.
-file(GLOB CUTEFISH_TOOLKIT_ICONS CONFIGURE_DEPENDS ${PROJECT_SOURCE_DIR}/data/icons/*.svg
+file(GLOB PROPERDESKTOP_TOOLKIT_ICONS CONFIGURE_DEPENDS ${PROJECT_SOURCE_DIR}/data/icons/*.svg
     ${PROJECT_SOURCE_DIR}/data/shaders/*.sksl)
-set(CUTEFISH_TOOLKIT_EMBEDDED ${CMAKE_CURRENT_BINARY_DIR}/embedded_files.cpp)
+set(PROPERDESKTOP_TOOLKIT_EMBEDDED ${CMAKE_CURRENT_BINARY_DIR}/embedded_files.cpp)
 # A list would be split into separate arguments on the way to the script.
-string(REPLACE ";" "|" CUTEFISH_TOOLKIT_ICON_LIST "${CUTEFISH_TOOLKIT_ICONS}")
-add_custom_command(OUTPUT ${CUTEFISH_TOOLKIT_EMBEDDED}
-    COMMAND ${CMAKE_COMMAND} -DOUTPUT=${CUTEFISH_TOOLKIT_EMBEDDED}
-            -DFILES=${CUTEFISH_TOOLKIT_ICON_LIST} -P ${PROJECT_SOURCE_DIR}/cmake/EmbedFiles.cmake
-    DEPENDS ${CUTEFISH_TOOLKIT_ICONS} ${PROJECT_SOURCE_DIR}/cmake/EmbedFiles.cmake
+string(REPLACE ";" "|" PROPERDESKTOP_TOOLKIT_ICON_LIST "${PROPERDESKTOP_TOOLKIT_ICONS}")
+add_custom_command(OUTPUT ${PROPERDESKTOP_TOOLKIT_EMBEDDED}
+    COMMAND ${CMAKE_COMMAND} -DOUTPUT=${PROPERDESKTOP_TOOLKIT_EMBEDDED}
+            -DFILES=${PROPERDESKTOP_TOOLKIT_ICON_LIST} -P ${PROJECT_SOURCE_DIR}/cmake/EmbedFiles.cmake
+    DEPENDS ${PROPERDESKTOP_TOOLKIT_ICONS} ${PROJECT_SOURCE_DIR}/cmake/EmbedFiles.cmake
     VERBATIM)
-target_sources(cutefish-toolkit PRIVATE ${CUTEFISH_TOOLKIT_EMBEDDED})
+target_sources(properdesktop-toolkit PRIVATE ${PROPERDESKTOP_TOOLKIT_EMBEDDED})
 
-add_library(Cutefish::Toolkit ALIAS cutefish-toolkit)
+add_library(ProperDesktop::Toolkit ALIAS properdesktop-toolkit)
 
 # Only the toolkit's own symbols: Skia's inline functions and the
 # generated protocol code stay out of the processes that load it, the
 # compositor's included.
-target_link_options(cutefish-toolkit PRIVATE
-    -Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/cutefish-toolkit.map)
-set_property(TARGET cutefish-toolkit APPEND PROPERTY
-    LINK_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cutefish-toolkit.map)
+target_link_options(properdesktop-toolkit PRIVATE
+    -Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/properdesktop-toolkit.map)
+set_property(TARGET properdesktop-toolkit APPEND PROPERTY
+    LINK_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/properdesktop-toolkit.map)
 
-set_target_properties(cutefish-toolkit PROPERTIES
+set_target_properties(properdesktop-toolkit PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION_MAJOR}
     EXPORT_NAME Toolkit
 )
 
-target_include_directories(cutefish-toolkit
+target_include_directories(properdesktop-toolkit
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/cutefish-toolkit>
-    PRIVATE ${CUTEFISH_PROTOCOL_DIR}
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/properdesktop-toolkit>
+    PRIVATE ${PROPERDESKTOP_PROTOCOL_DIR}
 )
 
-target_link_libraries(cutefish-toolkit
+target_link_libraries(properdesktop-toolkit
     PUBLIC
-        cutefish-toolkit-base
+        properdesktop-toolkit-base
     PRIVATE
         skia
         PkgConfig::WaylandClient
@@ -335,22 +335,22 @@ target_link_libraries(cutefish-toolkit
         PkgConfig::Icu
         ${CMAKE_DL_LIBS}
 )
-target_include_directories(cutefish-toolkit PRIVATE ${Jxl_INCLUDE_DIRS})
-target_compile_definitions(cutefish-toolkit PRIVATE
-    CUTEFISH_JXL_LIBRARY="${CUTEFISH_jxl_SONAME}"
-    CUTEFISH_JXL_THREADS_LIBRARY="${CUTEFISH_jxl_threads_SONAME}"
+target_include_directories(properdesktop-toolkit PRIVATE ${Jxl_INCLUDE_DIRS})
+target_compile_definitions(properdesktop-toolkit PRIVATE
+    PROPERDESKTOP_JXL_LIBRARY="${PROPERDESKTOP_jxl_SONAME}"
+    PROPERDESKTOP_JXL_THREADS_LIBRARY="${PROPERDESKTOP_jxl_threads_SONAME}"
 )
 
-install(TARGETS cutefish-toolkit EXPORT CutefishToolkitTargets
+install(TARGETS properdesktop-toolkit EXPORT ProperDesktopToolkitTargets
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
-foreach(header ${CUTEFISH_TOOLKIT_PUBLIC_HEADERS})
+foreach(header ${PROPERDESKTOP_TOOLKIT_PUBLIC_HEADERS})
     get_filename_component(directory ${header} DIRECTORY)
-    install(FILES ${header} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/cutefish-toolkit/${directory})
+    install(FILES ${header} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/properdesktop-toolkit/${directory})
 endforeach()
 
-install(EXPORT CutefishToolkitTargets
-    NAMESPACE Cutefish::
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CutefishToolkit
+install(EXPORT ProperDesktopToolkitTargets
+    NAMESPACE ProperDesktop::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ProperDesktopToolkit
 )

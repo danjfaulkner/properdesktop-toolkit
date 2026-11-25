@@ -17,7 +17,7 @@
 #include "ui/theme.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 ProgressBar::ProgressBar() = default;
 
@@ -145,4 +145,4 @@ void BusyIndicator::paint(Painter& painter)
     canvas->restore();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -5,7 +5,7 @@
 
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 GlassMaterial popupGlass(bool darkMode)
 {
@@ -46,4 +46,4 @@ void PopupGlass::prepare(Window& window)
     window.setTranslucentSubpixelText(!window.backgroundGlassAvailable());
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

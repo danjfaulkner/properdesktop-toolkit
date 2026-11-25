@@ -15,7 +15,7 @@
 #include "ui/painter.h"
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 RoundImageButton::RoundImageButton(std::string iconName, double size)
     : m_iconName(std::move(iconName))
@@ -236,4 +236,4 @@ void RoundImageButton::pointerRelease(const PointerEvent& event)
         onClicked();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

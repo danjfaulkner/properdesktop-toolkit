@@ -14,7 +14,7 @@
 #include "base/paths.h"
 #include "base/property_list.h"
 
-namespace cutefish::base::bundle {
+namespace properdesktop::base::bundle {
 
 namespace fs = std::filesystem;
 
@@ -420,4 +420,4 @@ bool opensType(const DesktopEntry& entry, const std::string& type)
     });
 }
 
-} // namespace cutefish::base::bundle
+} // namespace properdesktop::base::bundle

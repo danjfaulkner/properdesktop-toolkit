@@ -1,5 +1,5 @@
 # Writes po/<DOMAIN>.pot from the strings of SOURCES and DESKTOP_FILES and
-# merges it into every po/<language>.po; see CutefishTranslations.cmake.
+# merges it into every po/<language>.po; see ProperDesktopTranslations.cmake.
 string(REPLACE "|" ";" SOURCES "${SOURCES}")
 string(REPLACE "|" ";" DESKTOP_FILES "${DESKTOP_FILES}")
 
@@ -25,7 +25,7 @@ execute_process(
     COMMAND ${XGETTEXT} --from-code=UTF-8 --add-comments=TRANSLATORS: --add-location=file --no-wrap
             --keyword=tr --keyword=trc:1c,2 --keyword=trn:1,2 --keyword=trNoop
             --keyword=dtr:2 --keyword=dtrc:2c,3 --keyword=dtrn:2,3
-            --package-name=${DOMAIN} --msgid-bugs-address=https://github.com/cutefishos
+            --package-name=${DOMAIN} --msgid-bugs-address=https://github.com/danjfaulkner
             -o ${extracted} ${files}
     WORKING_DIRECTORY ${SOURCE_DIRECTORY}
     RESULT_VARIABLE result)

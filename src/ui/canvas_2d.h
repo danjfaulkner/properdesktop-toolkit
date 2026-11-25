@@ -16,7 +16,7 @@
 class SkCanvas;
 class SkImage;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Painter;
 class TextLayout;
@@ -297,4 +297,4 @@ private:
     std::vector<State> m_saved;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -15,7 +15,7 @@ class SkRegion;
 class SkImage;
 class SkPath;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Image;
 
@@ -158,4 +158,4 @@ private:
     const SkRegion* m_damage = nullptr;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

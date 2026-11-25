@@ -16,13 +16,13 @@
 #include "ui/image.h"
 #include "ui/image_info.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 namespace fs = std::filesystem;
 
 namespace {
 
 // One per process: ctest runs the tests of this suite side by side.
-const fs::path kDirectory = "/tmp/cutefish-toolkit-image-info-test-" + std::to_string(getpid());
+const fs::path kDirectory = "/tmp/properdesktop-toolkit-image-info-test-" + std::to_string(getpid());
 
 std::string write(const std::string& name, const std::string& contents)
 {

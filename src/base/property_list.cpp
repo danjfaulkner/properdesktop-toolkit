@@ -6,7 +6,7 @@
 #include <cstdint>
 #include <cstdlib>
 
-namespace cutefish::base::plist {
+namespace properdesktop::base::plist {
 
 using Strings = std::map<std::string, std::string>;
 
@@ -519,4 +519,4 @@ std::optional<Strings> rootStrings(std::string_view data)
     return result;
 }
 
-} // namespace cutefish::base::plist
+} // namespace properdesktop::base::plist

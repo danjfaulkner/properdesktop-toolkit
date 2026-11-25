@@ -18,11 +18,11 @@ struct xkb_compose_table;
 struct xkb_keymap;
 struct xkb_state;
 
-namespace cutefish::base {
+namespace properdesktop::base {
 class EventLoop;
 }
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 class ShellSurface;
 struct KeyboardListeners;
@@ -88,4 +88,4 @@ private:
     std::vector<std::pair<uint32_t, uint32_t>> m_pendingKeys;
 };
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

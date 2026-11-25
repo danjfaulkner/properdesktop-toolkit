@@ -11,7 +11,7 @@
 #include "ui/view.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 static constexpr Color kBackground = Color::rgb(0xF5F6FA);
 static constexpr Color kLine = Color::rgb(0xE3E4E8);

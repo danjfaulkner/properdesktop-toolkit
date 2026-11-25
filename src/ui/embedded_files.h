@@ -6,7 +6,7 @@
 #include <cstddef>
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Files built into the library, such as the glyph icons under data/icons
 // and the runtime shaders under data/shaders.
@@ -27,4 +27,4 @@ inline std::string embeddedText(const char* name)
     return file ? std::string(reinterpret_cast<const char*>(file->data), file->size) : std::string();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -12,7 +12,7 @@
 #include "base/event_loop.h"
 #include "ui/application.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr double friction = 4.5;
 static constexpr double springFrequency = 18.0;
@@ -725,4 +725,4 @@ void Scroller::advanceAxis(double& position, double& velocity, const Axis& axis,
     }
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

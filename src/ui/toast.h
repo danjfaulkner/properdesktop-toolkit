@@ -7,7 +7,7 @@
 #include <functional>
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Window;
 
@@ -39,4 +39,4 @@ private:
     Stack* m_stack = nullptr;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

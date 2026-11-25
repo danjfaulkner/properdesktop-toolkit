@@ -11,7 +11,7 @@
 #include <unordered_map>
 #include <vector>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 class EventLoop;
 
@@ -146,4 +146,4 @@ private:
     std::vector<Task> m_posted;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

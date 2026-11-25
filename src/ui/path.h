@@ -8,11 +8,11 @@
 
 #include "ui/geometry.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 class AffineTransform;
 }
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 enum class LineCap {
     Butt,
@@ -161,4 +161,4 @@ struct LinearGradient
     }
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -8,11 +8,11 @@
 #include <functional>
 #include <wayland-client.h>
 
-#include <cutefish-shell-v1-client-protocol.h>
-#include <cutefish-status-item-v1-client-protocol.h>
-#include <cutefish-surface-blur-v1-client-protocol.h>
-#include <cutefish-window-hints-v1-client-protocol.h>
-#include <cutefish-window-placement-v1-client-protocol.h>
+#include <properdesktop-shell-v1-client-protocol.h>
+#include <properdesktop-status-item-v1-client-protocol.h>
+#include <properdesktop-surface-blur-v1-client-protocol.h>
+#include <properdesktop-window-hints-v1-client-protocol.h>
+#include <properdesktop-window-placement-v1-client-protocol.h>
 #include <fractional-scale-v1-client-protocol.h>
 #include <presentation-time-client-protocol.h>
 #include <viewporter-client-protocol.h>
@@ -22,7 +22,7 @@
 
 #include "wayland/connection.h"
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 struct ShellSurfaceListeners
 {
@@ -146,12 +146,12 @@ struct ShellSurfaceListeners
         self->m_delegate->discarded();
     }
 
-    static void workArea(void* data, cutefish_shell_surface_v1*, int32_t x, int32_t y, int32_t width, int32_t height)
+    static void workArea(void* data, properdesktop_shell_surface_v1*, int32_t x, int32_t y, int32_t width, int32_t height)
     {
         static_cast<ShellSurface*>(data)->m_delegate->workArea({double(x), double(y), double(width), double(height)});
     }
 
-    static void statusItemConfigure(void* data, cutefish_status_item_v1*, uint32_t serial, int32_t height,
+    static void statusItemConfigure(void* data, properdesktop_status_item_v1*, uint32_t serial, int32_t height,
                                     int32_t maxWidth)
     {
         auto* self = static_cast<ShellSurface*>(data);
@@ -162,26 +162,26 @@ struct ShellSurfaceListeners
         self->m_delegate->configure(0, height, WindowStates {});
     }
 
-    static void statusItemAppearance(void* data, cutefish_status_item_v1*, uint32_t appearance, uint32_t foreground)
+    static void statusItemAppearance(void* data, properdesktop_status_item_v1*, uint32_t appearance, uint32_t foreground)
     {
         static_cast<ShellSurface*>(data)->m_delegate->statusItemAppearance(
-                appearance == CUTEFISH_STATUS_ITEM_V1_APPEARANCE_DARK, foreground);
+                appearance == PROPERDESKTOP_STATUS_ITEM_V1_APPEARANCE_DARK, foreground);
     }
 
-    static void statusItemHighlight(void* data, cutefish_status_item_v1*, uint32_t highlighted)
+    static void statusItemHighlight(void* data, properdesktop_status_item_v1*, uint32_t highlighted)
     {
         static_cast<ShellSurface*>(data)->m_delegate->statusItemHighlight(highlighted != 0);
     }
 
-    static void statusItemPlaced(void* data, cutefish_status_item_v1*, int32_t x, int32_t y, int32_t width,
+    static void statusItemPlaced(void* data, properdesktop_status_item_v1*, int32_t x, int32_t y, int32_t width,
                                  int32_t height)
     {
         static_cast<ShellSurface*>(data)->m_delegate->statusItemPlaced(
                 {double(x), double(y), double(width), double(height)});
     }
 
-    static constexpr cutefish_shell_surface_v1_listener shellSurface = {workArea};
-    static constexpr cutefish_status_item_v1_listener statusItem = {
+    static constexpr properdesktop_shell_surface_v1_listener shellSurface = {workArea};
+    static constexpr properdesktop_status_item_v1_listener statusItem = {
         statusItemConfigure,
         statusItemAppearance,
         statusItemHighlight,
@@ -209,21 +209,21 @@ struct ShellSurfaceListeners
     };
 };
 
-// Path commands and wl_fixed points, as cutefish_surface_blur_v1 and
-// cutefish_window_hints_v1 take them; a close is implied by the fill.
+// Path commands and wl_fixed points, as properdesktop_surface_blur_v1 and
+// properdesktop_window_hints_v1 take them; a close is implied by the fill.
 static std::vector<int32_t> pathValues(const Path& path)
 {
     std::vector<int32_t> values;
     for (const Path::Element& element : path.elements()) {
         switch (element.type) {
         case Path::Element::Type::MoveTo:
-            values.push_back(CUTEFISH_SURFACE_BLUR_V1_PATH_COMMAND_MOVE_TO);
+            values.push_back(PROPERDESKTOP_SURFACE_BLUR_V1_PATH_COMMAND_MOVE_TO);
             break;
         case Path::Element::Type::LineTo:
-            values.push_back(CUTEFISH_SURFACE_BLUR_V1_PATH_COMMAND_LINE_TO);
+            values.push_back(PROPERDESKTOP_SURFACE_BLUR_V1_PATH_COMMAND_LINE_TO);
             break;
         case Path::Element::Type::CurveTo:
-            values.push_back(CUTEFISH_SURFACE_BLUR_V1_PATH_COMMAND_CUBIC_TO);
+            values.push_back(PROPERDESKTOP_SURFACE_BLUR_V1_PATH_COMMAND_CUBIC_TO);
             break;
         case Path::Element::Type::CurveToData:
             break;
@@ -245,7 +245,7 @@ ShellSurface::ShellSurface(Connection& connection, Delegate* delegate)
 
     // The window draws its own frame; the compositor keeps the resize edges.
     if (connection.windowHints())
-        cutefish_window_hints_v1_set_server_resize(connection.windowHints(), m_surface, 1);
+        properdesktop_window_hints_v1_set_server_resize(connection.windowHints(), m_surface, 1);
 }
 
 static xdg_positioner* createPositioner(Connection& connection, const PopupPlacement& placement,
@@ -284,8 +284,8 @@ ShellSurface::ShellSurface(Connection& connection, Delegate* delegate, StatusIte
     , m_delegate(delegate)
 {
     createSurface();
-    m_statusItem = cutefish_status_item_manager_v1_get_status_item(connection.statusItems(), m_surface);
-    cutefish_status_item_v1_add_listener(m_statusItem, &ShellSurfaceListeners::statusItem, this);
+    m_statusItem = properdesktop_status_item_manager_v1_get_status_item(connection.statusItems(), m_surface);
+    properdesktop_status_item_v1_add_listener(m_statusItem, &ShellSurfaceListeners::statusItem, this);
 }
 
 ShellSurface::ShellSurface(Connection& connection, Delegate* delegate, ShellSurface* parent,
@@ -305,7 +305,7 @@ ShellSurface::ShellSurface(Connection& connection, Delegate* delegate, ShellSurf
     xdg_positioner_destroy(positioner);
     xdg_popup_add_listener(m_xdgPopup, &ShellSurfaceListeners::xdgPopup, this);
     if (parent->m_statusItem)
-        cutefish_status_item_v1_get_popup(parent->m_statusItem, m_xdgPopup);
+        properdesktop_status_item_v1_get_popup(parent->m_statusItem, m_xdgPopup);
     if (grab)
         xdg_popup_grab(m_xdgPopup, connection.seat(), connection.inputSerial());
 }
@@ -350,19 +350,19 @@ ShellSurface::~ShellSurface()
     if (m_frameCallback)
         wl_callback_destroy(m_frameCallback);
     if (m_connection.surfaceBlur())
-        cutefish_surface_blur_v1_unset(m_connection.surfaceBlur(), m_surface);
+        properdesktop_surface_blur_v1_unset(m_connection.surfaceBlur(), m_surface);
     if (m_dialog)
         xdg_dialog_v1_destroy(m_dialog);
     if (m_imported)
         zxdg_imported_v2_destroy(m_imported);
     if (m_shellSurface)
-        cutefish_shell_surface_v1_destroy(m_shellSurface);
+        properdesktop_shell_surface_v1_destroy(m_shellSurface);
     if (m_xdgPopup)
         xdg_popup_destroy(m_xdgPopup);
     if (m_xdgToplevel)
         xdg_toplevel_destroy(m_xdgToplevel);
     if (m_statusItem)
-        cutefish_status_item_v1_destroy(m_statusItem);
+        properdesktop_status_item_v1_destroy(m_statusItem);
     if (m_xdgSurface)
         xdg_surface_destroy(m_xdgSurface);
     wp_fractional_scale_v1_destroy(m_fractionalScale);
@@ -468,35 +468,35 @@ bool ShellSurface::setDesktop(const std::string& outputName)
     if (!m_connection.shell())
         return false;
     if (!m_shellSurface) {
-        m_shellSurface = cutefish_shell_v1_get_shell_surface(m_connection.shell(), m_surface);
-        cutefish_shell_surface_v1_add_listener(m_shellSurface, &ShellSurfaceListeners::shellSurface, this);
+        m_shellSurface = properdesktop_shell_v1_get_shell_surface(m_connection.shell(), m_surface);
+        properdesktop_shell_surface_v1_add_listener(m_shellSurface, &ShellSurfaceListeners::shellSurface, this);
     }
-    cutefish_shell_surface_v1_set_role(m_shellSurface, CUTEFISH_SHELL_SURFACE_V1_ROLE_DESKTOP);
-    cutefish_shell_surface_v1_set_focus_policy(m_shellSurface, CUTEFISH_SHELL_SURFACE_V1_FOCUS_POLICY_NORMAL);
+    properdesktop_shell_surface_v1_set_role(m_shellSurface, PROPERDESKTOP_SHELL_SURFACE_V1_ROLE_DESKTOP);
+    properdesktop_shell_surface_v1_set_focus_policy(m_shellSurface, PROPERDESKTOP_SHELL_SURFACE_V1_FOCUS_POLICY_NORMAL);
     if (!outputName.empty())
-        cutefish_shell_surface_v1_set_output(m_shellSurface, outputName.c_str());
+        properdesktop_shell_surface_v1_set_output(m_shellSurface, outputName.c_str());
     // The desktop draws no frame, so the compositor owns no resize edges.
     if (m_connection.windowHints())
-        cutefish_window_hints_v1_set_server_resize(m_connection.windowHints(), m_surface, 0);
+        properdesktop_window_hints_v1_set_server_resize(m_connection.windowHints(), m_surface, 0);
     return true;
 }
 
 void ShellSurface::setShellOutput(const std::string& outputName)
 {
     if (m_shellSurface && !outputName.empty())
-        cutefish_shell_surface_v1_set_output(m_shellSurface, outputName.c_str());
+        properdesktop_shell_surface_v1_set_output(m_shellSurface, outputName.c_str());
 }
 
 void ShellSurface::activateShellSurface()
 {
     if (m_shellSurface)
-        cutefish_shell_surface_v1_activate(m_shellSurface);
+        properdesktop_shell_surface_v1_activate(m_shellSurface);
 }
 
 void ShellSurface::setRestoreSize(int width, int height)
 {
     if (m_xdgToplevel && m_connection.windowHints())
-        cutefish_window_hints_v1_set_restore_size(m_connection.windowHints(), m_surface, width, height);
+        properdesktop_window_hints_v1_set_restore_size(m_connection.windowHints(), m_surface, width, height);
 }
 
 void ShellSurface::startMove()
@@ -507,35 +507,35 @@ void ShellSurface::startMove()
 
 void ShellSurface::setBlur(const RectF& rect, double radius)
 {
-    cutefish_surface_blur_v1* blur = m_connection.surfaceBlur();
+    properdesktop_surface_blur_v1* blur = m_connection.surfaceBlur();
     if (!blur)
         return;
     if (rect.width <= 0 || rect.height <= 0) {
-        cutefish_surface_blur_v1_unset(blur, m_surface);
+        properdesktop_surface_blur_v1_unset(blur, m_surface);
         return;
     }
     const int left = int(std::round(rect.x));
     const int top = int(std::round(rect.y));
-    cutefish_surface_blur_v1_set(blur, m_surface, left, top, int(std::round(rect.right())) - left,
+    properdesktop_surface_blur_v1_set(blur, m_surface, left, top, int(std::round(rect.right())) - left,
                                  int(std::round(rect.bottom())) - top, int(std::round(radius)));
 }
 
 void ShellSurface::setSubsurfaceBlur(const RectF& rect, double radius)
 {
-    cutefish_surface_blur_v1* blur = m_connection.surfaceBlur();
+    properdesktop_surface_blur_v1* blur = m_connection.surfaceBlur();
     if (!blur)
         return;
     if (rect.width <= 0 || rect.height <= 0) {
-        cutefish_surface_blur_v1_unset_over_subsurfaces(blur, m_surface);
+        properdesktop_surface_blur_v1_unset_over_subsurfaces(blur, m_surface);
         return;
     }
     const int left = int(std::round(rect.x));
     const int top = int(std::round(rect.y));
-    cutefish_surface_blur_v1_set_over_subsurfaces(blur, m_surface, left, top, int(std::round(rect.right())) - left,
+    properdesktop_surface_blur_v1_set_over_subsurfaces(blur, m_surface, left, top, int(std::round(rect.right())) - left,
                                                   int(std::round(rect.bottom())) - top, int(std::round(radius)));
 }
 
-// The path as cutefish_surface_blur_v1 takes outlines, handed to `set`; false
+// The path as properdesktop_surface_blur_v1 takes outlines, handed to `set`; false
 // for one the protocol would refuse.
 static bool sendPath(const Path& path, const std::function<void(wl_array*)>& set)
 {
@@ -556,21 +556,21 @@ static bool sendPath(const Path& path, const std::function<void(wl_array*)>& set
 
 void ShellSurface::setBlurShape(const Path& path)
 {
-    cutefish_surface_blur_v1* blur = m_connection.surfaceBlur();
+    properdesktop_surface_blur_v1* blur = m_connection.surfaceBlur();
     if (!blur)
         return;
     if (path.isEmpty()
-        || !sendPath(path, [&](wl_array* array) { cutefish_surface_blur_v1_set_shape(blur, m_surface, array); }))
-        cutefish_surface_blur_v1_unset_shape(blur, m_surface);
+        || !sendPath(path, [&](wl_array* array) { properdesktop_surface_blur_v1_set_shape(blur, m_surface, array); }))
+        properdesktop_surface_blur_v1_unset_shape(blur, m_surface);
 }
 
 void ShellSurface::setSubsurfaceBlurFill(const BackdropFill& fill)
 {
-    cutefish_surface_blur_v1* blur = m_connection.surfaceBlur();
+    properdesktop_surface_blur_v1* blur = m_connection.surfaceBlur();
     if (!blur)
         return;
     const auto fixed = [](double value) { return wl_fixed_from_double(std::clamp(value, 0.0, 1.0)); };
-    cutefish_surface_blur_v1_set_over_subsurfaces_fill(blur, m_surface, fixed(fill.tint[0]), fixed(fill.tint[1]),
+    properdesktop_surface_blur_v1_set_over_subsurfaces_fill(blur, m_surface, fixed(fill.tint[0]), fixed(fill.tint[1]),
                                                       fixed(fill.tint[2]), fixed(fill.tint[3]),
                                                       uint32_t(fill.blend), fixed(fill.color[0]),
                                                       fixed(fill.color[1]), fixed(fill.color[2]),
@@ -579,29 +579,29 @@ void ShellSurface::setSubsurfaceBlurFill(const BackdropFill& fill)
 
 void ShellSurface::setSubsurfaceBlurShape(const Path& path)
 {
-    cutefish_surface_blur_v1* blur = m_connection.surfaceBlur();
+    properdesktop_surface_blur_v1* blur = m_connection.surfaceBlur();
     if (!blur)
         return;
     if (path.isEmpty() || !sendPath(path, [&](wl_array* array) {
-            cutefish_surface_blur_v1_set_over_subsurfaces_shape(blur, m_surface, array);
+            properdesktop_surface_blur_v1_set_over_subsurfaces_shape(blur, m_surface, array);
         }))
-        cutefish_surface_blur_v1_unset_over_subsurfaces_shape(blur, m_surface);
+        properdesktop_surface_blur_v1_unset_over_subsurfaces_shape(blur, m_surface);
 }
 
 void ShellSurface::setServerResize(bool enabled)
 {
     if (m_xdgToplevel && m_connection.windowHints())
-        cutefish_window_hints_v1_set_server_resize(m_connection.windowHints(), m_surface, enabled ? 1 : 0);
+        properdesktop_window_hints_v1_set_server_resize(m_connection.windowHints(), m_surface, enabled ? 1 : 0);
 }
 
 void ShellSurface::setBodyShape(const Path& path)
 {
-    cutefish_window_hints_v1* hints = m_connection.windowHints();
+    properdesktop_window_hints_v1* hints = m_connection.windowHints();
     if (!hints)
         return;
     const std::vector<int32_t> values = pathValues(path);
     if (path.isEmpty() || values.size() > 4096) {
-        cutefish_window_hints_v1_unset_body_shape(hints, m_surface);
+        properdesktop_window_hints_v1_unset_body_shape(hints, m_surface);
         return;
     }
     wl_array array;
@@ -609,7 +609,7 @@ void ShellSurface::setBodyShape(const Path& path)
     void* data = wl_array_add(&array, values.size() * sizeof(int32_t));
     if (data) {
         std::copy(values.begin(), values.end(), static_cast<int32_t*>(data));
-        cutefish_window_hints_v1_set_body_shape(hints, m_surface, &array);
+        properdesktop_window_hints_v1_set_body_shape(hints, m_surface, &array);
     }
     wl_array_release(&array);
 }
@@ -617,13 +617,13 @@ void ShellSurface::setBodyShape(const Path& path)
 void ShellSurface::setCastsShadow(bool castsShadow)
 {
     if (m_connection.windowHints())
-        cutefish_window_hints_v1_set_shadow(m_connection.windowHints(), m_surface, castsShadow ? 1 : 0);
+        properdesktop_window_hints_v1_set_shadow(m_connection.windowHints(), m_surface, castsShadow ? 1 : 0);
 }
 
 void ShellSurface::setOpacity(double opacity)
 {
     if (m_connection.windowHints())
-        cutefish_window_hints_v1_set_opacity(m_connection.windowHints(), m_surface,
+        properdesktop_window_hints_v1_set_opacity(m_connection.windowHints(), m_surface,
                                              wl_fixed_from_double(std::clamp(opacity, 0.0, 1.0)));
 }
 
@@ -641,87 +641,87 @@ void ShellSurface::setInputTransparent(bool transparent)
 void ShellSurface::setFullScreenBars(int height, bool push)
 {
     if (m_connection.windowHints())
-        cutefish_window_hints_v1_set_fullscreen_bars(m_connection.windowHints(), m_surface, std::max(height, 0),
+        properdesktop_window_hints_v1_set_fullscreen_bars(m_connection.windowHints(), m_surface, std::max(height, 0),
                                                      push ? 1 : 0);
 }
 
 bool ShellSurface::setScreenPosition(PointF position)
 {
-    cutefish_window_placement_v1* placement = m_connection.windowPlacement();
+    properdesktop_window_placement_v1* placement = m_connection.windowPlacement();
     if (!m_xdgToplevel || !placement)
         return false;
-    cutefish_window_placement_v1_set_position(placement, m_surface, int(std::lround(position.x)),
+    properdesktop_window_placement_v1_set_position(placement, m_surface, int(std::lround(position.x)),
                                               int(std::lround(position.y)));
     return true;
 }
 
 void ShellSurface::setGlass(const std::optional<GlassMaterial>& material)
 {
-    cutefish_surface_blur_v1* blur = m_connection.surfaceBlur();
+    properdesktop_surface_blur_v1* blur = m_connection.surfaceBlur();
     if (!blur)
         return;
     if (!material) {
-        cutefish_surface_blur_v1_unset_glass(blur, m_surface);
+        properdesktop_surface_blur_v1_unset_glass(blur, m_surface);
         return;
     }
     const GlassMaterial& glass = *material;
     // Negative values are protocol errors.
     const auto fixed = [](double value) { return wl_fixed_from_double(std::max(0.0, value)); };
-    cutefish_surface_blur_v1_set_glass_material(
+    properdesktop_surface_blur_v1_set_glass_material(
         blur, m_surface, fixed(glass.blurSigma), fixed(glass.bevel), fixed(glass.depth),
         wl_fixed_from_double(std::max(1.0, glass.ior)), fixed(glass.profile),
         wl_fixed_from_double(glass.displacement), fixed(glass.chroma));
-    cutefish_surface_blur_v1_set_glass_lighting(
+    properdesktop_surface_blur_v1_set_glass_lighting(
         blur, m_surface, wl_fixed_from_double(glass.lightAngle), fixed(glass.specularIntensity),
         fixed(glass.shininess), fixed(glass.sheen), fixed(glass.ambientOcclusion),
         fixed(glass.ambientOcclusionRadius));
-    cutefish_surface_blur_v1_set_glass_tint(blur, m_surface, fixed(glass.tintRed), fixed(glass.tintGreen),
+    properdesktop_surface_blur_v1_set_glass_tint(blur, m_surface, fixed(glass.tintRed), fixed(glass.tintGreen),
                                             fixed(glass.tintBlue), fixed(glass.tintAlpha));
-    cutefish_surface_blur_v1_set_glass_saturation(blur, m_surface, fixed(glass.saturation));
-    cutefish_surface_blur_v1_set_glass_rim(blur, m_surface, fixed(glass.rim));
-    cutefish_surface_blur_v1_set_glass(blur, m_surface);
+    properdesktop_surface_blur_v1_set_glass_saturation(blur, m_surface, fixed(glass.saturation));
+    properdesktop_surface_blur_v1_set_glass_rim(blur, m_surface, fixed(glass.rim));
+    properdesktop_surface_blur_v1_set_glass(blur, m_surface);
 }
 
 void ShellSurface::setResizeAroundCenter(bool aroundCenter)
 {
     if (m_xdgToplevel && m_connection.windowHints())
-        cutefish_window_hints_v1_set_resize_anchor(m_connection.windowHints(), m_surface,
-                                                   aroundCenter ? CUTEFISH_WINDOW_HINTS_V1_RESIZE_ANCHOR_CENTER
-                                                                : CUTEFISH_WINDOW_HINTS_V1_RESIZE_ANCHOR_TOP_LEFT);
+        properdesktop_window_hints_v1_set_resize_anchor(m_connection.windowHints(), m_surface,
+                                                   aroundCenter ? PROPERDESKTOP_WINDOW_HINTS_V1_RESIZE_ANCHOR_CENTER
+                                                                : PROPERDESKTOP_WINDOW_HINTS_V1_RESIZE_ANCHOR_TOP_LEFT);
 }
 
 void ShellSurface::setSkipTaskbar(bool skip)
 {
     if (m_connection.windowHints())
-        cutefish_window_hints_v1_set_skip_taskbar(m_connection.windowHints(), m_surface, skip ? 1 : 0);
+        properdesktop_window_hints_v1_set_skip_taskbar(m_connection.windowHints(), m_surface, skip ? 1 : 0);
 }
 
 void ShellSurface::setAlwaysOnTop(bool onTop)
 {
     if (m_connection.windowHints())
-        cutefish_window_hints_v1_set_always_on_top(m_connection.windowHints(), m_surface, onTop ? 1 : 0);
+        properdesktop_window_hints_v1_set_always_on_top(m_connection.windowHints(), m_surface, onTop ? 1 : 0);
 }
 
 void ShellSurface::setLevel(WindowLevel level)
 {
     if (!m_connection.windowHints())
         return;
-    const uint32_t value = level == WindowLevel::AboveDock ? CUTEFISH_WINDOW_HINTS_V1_LEVEL_ABOVE_DOCK
-            : level == WindowLevel::Floating               ? CUTEFISH_WINDOW_HINTS_V1_LEVEL_FLOATING
-                                                           : CUTEFISH_WINDOW_HINTS_V1_LEVEL_NORMAL;
-    cutefish_window_hints_v1_set_level(m_connection.windowHints(), m_surface, value);
+    const uint32_t value = level == WindowLevel::AboveDock ? PROPERDESKTOP_WINDOW_HINTS_V1_LEVEL_ABOVE_DOCK
+            : level == WindowLevel::Floating               ? PROPERDESKTOP_WINDOW_HINTS_V1_LEVEL_FLOATING
+                                                           : PROPERDESKTOP_WINDOW_HINTS_V1_LEVEL_NORMAL;
+    properdesktop_window_hints_v1_set_level(m_connection.windowHints(), m_surface, value);
 }
 
 void ShellSurface::hideApplication()
 {
     if (m_connection.windowHints())
-        cutefish_window_hints_v1_hide_application(m_connection.windowHints(), m_surface);
+        properdesktop_window_hints_v1_hide_application(m_connection.windowHints(), m_surface);
 }
 
 void ShellSurface::setRestoreId(const std::string& id)
 {
     if (m_xdgToplevel && m_connection.windowHints())
-        cutefish_window_hints_v1_set_restore_id(m_connection.windowHints(), m_surface, id.c_str());
+        properdesktop_window_hints_v1_set_restore_id(m_connection.windowHints(), m_surface, id.c_str());
 }
 
 void ShellSurface::setPlacementAnchor(const std::optional<PlacementAnchor>& anchor)
@@ -729,14 +729,14 @@ void ShellSurface::setPlacementAnchor(const std::optional<PlacementAnchor>& anch
     if (!m_xdgToplevel || !m_connection.windowHints())
         return;
     if (!anchor) {
-        cutefish_window_hints_v1_unset_placement_anchor(m_connection.windowHints(), m_surface);
+        properdesktop_window_hints_v1_unset_placement_anchor(m_connection.windowHints(), m_surface);
         return;
     }
     const RectF& rect = anchor->rect;
     const int left = int(std::lround(rect.x));
     const int top = int(std::lround(rect.y));
-    // The enums follow cutefish_window_hints_v1's placement edges.
-    cutefish_window_hints_v1_set_placement_anchor(
+    // The enums follow properdesktop_window_hints_v1's placement edges.
+    properdesktop_window_hints_v1_set_placement_anchor(
             m_connection.windowHints(), m_surface, left, top,
             std::max(0, int(std::lround(rect.x + rect.width)) - left),
             std::max(0, int(std::lround(rect.y + rect.height)) - top), uint32_t(anchor->anchor),
@@ -746,13 +746,13 @@ void ShellSurface::setPlacementAnchor(const std::optional<PlacementAnchor>& anch
 void ShellSurface::setStatusItemIdentifier(const std::string& identifier)
 {
     if (m_statusItem)
-        cutefish_status_item_v1_set_identifier(m_statusItem, identifier.c_str());
+        properdesktop_status_item_v1_set_identifier(m_statusItem, identifier.c_str());
 }
 
 void ShellSurface::setStatusItemHighlight(bool highlighted)
 {
     if (m_statusItem)
-        cutefish_status_item_v1_set_highlight(m_statusItem, highlighted ? 1 : 0);
+        properdesktop_status_item_v1_set_highlight(m_statusItem, highlighted ? 1 : 0);
 }
 
 void ShellSurface::map()
@@ -773,7 +773,7 @@ void ShellSurface::prepareCommit(int width, int height, bool opaque)
 {
     if (m_configurePending) {
         if (m_statusItem)
-            cutefish_status_item_v1_ack_configure(m_statusItem, m_configureSerial);
+            properdesktop_status_item_v1_ack_configure(m_statusItem, m_configureSerial);
         else
             xdg_surface_ack_configure(m_xdgSurface, m_configureSerial);
         m_configurePending = false;
@@ -826,4 +826,4 @@ void ShellSurface::requestFrame()
     }
 }
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

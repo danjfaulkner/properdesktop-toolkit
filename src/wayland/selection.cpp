@@ -14,7 +14,7 @@
 #include "base/file.h"
 #include "wayland/connection.h"
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 const char* const kTextMimeTypes[5] = {
     "text/plain;charset=utf-8",
@@ -278,4 +278,4 @@ const std::vector<std::string>* Selection::offerTypes(void* offer) const
     return it == m_offers.end() ? nullptr : &it->second;
 }
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

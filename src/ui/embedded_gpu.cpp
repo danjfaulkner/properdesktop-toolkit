@@ -16,7 +16,7 @@
 
 #include "ui/embedded_gpu_private.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 EmbeddedGpu::Private::~Private() = default;
 
@@ -50,7 +50,7 @@ std::unique_ptr<EmbeddedGpu> EmbeddedGpu::createForCurrentContext()
     gpu->d->units = std::min(gpu->d->units, 16);
     gpu->d->context = GrDirectContexts::MakeGL(GrGLInterfaces::MakeEGL());
     if (!gpu->d->context) {
-        fprintf(stderr, "cutefish-toolkit: Skia cannot use the host's GL context\n");
+        fprintf(stderr, "properdesktop-toolkit: Skia cannot use the host's GL context\n");
         return nullptr;
     }
     return gpu;
@@ -218,4 +218,4 @@ GrDirectContext* EmbeddedGpuScope::context() const
     return m_gpu.d->context.get();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

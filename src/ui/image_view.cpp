@@ -26,7 +26,7 @@
 #include "ui/thumbnail_cache.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 struct ImageView::Picture
 {
@@ -574,4 +574,4 @@ void ImageView::paintMaskedLayer(Painter& painter)
     drawMaskedLayer(painter.canvas(), *textures, painter.offset().x, painter.offset().y, float(painter.opacity()));
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

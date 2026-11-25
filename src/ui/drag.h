@@ -12,7 +12,7 @@
 #include "ui/bitmap.h"
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Window;
 
@@ -119,4 +119,4 @@ struct DragEvent
     uint32_t modifiers = 0;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

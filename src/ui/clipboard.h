@@ -11,7 +11,7 @@
 
 #include "base/signal.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Which of the seat's selections.
 enum class ClipboardMode {
@@ -85,4 +85,4 @@ public:
     static base::Signal<ClipboardMode>& changed();
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

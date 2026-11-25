@@ -9,13 +9,13 @@
 
 #include "base/signal.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 namespace dbus {
 class Connection;
 }
 
-// Follows the session language and region that cutefish-services keeps:
+// Follows the session language and region that properdesktop-services keeps:
 // when they change, the process's language variables, locale and regional
 // preferences (Locale::setSystemPreferences) are set again and changed runs.
 // ui::Application holds one; a process without it, such as a daemon, makes
@@ -40,4 +40,4 @@ private:
     std::unique_ptr<Private> d;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

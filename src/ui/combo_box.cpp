@@ -19,7 +19,7 @@
 #include "ui/text_field.h"
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Three medium icons and a large spacing wide, as tall as a text field.
 static constexpr double kMinimumWidth = 3 * 32 + 12;
@@ -405,4 +405,4 @@ bool ComboBox::keyPress(const KeyEvent& event)
     }
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

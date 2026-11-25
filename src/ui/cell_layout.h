@@ -9,7 +9,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Lays its children out in a row, a column or a grid: implicit sizes are
 // rounded up to whole pixels, positions are rounded, and filling children
@@ -146,4 +146,4 @@ double centeredStart(double parentExtent, double itemExtent);
 
 } // namespace rounding
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

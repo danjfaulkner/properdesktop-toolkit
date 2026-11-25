@@ -13,7 +13,7 @@
 
 #include "base/auto_reset.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 static thread_local EventLoop* s_current = nullptr;
 // The loop whose run() is innermost on the calling thread.
@@ -381,4 +381,4 @@ bool EventLoop::hasPosted()
     return !m_posted.empty();
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

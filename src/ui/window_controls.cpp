@@ -20,7 +20,7 @@
 #include "ui/painter.h"
 #include "ui/path.h"
 
-namespace cutefish::ui::window_controls {
+namespace properdesktop::ui::window_controls {
 
 static constexpr double kColoredPlate = 14;
 static constexpr double kArtwork = 14;
@@ -372,4 +372,4 @@ Bitmap render(const State& state, double scale, Bitmap::Format format)
     return bitmap;
 }
 
-} // namespace cutefish::ui::window_controls
+} // namespace properdesktop::ui::window_controls

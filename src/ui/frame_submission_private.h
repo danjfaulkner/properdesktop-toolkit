@@ -3,7 +3,7 @@
 
 #pragma once
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Window;
 
@@ -11,4 +11,4 @@ class Window;
 // context is current.
 void noteFrameDrawn(const Window* window, int width, int height, bool offscreen);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

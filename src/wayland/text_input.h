@@ -13,7 +13,7 @@ struct wl_seat;
 struct zwp_text_input_manager_v3;
 struct zwp_text_input_v3;
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 class ShellSurface;
 struct TextInputListeners;
@@ -49,4 +49,4 @@ private:
     TextInputEvent m_pending;
 };
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

@@ -5,7 +5,7 @@
 
 #include <cstdint>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 struct PointF
 {
@@ -132,4 +132,4 @@ struct Color
     bool operator==(const Color&) const = default;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

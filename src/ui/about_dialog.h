@@ -7,7 +7,7 @@
 #include <memory>
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Window;
 
@@ -28,7 +28,7 @@ public:
     void setDescription(std::string description) { m_description = std::move(description); }
     // A theme icon, looked up as image://icontheme does, or a file.
     void setIconSource(std::string icon) { m_icon = std::move(icon); }
-    // https://cutefish.org unless set.
+    // https://properdesktop.org unless set.
     void setLink(std::string link) { m_link = std::move(link); }
 
     // Raises the dialog when it is shown already.
@@ -49,8 +49,8 @@ private:
     std::string m_name;
     std::string m_description;
     std::string m_icon;
-    std::string m_link = "https://cutefish.org";
+    std::string m_link = "https://properdesktop.org";
     std::unique_ptr<Window> m_window;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

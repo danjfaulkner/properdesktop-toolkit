@@ -10,7 +10,7 @@
 #include "ui/geometry.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class View;
 
@@ -100,4 +100,4 @@ private:
     RectF m_screenRect;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

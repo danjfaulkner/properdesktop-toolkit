@@ -10,7 +10,7 @@
 #include <utility>
 #include <vector>
 
-namespace cutefish::base::json {
+namespace properdesktop::base::json {
 
 // A JSON value, read from and written to RFC 8259 text. Numbers are doubles;
 // objects keep their members in the order read or added.
@@ -87,4 +87,4 @@ private:
     Object m_object;
 };
 
-} // namespace cutefish::base::json
+} // namespace properdesktop::base::json

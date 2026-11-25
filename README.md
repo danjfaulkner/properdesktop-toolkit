@@ -1,7 +1,7 @@
-# Cutefish Toolkit
+# Proper Desktop Toolkit
 
-The UI toolkit of the Cutefish desktop: a Wayland client for
-cutefish-compositor, drawing with Skia on GLES, with retained views, text
+The UI toolkit of the Proper Desktop: a Wayland client for
+properdesktop-compositor, drawing with Skia on GLES, with retained views, text
 layout, controls and frame-paced animation.
 
 ## Dependencies
@@ -36,8 +36,8 @@ cmake ..
 make
 ```
 
-`examples/` has a demo window, `cutefish-toolkit-demo`, and
-`cutefish-toolkit-gallery` with every control.
+`examples/` has a demo window, `properdesktop-toolkit-demo`, and
+`properdesktop-toolkit-gallery` with every control.
 
 ## License
 

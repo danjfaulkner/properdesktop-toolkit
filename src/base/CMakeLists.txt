@@ -1,6 +1,6 @@
 # The part of the toolkit that needs neither a display nor Skia, for
 # services and daemons as well as applications.
-set(CUTEFISH_TOOLKIT_BASE_PUBLIC_HEADERS
+set(PROPERDESKTOP_TOOLKIT_BASE_PUBLIC_HEADERS
     application_bundle.h
     application_registry.h
     auto_reset.h
@@ -40,7 +40,7 @@ set(CUTEFISH_TOOLKIT_BASE_PUBLIC_HEADERS
     weak_ptr.h
 )
 
-add_library(cutefish-toolkit-base SHARED
+add_library(properdesktop-toolkit-base SHARED
     application_bundle.cpp
     application_registry.cpp
     collator.cpp
@@ -74,35 +74,35 @@ add_library(cutefish-toolkit-base SHARED
     uuid.cpp
 )
 
-add_library(Cutefish::ToolkitBase ALIAS cutefish-toolkit-base)
+add_library(ProperDesktop::ToolkitBase ALIAS properdesktop-toolkit-base)
 
-set_target_properties(cutefish-toolkit-base PROPERTIES
+set_target_properties(properdesktop-toolkit-base PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION_MAJOR}
     EXPORT_NAME ToolkitBase
 )
 
-target_include_directories(cutefish-toolkit-base
+target_include_directories(properdesktop-toolkit-base
     PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/cutefish-toolkit-base>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/properdesktop-toolkit-base>
 )
 
-target_compile_definitions(cutefish-toolkit-base PRIVATE
-    CUTEFISH_LOCALE_DIR="${CMAKE_INSTALL_FULL_LOCALEDIR}"
+target_compile_definitions(properdesktop-toolkit-base PRIVATE
+    PROPERDESKTOP_LOCALE_DIR="${CMAKE_INSTALL_FULL_LOCALEDIR}"
 )
 
-target_link_libraries(cutefish-toolkit-base
+target_link_libraries(properdesktop-toolkit-base
     PRIVATE
         PkgConfig::Icu
         PkgConfig::Systemd
         Threads::Threads
 )
 
-install(TARGETS cutefish-toolkit-base EXPORT CutefishToolkitTargets
+install(TARGETS properdesktop-toolkit-base EXPORT ProperDesktopToolkitTargets
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
-install(FILES ${CUTEFISH_TOOLKIT_BASE_PUBLIC_HEADERS}
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/cutefish-toolkit-base/base
+install(FILES ${PROPERDESKTOP_TOOLKIT_BASE_PUBLIC_HEADERS}
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/properdesktop-toolkit-base/base
 )

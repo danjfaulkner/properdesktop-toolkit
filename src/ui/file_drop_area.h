@@ -11,7 +11,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Takes files dropped from other applications (text/uri-list), as a
 // DropArea with keys ["text/uri-list"] reading drop.urls. Its children fill
@@ -56,4 +56,4 @@ private:
     std::shared_ptr<int> m_drag = std::make_shared<int>(0);
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

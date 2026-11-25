@@ -7,8 +7,8 @@
 
 #include "base/strings.h"
 
-using namespace cutefish::base;
-using namespace cutefish::base::strings;
+using namespace properdesktop::base;
+using namespace properdesktop::base::strings;
 
 TEST(StringsTest, Case)
 {

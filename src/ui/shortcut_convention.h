@@ -3,10 +3,10 @@
 
 #pragma once
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Whether the session's keyboard settings use the Command convention, read
-// from org.cutefish.Keyboard1 and followed as it changes. False until known.
+// from org.properdesktop.Keyboard1 and followed as it changes. False until known.
 bool commandKeys();
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

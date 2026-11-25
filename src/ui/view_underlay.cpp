@@ -24,7 +24,7 @@
 #include "ui/window.h"
 #include "ui/window_backdrop_private.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Kept beside the views, which keep their layout.
 static std::unordered_map<const View*, std::vector<ViewUnderlay>>& underlaysOfViews()
@@ -123,7 +123,7 @@ static sk_sp<SkRuntimeEffect> effectFor(const std::string& source)
         return found->second;
     SkRuntimeEffect::Result result = SkRuntimeEffect::MakeForShader(SkString(source.c_str()));
     if (!result.effect)
-        fprintf(stderr, "cutefish-toolkit: an underlay's shader: %s\n", result.errorText.c_str());
+        fprintf(stderr, "properdesktop-toolkit: an underlay's shader: %s\n", result.errorText.c_str());
     effects.emplace(source, result.effect);
     return result.effect;
 }
@@ -139,7 +139,7 @@ static sk_sp<SkImageFilter> raisedBy(float power)
             "    return half4(pow(clamp(c.rgb / c.a, 0.0, 1.0), half3(power)) * c.a, c.a);"
             "}"));
         if (!result.effect)
-            fprintf(stderr, "cutefish-toolkit: %s\n", result.errorText.c_str());
+            fprintf(stderr, "properdesktop-toolkit: %s\n", result.errorText.c_str());
         return result.effect;
     }();
     if (!raising)
@@ -268,4 +268,4 @@ void View::growForUnderlays(SkRegion& region, const Window* window, double scale
     }
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

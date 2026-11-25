@@ -9,7 +9,7 @@
 
 #include "base/locale.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 
 namespace {
 

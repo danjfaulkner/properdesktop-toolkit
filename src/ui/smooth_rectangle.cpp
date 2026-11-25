@@ -11,7 +11,7 @@
 #include "include/core/SkPaint.h"
 #include "include/core/SkVertices.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A vertex of the antialiased rectangle's geometry: a point in
 // the item, its colour and the offset its vertex shader moves it by.
@@ -190,4 +190,4 @@ void drawSmoothRoundedRectangle(SkCanvas* canvas, const RectF& rect, double radi
     }
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -18,7 +18,7 @@
 
 class SkCanvas;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Menu;
 class Window;
@@ -138,7 +138,7 @@ public:
     virtual void setStatusItemIdentifier(const std::string&) {}
     virtual void setStatusItemHighlight(bool) {}
     virtual void setForeignParent(const std::string&, bool) {}
-    // On the trusted connection: cutefish_shell_v1's desktop role.
+    // On the trusted connection: properdesktop_shell_v1's desktop role.
     virtual bool setDesktopRole(const std::string&) { return false; }
     virtual void setShellOutput(const std::string&) {}
     virtual void activateShellSurface() {}
@@ -203,4 +203,4 @@ protected:
     Window* m_window;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

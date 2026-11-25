@@ -9,7 +9,7 @@
 
 class SkImage;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Pixels drawn frame after frame, such as rendered pages: taken over once,
 // so drawing neither copies nor compares them and the GPU keeps its upload.
@@ -33,4 +33,4 @@ private:
     std::shared_ptr<const SkImage> m_image;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

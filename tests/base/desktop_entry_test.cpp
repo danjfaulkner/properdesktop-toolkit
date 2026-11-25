@@ -13,7 +13,7 @@
 #include "base/file.h"
 #include "base/paths.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 using namespace std::chrono_literals;
 
 static constexpr const char* kEntry = R"(# A comment
@@ -97,9 +97,9 @@ TEST(ApplicationRegistryTest, ScansAndResolves)
     const auto& first = registry.entries().front();
     EXPECT_EQ(registry.byId(first->id), first);
     EXPECT_EQ(registry.byPath(first->path), first);
-    if (const auto settings = registry.byId("cutefish-settings")) {
-        EXPECT_EQ(registry.resolveWindow("", "", "/usr/bin/cutefish-settings", "cutefish-settings"), settings);
-        EXPECT_EQ(registry.resolveWindow("cutefish-settings", "", "", ""), settings);
+    if (const auto settings = registry.byId("properdesktop-settings")) {
+        EXPECT_EQ(registry.resolveWindow("", "", "/usr/bin/properdesktop-settings", "properdesktop-settings"), settings);
+        EXPECT_EQ(registry.resolveWindow("properdesktop-settings", "", "", ""), settings);
     }
 }
 
@@ -135,7 +135,7 @@ TEST(ApplicationRegistryTest, IncludesSnapExportsAfterNativeAndFlatpakEntries)
 
 TEST(ApplicationRegistryTest, TracksSnapExportInstallRefreshAndRemoval)
 {
-    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "cutefish-snap-test-");
+    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "properdesktop-snap-test-");
     ASSERT_TRUE(directory.isValid());
     const std::string applications = directory.path() + "/desktop/applications";
     const std::string path = applications + "/example_example.desktop";
@@ -172,7 +172,7 @@ TEST(ApplicationRegistryTest, TracksSnapExportInstallRefreshAndRemoval)
 
 TEST(ApplicationRegistryTest, NamesAWindowOfASharedLauncherByItsAppId)
 {
-    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "cutefish-test-");
+    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "properdesktop-test-");
     ASSERT_TRUE(directory.isValid());
     ASSERT_TRUE(file::writeAtomically(directory.path() + "/org.example.Clip.desktop",
                                       launcherEntry("Clip", "org.example.Clip")));
@@ -193,7 +193,7 @@ TEST(ApplicationRegistryTest, NamesAWindowOfASharedLauncherByItsAppId)
 
 TEST(ApplicationRegistryTest, NamesAWindowByTheOnlyEntryForItsProgram)
 {
-    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "cutefish-test-");
+    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "properdesktop-test-");
     ASSERT_TRUE(directory.isValid());
     ASSERT_TRUE(file::writeAtomically(directory.path() + "/org.example.Edit.desktop",
                                       launcherEntry("Edit", "org.example.Edit")));
@@ -206,7 +206,7 @@ TEST(ApplicationRegistryTest, NamesAWindowByTheOnlyEntryForItsProgram)
 
 TEST(ApplicationRegistryTest, WatchesADirectoryOnceItCanBeWatched)
 {
-    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "cutefish-test-");
+    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "properdesktop-test-");
     ASSERT_TRUE(directory.isValid());
     namespace fs = std::filesystem;
     // Without read access inotify refuses the watch, as it does when the

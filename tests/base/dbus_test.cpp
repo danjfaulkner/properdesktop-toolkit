@@ -14,15 +14,15 @@
 #include "base/event_loop.h"
 #include "base/timer.h"
 
-using namespace cutefish::base;
-using namespace cutefish::base::dbus;
+using namespace properdesktop::base;
+using namespace properdesktop::base::dbus;
 using namespace std::chrono_literals;
 
 // Names of this process's own: ctest runs each test in a process of its own,
 // several at once on one bus.
-static const std::string kService = "org.cutefish.ToolkitTest.p" + std::to_string(getpid());
+static const std::string kService = "org.properdesktop.ToolkitTest.p" + std::to_string(getpid());
 static constexpr const char* kPath = "/Test";
-static constexpr const char* kInterface = "org.cutefish.ToolkitTest";
+static constexpr const char* kInterface = "org.properdesktop.ToolkitTest";
 
 TEST(DBusTypesTest, Signatures)
 {
@@ -111,7 +111,7 @@ private:
         });
         object.addMethod("EchoMap", [](const VariantMap& map) { return map; });
         object.addMethod("Fail", "", "", [](MethodCall& call) {
-            call.replyError("org.cutefish.ToolkitTest.Error.Failed", "As asked");
+            call.replyError("org.properdesktop.ToolkitTest.Error.Failed", "As asked");
         });
         object.addMethod("Later", "u", "u", [&loop](MethodCall& call) {
             uint32_t value = 0;
@@ -240,7 +240,7 @@ TEST_F(DBusTest, AsyncCallsAndErrors)
     }, uint32_t(9));
     runFor(2s);
     EXPECT_EQ(sum, 6);
-    EXPECT_EQ(error.name, "org.cutefish.ToolkitTest.Error.Failed");
+    EXPECT_EQ(error.name, "org.properdesktop.ToolkitTest.Error.Failed");
     EXPECT_EQ(error.message, "As asked");
     EXPECT_EQ(later, 10u);
 }

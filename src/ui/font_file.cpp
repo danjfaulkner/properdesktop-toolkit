@@ -34,7 +34,7 @@
 
 namespace textlayout = skia::textlayout;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr double kUnboundedWidth = 1e6;
 static constexpr char kSampleFamily[] = "sample";
@@ -338,4 +338,4 @@ void FontSample::draw(Painter& painter, const std::string& text, double size, Po
     canvas->restore();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

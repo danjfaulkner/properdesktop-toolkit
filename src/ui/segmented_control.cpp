@@ -18,7 +18,7 @@
 #include "ui/theme.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // 32 high inside a padding of 2, the plate 2 inside its button. A tab bar: a
 // tab button high, a medium icon and a small spacing, without padding.
@@ -392,4 +392,4 @@ void SegmentedControl::pointerRelease(const PointerEvent& event)
         pick(pressed);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

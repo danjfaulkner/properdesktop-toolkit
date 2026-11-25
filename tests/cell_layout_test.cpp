@@ -7,8 +7,8 @@
 #include "ui/cell_layout.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
-using cutefish::ui::test::Box;
+using namespace properdesktop::ui;
+using properdesktop::ui::test::Box;
 
 // Reference geometry of row, column and grid layouts for the same children
 // (rectangles with these implicit sizes and layout hints), measured on the

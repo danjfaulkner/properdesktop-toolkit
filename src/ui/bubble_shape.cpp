@@ -9,7 +9,7 @@
 
 #include "base/transform.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Keeps a fillet off the corner rounding, so the edge next to the arrow is straight.
 static constexpr double kCornerClearance = 2;
@@ -195,4 +195,4 @@ Path BubbleShape::path() const
     return path;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

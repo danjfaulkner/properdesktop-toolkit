@@ -6,7 +6,7 @@
 #include <chrono>
 #include <functional>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 class EventLoop;
 
@@ -45,4 +45,4 @@ private:
     int m_id = 0;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

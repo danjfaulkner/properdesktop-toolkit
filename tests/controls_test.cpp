@@ -31,7 +31,7 @@
 #include "ui/window.h"
 #include "ui/window_controls.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 template<typename T>
 static T* host(Window& window, std::unique_ptr<T> view, SizeF size = {300, 120})
@@ -689,9 +689,9 @@ TEST(ControlsTest, CalendarIconShowsTheDate)
     // The icon is drawn again for a region with the next change of the
     // language.
     const auto inRegion = [&application, &language](const std::string& region) {
-        cutefish::base::RegionalPreferences preferences;
+        properdesktop::base::RegionalPreferences preferences;
         preferences.region = region;
-        cutefish::base::Locale::setSystemPreferences(preferences);
+        properdesktop::base::Locale::setSystemPreferences(preferences);
         language = language == "en_GB" ? "en_AU" : "en_GB";
         application.setLanguageEnvironment({{"LANGUAGE", language}});
     };
@@ -753,8 +753,8 @@ TEST(ControlsTest, CalendarIconShowsTheDate)
     EXPECT_GT(darkWeekday, 10);
     EXPECT_GT(reddish(grab("office-calendar", 64)), 10);
 
-    using cutefish::base::RegionalPreferences;
-    cutefish::base::Locale::setSystemPreferences(RegionalPreferences::read(RegionalPreferences::sessionPath()));
+    using properdesktop::base::RegionalPreferences;
+    properdesktop::base::Locale::setSystemPreferences(RegionalPreferences::read(RegionalPreferences::sessionPath()));
     application.setLanguageEnvironment({{"LANGUAGE", previous}});
 }
 

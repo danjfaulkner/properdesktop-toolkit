@@ -9,7 +9,7 @@
 #include "base/event_loop.h"
 #include "base/timer.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 using namespace std::chrono_literals;
 
 TEST(TimerTest, CurrentLoopFollowsCreation)

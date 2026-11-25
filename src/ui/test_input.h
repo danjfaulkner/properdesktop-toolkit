@@ -13,7 +13,7 @@
 #include "ui/image.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class DropOffer;
 class View;
@@ -88,4 +88,4 @@ public:
     static uint32_t drop(Window& window);
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

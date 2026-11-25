@@ -13,7 +13,7 @@
 #include "ui/window.h"
 #include "ui/window_controls.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr double kButton = window_controls::kButton;
 // The controls sit in the 32-pixel slot the apps centre their margins on.
@@ -250,4 +250,4 @@ void WindowHeader::toggleMaximized()
     window->setMaximized(!window->states().maximized);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

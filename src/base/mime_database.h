@@ -10,7 +10,7 @@
 // The shared-mime-info database, from the mime directories of ~/.local/share
 // and the data directories: type names, their aliases and their parents. Read
 // once, on first use; any thread.
-namespace cutefish::base::mime {
+namespace properdesktop::base::mime {
 
 // The type a name or alias stands for, such as "application/pdf" for
 // "application/x-pdf"; empty for an unknown name.
@@ -43,4 +43,4 @@ std::string iconName(std::string_view type);
 // "text-x-generic".
 std::string genericIconName(std::string_view type);
 
-} // namespace cutefish::base::mime
+} // namespace properdesktop::base::mime

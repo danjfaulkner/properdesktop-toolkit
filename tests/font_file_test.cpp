@@ -18,7 +18,7 @@
 #include "ui/view.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 namespace fs = std::filesystem;
 
 namespace {
@@ -29,7 +29,7 @@ const char kBoldItalic[] = "/usr/share/fonts/opentype/inter/Inter-BoldItalic.otf
 const char kCollection[] = "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc";
 
 // One per process: ctest runs the tests of this suite side by side.
-const fs::path kDirectory = "/tmp/cutefish-toolkit-font-file-test-" + std::to_string(getpid());
+const fs::path kDirectory = "/tmp/properdesktop-toolkit-font-file-test-" + std::to_string(getpid());
 
 class Canvas : public View
 {

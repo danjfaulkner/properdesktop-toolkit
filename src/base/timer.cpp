@@ -5,7 +5,7 @@
 
 #include "base/event_loop.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 Timer::Timer(EventLoop* loop)
     : m_loop(loop ? *loop : *EventLoop::current())
@@ -47,4 +47,4 @@ void Timer::stop()
     m_id = 0;
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

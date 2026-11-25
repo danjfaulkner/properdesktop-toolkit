@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<protocol name="cutefish_window_hints_v1">
-  <interface name="cutefish_window_hints_v1" version="1">
+<protocol name="properdesktop_window_hints_v1">
+  <interface name="properdesktop_window_hints_v1" version="1">
     <description summary="per-surface application presentation hints">
       Clients may set hints only on their own surfaces. Hints are immediate
       metadata, independent of wl_surface.commit, and persist until replaced
@@ -143,7 +143,7 @@
         neither clips the window to its rounded rectangle nor outlines it, and
         the window's shadow is cast by this outline instead of its rectangle.
         path is in surface-local logical pixels, encoded as
-        cutefish_surface_blur_v1.set_shape's path. Applies at once and
+        properdesktop_surface_blur_v1.set_shape's path. Applies at once and
         persists until replaced; an empty array is the same as
         unset_body_shape. A malformed path is an invalid_value error.
       </description>

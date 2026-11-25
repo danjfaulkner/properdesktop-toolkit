@@ -5,14 +5,14 @@
 
 #include <systemd/sd-bus.h>
 
-namespace cutefish::base::dbus {
+namespace properdesktop::base::dbus {
 class Connection;
 }
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Keeps the theme in step with the user's appearance settings, which
-// cutefish-services keeps: dark mode, accent colour, font and icon theme.
+// properdesktop-services keeps: dark mode, accent colour, font and icon theme.
 class AppearanceWatcher
 {
 public:
@@ -43,4 +43,4 @@ private:
     sd_bus_message* m_firstReply = nullptr;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -16,7 +16,7 @@
 #include "ui/translation.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static const char* const kPortalService = "org.freedesktop.portal.Desktop";
 static const char* const kPortalPath = "/org/freedesktop/portal/desktop";
@@ -205,7 +205,7 @@ void FileChooser::open()
     const bool save = m_mode == Mode::SaveFile;
     const bool folder = m_mode == Mode::OpenFolder;
     std::random_device random;
-    const std::string token = "cutefish" + std::to_string(random());
+    const std::string token = "properdesktop" + std::to_string(random());
     base::dbus::VariantMap options;
     options["handle_token"] = base::dbus::Variant(token);
     options["modal"] = base::dbus::Variant(m_modal);
@@ -340,4 +340,4 @@ void FileChooser::call(Request* current, const std::string& parentWindow)
     });
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

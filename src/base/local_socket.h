@@ -9,7 +9,7 @@
 #include <string>
 #include <string_view>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 class EventLoop;
 
@@ -106,4 +106,4 @@ private:
     std::shared_ptr<bool> m_alive = std::make_shared<bool>(true);
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

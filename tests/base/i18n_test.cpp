@@ -7,7 +7,7 @@
 
 #include "base/i18n.h"
 
-using namespace cutefish;
+using namespace properdesktop;
 
 TEST(I18nTest, Format)
 {
@@ -21,17 +21,17 @@ TEST(I18nTest, Format)
 
 TEST(I18nTest, UntranslatedTextIsTheSource)
 {
-    i18n::setDomain("cutefish-toolkit-i18n-test");
+    i18n::setDomain("properdesktop-toolkit-i18n-test");
     EXPECT_STREQ(i18n::tr("Open File"), "Open File");
     EXPECT_STREQ(i18n::trc("menu", "Open"), "Open");
-    EXPECT_STREQ(i18n::dtr("cutefish-toolkit-i18n-test", "Cancel"), "Cancel");
+    EXPECT_STREQ(i18n::dtr("properdesktop-toolkit-i18n-test", "Cancel"), "Cancel");
     EXPECT_STREQ(i18n::trNoop("Later"), "Later");
     EXPECT_STREQ(i18n::tr(""), "");
 }
 
 TEST(I18nTest, PluralsFillInTheCount)
 {
-    i18n::setDomain("cutefish-toolkit-i18n-test");
+    i18n::setDomain("properdesktop-toolkit-i18n-test");
     EXPECT_EQ(i18n::trn("{n} item", "{n} items", 1), "1 item");
     EXPECT_EQ(i18n::trn("{n} item", "{n} items", 0), "0 items");
     EXPECT_EQ(i18n::trn("{n} item", "{n} items", 3), "3 items");

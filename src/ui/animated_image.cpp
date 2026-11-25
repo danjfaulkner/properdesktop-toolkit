@@ -23,7 +23,7 @@
 #include "ui/image_decoder.h"
 #include "ui/painter.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Frames kept in memory at most; a longer animation plays what fits.
 static constexpr size_t kFrameBudget = size_t(512) * 1024 * 1024;
@@ -300,4 +300,4 @@ void AnimatedImage::draw(Painter& painter, const RectF& rect, bool smooth) const
     painter.canvas()->drawImageRect(image, target, SkSamplingOptions(), &paint);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

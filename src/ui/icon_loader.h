@@ -18,7 +18,7 @@
 
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Icons rasterised at the exact device size they are drawn at, so they land on
 // whole pixels at every scale, and kept for reuse.
@@ -156,4 +156,4 @@ private:
     int m_dateFd = -1;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

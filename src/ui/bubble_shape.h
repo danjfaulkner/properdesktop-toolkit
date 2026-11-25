@@ -6,7 +6,7 @@
 #include "ui/geometry.h"
 #include "ui/path.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A bubble: a rounded body with an arrow standing out of one
 // edge, pointing at what opened it. The same outline is what a popup paints
@@ -44,4 +44,4 @@ struct BubbleShape
     Path path() const;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

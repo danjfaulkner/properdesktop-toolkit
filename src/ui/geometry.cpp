@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 struct Hsv
 {
@@ -102,4 +102,4 @@ Color Color::lighter(double factor) const
     return fromHsv(hsv, a);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

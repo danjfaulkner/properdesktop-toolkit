@@ -15,7 +15,7 @@
 
 #include "base/event_loop.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 using namespace std::chrono_literals;
 
 TEST(EventLoopTest, PostFromAnotherThreadWakesTheLoop)

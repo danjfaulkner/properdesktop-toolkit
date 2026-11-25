@@ -13,7 +13,7 @@
 #include "ui/painter.h"
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Above 12 px, so the glyph keeps its thin drawing rather than the heavier small one.
 static constexpr double kChevron = 14;
@@ -203,4 +203,4 @@ void RowComboBox::toggleMenu(bool fromKeyboard)
     requestPaint();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

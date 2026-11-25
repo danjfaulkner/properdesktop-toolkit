@@ -10,7 +10,7 @@
 #include <string>
 #include <string_view>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 template<std::integral T>
 constexpr T byteSwapped(T value)
@@ -113,4 +113,4 @@ inline void ByteReader::seek(size_t position)
         m_position = position;
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

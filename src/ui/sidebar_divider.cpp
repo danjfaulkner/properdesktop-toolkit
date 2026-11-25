@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 SidebarDivider::SidebarDivider(double minimumWidth, double maximumWidth, double defaultWidth)
     : m_minimum(minimumWidth)
@@ -52,4 +52,4 @@ void SidebarDivider::pointerRelease(const PointerEvent& event)
         onFinished(clamped(m_startWidth + mapToWindow(event.position).x - m_startX));
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

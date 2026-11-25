@@ -13,7 +13,7 @@
 #include "ui/painter.h"
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 struct MaskedLayerItem;
 
@@ -48,7 +48,7 @@ public:
     // when it has been written over since.
     void setSource(std::string path);
     const std::string& source() const { return m_source; }
-    // Through the freedesktop thumbnail cache, as Cutefish's
+    // Through the freedesktop thumbnail cache, as Proper Desktop's
     // "image://thumbnailer/" provider: a thumbnail big enough for the source
     // size is read from ~/.cache/thumbnails, or made and stored there.
     void setThumbnail(bool thumbnail);
@@ -137,4 +137,4 @@ private:
     std::unique_ptr<Composed> m_composed;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

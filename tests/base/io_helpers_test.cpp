@@ -18,7 +18,7 @@
 #include "base/timer.h"
 #include "base/url.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 using namespace std::chrono_literals;
 
 TEST(ByteStreamTest, ReadsAndWritesBothOrders)
@@ -102,7 +102,7 @@ TEST(TemporaryTest, DirectoryAndFile)
     std::string directory;
     std::string file;
     {
-        file::TemporaryDirectory temporary(std::filesystem::temp_directory_path().string(), "cutefish-test-");
+        file::TemporaryDirectory temporary(std::filesystem::temp_directory_path().string(), "properdesktop-test-");
         ASSERT_TRUE(temporary.isValid());
         directory = temporary.path();
         EXPECT_TRUE(std::filesystem::is_directory(directory));
@@ -166,7 +166,7 @@ TEST(LocalSocketTest, ExchangesAndDisconnects)
 TEST(LocalSocketTest, ConnectsToAPath)
 {
     EventLoop loop;
-    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "cutefish-socket-");
+    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "properdesktop-socket-");
     const std::string path = directory.path() + "/socket";
     const int server = ::socket(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0);
     sockaddr_un address{};
@@ -194,7 +194,7 @@ TEST(LocalSocketTest, ConnectsToAPath)
 TEST(LocalServerTest, ListensOverAStaleSocketAndHandsOutClients)
 {
     EventLoop loop;
-    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "cutefish-socket-");
+    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "properdesktop-socket-");
     const std::string path = directory.path() + "/server";
     // A socket file left behind by a listener that is gone.
     {
@@ -242,7 +242,7 @@ TEST(LocalServerTest, ListensOverAStaleSocketAndHandsOutClients)
 TEST(LocalServerTest, LeavesAPathAnotherServerListensOn)
 {
     EventLoop loop;
-    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "cutefish-socket-");
+    file::TemporaryDirectory directory(std::filesystem::temp_directory_path().string(), "properdesktop-socket-");
     const std::string path = directory.path() + "/server";
     LocalServer first(&loop);
     ASSERT_TRUE(first.listen(path));

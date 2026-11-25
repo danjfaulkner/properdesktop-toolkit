@@ -16,8 +16,8 @@
 #include "ui/test_input.h"
 #include "ui/window.h"
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 using namespace std::chrono_literals;
 
 namespace {
@@ -30,8 +30,8 @@ protected:
         m_previousId = Application::instance()->applicationId();
         // One file per process: ctest runs the tests of this suite side by side.
         const std::string name = "toolkit-restore-test-" + std::to_string(getpid());
-        Application::instance()->setApplicationId("cutefish-" + name);
-        m_path = base::paths::cutefishConfig(name);
+        Application::instance()->setApplicationId("properdesktop-" + name);
+        m_path = base::paths::properdesktopConfig(name);
         std::filesystem::remove(m_path);
     }
     void TearDown() override

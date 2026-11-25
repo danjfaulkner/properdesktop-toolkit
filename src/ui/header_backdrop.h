@@ -9,7 +9,7 @@
 #include "ui/color_mixer.h"
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class ScrollView;
 
@@ -49,4 +49,4 @@ private:
     base::Subscription m_scrolled;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -39,7 +39,7 @@
 #include "ui/icon_loader.h"
 #include "ui/image_formats.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The allocation limit, 256 MiB.
 static constexpr int64_t kAllocationLimit = int64_t(256) * 1024 * 1024;
@@ -555,4 +555,4 @@ DecodedImage decodeImage(const ImageRequest& request)
     return result;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

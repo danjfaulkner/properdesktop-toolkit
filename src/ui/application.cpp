@@ -25,7 +25,7 @@
 #include "ui/window.h"
 #include "wayland/connection.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static Application* s_instance = nullptr;
 static bool s_wholeScaleRendering = false;
@@ -285,4 +285,4 @@ void Application::quit(int exitCode)
     m_loop->quit(exitCode);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

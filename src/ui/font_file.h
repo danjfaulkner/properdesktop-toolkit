@@ -12,7 +12,7 @@
 #include "ui/bitmap.h"
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Painter;
 
@@ -89,4 +89,4 @@ private:
     std::unique_ptr<Private> d;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

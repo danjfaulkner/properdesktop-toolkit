@@ -9,7 +9,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class ThemeIcon;
 
@@ -92,4 +92,4 @@ private:
     ThemeIcon* m_image;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

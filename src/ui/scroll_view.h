@@ -10,12 +10,12 @@
 #include "base/signal.h"
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class ScrollBar;
 
 // A viewport onto a larger content view, moved by the touchpad, the wheel and
-// its scroll bars, with cutefish-framework's touchpad physics. It scrolls
+// its scroll bars, with properdesktop-framework's touchpad physics. It scrolls
 // vertically by default: the content then gets the viewport's width and the
 // height it asks for at that width.
 class ScrollView : public View
@@ -101,4 +101,4 @@ private:
     BarPolicy m_verticalPolicy = BarPolicy::AsNeeded;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

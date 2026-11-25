@@ -12,7 +12,7 @@
 #include "ui/bitmap_painter.h"
 #include "ui/path.h"
 
-using namespace cutefish;
+using namespace properdesktop;
 using ui::Bitmap;
 using ui::BitmapPainter;
 using ui::Color;

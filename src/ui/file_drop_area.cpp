@@ -8,7 +8,7 @@
 #include "base/url.h"
 #include "ui/drag.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr const char* kUriList = "text/uri-list";
 
@@ -109,4 +109,4 @@ uint32_t FileDropArea::drop(const DragEvent& event)
     return taken;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -13,12 +13,12 @@
 
 #include "ui/event.h"
 
-struct cutefish_main_menu_manager_v1;
-struct cutefish_surface_blur_v1;
-struct cutefish_shell_v1;
-struct cutefish_status_item_manager_v1;
-struct cutefish_window_hints_v1;
-struct cutefish_window_placement_v1;
+struct properdesktop_main_menu_manager_v1;
+struct properdesktop_surface_blur_v1;
+struct properdesktop_shell_v1;
+struct properdesktop_status_item_manager_v1;
+struct properdesktop_window_hints_v1;
+struct properdesktop_window_placement_v1;
 struct wl_compositor;
 struct wl_subcompositor;
 struct wl_shm;
@@ -54,16 +54,16 @@ struct zxdg_output_v1;
 struct zwp_virtual_keyboard_manager_v1;
 struct zwp_virtual_keyboard_v1;
 
-namespace cutefish::base {
+namespace properdesktop::base {
 class EventLoop;
 }
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class Bitmap;
 class Menu;
 }
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 class DataDevice;
 class MainMenuMirror;
@@ -107,15 +107,15 @@ public:
     wp_viewporter* viewporter() const { return m_viewporter; }
     wp_fractional_scale_manager_v1* fractionalScaleManager() const { return m_fractionalScaleManager; }
     wp_presentation* presentation() const { return m_presentation; }
-    cutefish_window_hints_v1* windowHints() const { return m_windowHints; }
+    properdesktop_window_hints_v1* windowHints() const { return m_windowHints; }
     // Null unless the compositor lets this client place its own windows.
-    cutefish_window_placement_v1* windowPlacement() const { return m_windowPlacement; }
-    cutefish_surface_blur_v1* surfaceBlur() const { return m_surfaceBlur; }
+    properdesktop_window_placement_v1* windowPlacement() const { return m_windowPlacement; }
+    properdesktop_surface_blur_v1* surfaceBlur() const { return m_surfaceBlur; }
     // Null when the compositor has no menu bar items.
-    cutefish_status_item_manager_v1* statusItems() const { return m_statusItems; }
+    properdesktop_status_item_manager_v1* statusItems() const { return m_statusItems; }
     // Null when the compositor shows no main menus.
-    cutefish_main_menu_manager_v1* mainMenus() const { return m_mainMenus; }
-    // The menu as a cutefish_menu_v1, one for all the windows showing it;
+    properdesktop_main_menu_manager_v1* mainMenus() const { return m_mainMenus; }
+    // The menu as a properdesktop_menu_v1, one for all the windows showing it;
     // null without mainMenus().
     std::shared_ptr<MainMenuMirror> mainMenu(Menu* menu);
     xdg_wm_dialog_v1* dialogManager() const { return m_dialogManager; }
@@ -178,7 +178,7 @@ public:
 
     struct OutputInfo
     {
-        // The wl_output name, as cutefish_shell_surface_v1.set_output takes it.
+        // The wl_output name, as properdesktop_shell_surface_v1.set_output takes it.
         std::string name;
         PointF position;
         SizeF logicalSize;
@@ -193,7 +193,7 @@ public:
     // After an output came, went or changed.
     std::function<void()> onOutputsChanged;
     // Only on the session's trusted connection.
-    cutefish_shell_v1* shell() const { return m_shell; }
+    properdesktop_shell_v1* shell() const { return m_shell; }
 
     // The token for an activation came; for the listener.
     void activationDone(xdg_activation_token_v1* token, const char* tokenString);
@@ -219,13 +219,13 @@ private:
     wp_fractional_scale_manager_v1* m_fractionalScaleManager = nullptr;
     wp_presentation* m_presentation = nullptr;
     wp_cursor_shape_manager_v1* m_cursorShapeManager = nullptr;
-    cutefish_window_hints_v1* m_windowHints = nullptr;
-    cutefish_window_placement_v1* m_windowPlacement = nullptr;
-    cutefish_surface_blur_v1* m_surfaceBlur = nullptr;
-    cutefish_status_item_manager_v1* m_statusItems = nullptr;
-    cutefish_main_menu_manager_v1* m_mainMenus = nullptr;
+    properdesktop_window_hints_v1* m_windowHints = nullptr;
+    properdesktop_window_placement_v1* m_windowPlacement = nullptr;
+    properdesktop_surface_blur_v1* m_surfaceBlur = nullptr;
+    properdesktop_status_item_manager_v1* m_statusItems = nullptr;
+    properdesktop_main_menu_manager_v1* m_mainMenus = nullptr;
     std::map<Menu*, std::weak_ptr<MainMenuMirror>> m_mainMenuMirrors;
-    cutefish_shell_v1* m_shell = nullptr;
+    properdesktop_shell_v1* m_shell = nullptr;
     xdg_wm_dialog_v1* m_dialogManager = nullptr;
     xdg_activation_v1* m_activation = nullptr;
     // Tokens on their way, and the window each is for.
@@ -265,7 +265,7 @@ private:
         RectF area;
         bool primary = false;
     };
-    // By output name, as cutefish_window_hints_v1.work_area tells.
+    // By output name, as properdesktop_window_hints_v1.work_area tells.
     std::map<std::string, WorkArea> m_workAreas;
     void watchOutput(Output& output);
     static void releaseOutput(const Output& output);
@@ -301,4 +301,4 @@ private:
     int m_hook = 0;
 };
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

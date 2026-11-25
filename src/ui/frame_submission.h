@@ -3,7 +3,7 @@
 
 #pragma once
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Window;
 
@@ -33,4 +33,4 @@ void setFrameDrawnHandler(FrameDrawnHandler handler);
 void setBackdropWindowsOffscreen(bool offscreen);
 bool backdropWindowsOffscreen();
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -6,7 +6,7 @@
 #include "ui/application.h"
 #include "ui/text_context.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static Theme s_current = Theme::light();
 static uint64_t s_generation = 0;
@@ -67,4 +67,4 @@ base::Signal<>& Theme::changed()
     return signal;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

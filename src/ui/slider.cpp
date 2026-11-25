@@ -15,7 +15,7 @@
 #include "ui/smooth_rectangle.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr double kTrack = 4;
 static constexpr double kHandle = 22;
@@ -304,4 +304,4 @@ bool Slider::keyPress(const KeyEvent& event)
     }
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

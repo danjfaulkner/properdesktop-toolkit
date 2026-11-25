@@ -14,16 +14,16 @@
 #include "base/signal.h"
 #include "ui/geometry.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 class EventLoop;
 class SessionLanguage;
 }
 
-namespace cutefish::base::dbus {
+namespace properdesktop::base::dbus {
 class Connection;
 }
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class AppearanceWatcher;
 class Menu;
@@ -161,7 +161,7 @@ public:
     // the process's locale is set again, then this runs, for the views to
     // take their text again.
     base::Signal<> languageChanged;
-    // Applications on Wayland follow cutefish-services on their own; a host
+    // Applications on Wayland follow properdesktop-services on their own; a host
     // whose application has no session bus, as the compositor's, lends its.
     void followSessionLanguage(base::dbus::Connection* bus);
     // LANG, LANGUAGE and the LC_ variables, an empty value removing one.
@@ -200,4 +200,4 @@ private:
     bool m_activeUpdatePending = false;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

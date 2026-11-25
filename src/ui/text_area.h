@@ -11,7 +11,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A multi-line text area, laid out as Label lays out wrapped text;
 // positions are UTF-8 byte offsets. Taller text than the area
@@ -119,4 +119,4 @@ private:
     std::unique_ptr<Private> d;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

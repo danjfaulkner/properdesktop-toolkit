@@ -12,7 +12,7 @@
 #pragma push_macro("emit")
 #undef emit
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 // Keeps a callback connected to a Signal; destroying, reassigning or
 // resetting it disconnects the callback.
@@ -89,6 +89,6 @@ private:
         std::make_shared<std::vector<std::shared_ptr<Slot>>>();
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base
 
 #pragma pop_macro("emit")

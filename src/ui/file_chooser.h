@@ -10,12 +10,12 @@
 #include <utility>
 #include <vector>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Window;
 
 // The desktop's file dialog, through the org.freedesktop.portal.FileChooser
-// portal: xdg-desktop-portal-cutefish shows it in a process of its own and
+// portal: xdg-desktop-portal-properdesktop shows it in a process of its own and
 // one callback answers.
 class FileChooser
 {
@@ -100,4 +100,4 @@ private:
     std::shared_ptr<char> m_alive = std::make_shared<char>();
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

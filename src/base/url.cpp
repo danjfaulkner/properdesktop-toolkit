@@ -5,7 +5,7 @@
 
 #include "base/strings.h"
 
-namespace cutefish::base::url {
+namespace properdesktop::base::url {
 
 static int hexValue(char c)
 {
@@ -103,4 +103,4 @@ std::vector<std::string> parseUriList(std::string_view text)
     return urls;
 }
 
-} // namespace cutefish::base::url
+} // namespace properdesktop::base::url

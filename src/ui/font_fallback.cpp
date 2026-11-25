@@ -14,7 +14,7 @@
 #include "ui/application.h"
 #include "ui/text_context.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Characters remembered before the cache starts over: text shown over a long
 // session, such as a terminal's, may go through any number of them.
@@ -101,4 +101,4 @@ sk_sp<SkTypeface> FontFallback::typefaceFor(char32_t character)
     return found;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -16,7 +16,7 @@
 #include <variant>
 #include <vector>
 
-namespace cutefish::base::dbus {
+namespace properdesktop::base::dbus {
 
 struct ObjectPath
 {
@@ -344,4 +344,4 @@ std::string signatureOf()
     return (Type<std::decay_t<Ts>>::signature() + ... + std::string());
 }
 
-} // namespace cutefish::base::dbus
+} // namespace properdesktop::base::dbus

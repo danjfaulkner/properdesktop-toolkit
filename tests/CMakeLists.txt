@@ -2,7 +2,7 @@ find_package(GTest REQUIRED)
 include(GoogleTest)
 
 # Linked against the base library alone, which proves it needs no display.
-add_executable(cutefish-toolkit-base-tests
+add_executable(properdesktop-toolkit-base-tests
     base/application_bundle_test.cpp
     base/collator_test.cpp
     base/dbus_test.cpp
@@ -30,11 +30,11 @@ add_executable(cutefish-toolkit-base-tests
     base/user_directory_test.cpp
 )
 
-target_link_libraries(cutefish-toolkit-base-tests PRIVATE cutefish-toolkit-base GTest::gtest_main)
+target_link_libraries(properdesktop-toolkit-base-tests PRIVATE properdesktop-toolkit-base GTest::gtest_main)
 
-gtest_discover_tests(cutefish-toolkit-base-tests PROPERTIES FIXTURES_REQUIRED isolation)
+gtest_discover_tests(properdesktop-toolkit-base-tests PROPERTIES FIXTURES_REQUIRED isolation)
 
-add_executable(cutefish-toolkit-tests
+add_executable(properdesktop-toolkit-tests
     main.cpp
     about_dialog_test.cpp
     animation_test.cpp
@@ -88,18 +88,18 @@ configure_file(data/fonts.conf.in ${CMAKE_CURRENT_BINARY_DIR}/fonts.conf @ONLY)
 
 # The image tests write their files with the codecs' own encoders.
 pkg_check_modules(ImageTestEncoders REQUIRED IMPORTED_TARGET libjpeg libpng libwebp libtiff-4 libjxl zlib)
-target_link_libraries(cutefish-toolkit-tests PRIVATE cutefish-toolkit GTest::gtest PkgConfig::ImageTestEncoders)
-target_compile_definitions(cutefish-toolkit-tests
-    PRIVATE CUTEFISH_TOOLKIT_PROTOCOL_DIR="${PROJECT_SOURCE_DIR}/protocols"
-    CUTEFISH_TOOLKIT_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data"
-    CUTEFISH_TOOLKIT_TEST_FONTS_CONF="${CMAKE_CURRENT_BINARY_DIR}/fonts.conf")
+target_link_libraries(properdesktop-toolkit-tests PRIVATE properdesktop-toolkit GTest::gtest PkgConfig::ImageTestEncoders)
+target_compile_definitions(properdesktop-toolkit-tests
+    PRIVATE PROPERDESKTOP_TOOLKIT_PROTOCOL_DIR="${PROJECT_SOURCE_DIR}/protocols"
+    PROPERDESKTOP_TOOLKIT_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data"
+    PROPERDESKTOP_TOOLKIT_TEST_FONTS_CONF="${CMAKE_CURRENT_BINARY_DIR}/fonts.conf")
 
-gtest_discover_tests(cutefish-toolkit-tests PROPERTIES FIXTURES_REQUIRED isolation)
+gtest_discover_tests(properdesktop-toolkit-tests PROPERTIES FIXTURES_REQUIRED isolation)
 # Read after the discovered tests, which it needs to exist.
 set_property(DIRECTORY APPEND PROPERTY TEST_INCLUDE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/serial_tests.cmake)
 
 # One Application per process: the embedded platform gets its own binary.
-add_executable(cutefish-toolkit-embedded-tests
+add_executable(properdesktop-toolkit-embedded-tests
     embedded/main.cpp
     embedded/embedded_window_test.cpp
     embedded/embedded_controls_test.cpp
@@ -107,17 +107,17 @@ add_executable(cutefish-toolkit-embedded-tests
     embedded/embedded_host_test.cpp
 )
 
-target_link_libraries(cutefish-toolkit-embedded-tests PRIVATE cutefish-toolkit GTest::gtest PkgConfig::Xkbcommon
+target_link_libraries(properdesktop-toolkit-embedded-tests PRIVATE properdesktop-toolkit GTest::gtest PkgConfig::Xkbcommon
     PkgConfig::Egl PkgConfig::GlesV2)
-target_compile_definitions(cutefish-toolkit-embedded-tests
-    PRIVATE CUTEFISH_TOOLKIT_TEST_FONTS_CONF="${CMAKE_CURRENT_BINARY_DIR}/fonts.conf")
+target_compile_definitions(properdesktop-toolkit-embedded-tests
+    PRIVATE PROPERDESKTOP_TOOLKIT_TEST_FONTS_CONF="${CMAKE_CURRENT_BINARY_DIR}/fonts.conf")
 
-gtest_discover_tests(cutefish-toolkit-embedded-tests PROPERTIES FIXTURES_REQUIRED isolation)
+gtest_discover_tests(properdesktop-toolkit-embedded-tests PROPERTIES FIXTURES_REQUIRED isolation)
 
 # A headless application on the test's session bus, in a process of its own.
-add_executable(cutefish-toolkit-headless-bus-tests headless_bus/headless_bus_test.cpp)
-target_link_libraries(cutefish-toolkit-headless-bus-tests PRIVATE cutefish-toolkit GTest::gtest)
-gtest_discover_tests(cutefish-toolkit-headless-bus-tests PROPERTIES FIXTURES_REQUIRED isolation)
+add_executable(properdesktop-toolkit-headless-bus-tests headless_bus/headless_bus_test.cpp)
+target_link_libraries(properdesktop-toolkit-headless-bus-tests PRIVATE properdesktop-toolkit GTest::gtest)
+gtest_discover_tests(properdesktop-toolkit-headless-bus-tests PROPERTIES FIXTURES_REQUIRED isolation)
 
 # A connection against a minimal compositor in the test, on libwayland-server.
 pkg_check_modules(WaylandServer REQUIRED IMPORTED_TARGET wayland-server)
@@ -142,8 +142,8 @@ foreach(xml
     list(APPEND TEST_PROTOCOL_SOURCES ${code} ${header})
 endforeach()
 # The project's own protocols, for a compositor that records their requests.
-foreach(name cutefish-window-hints-v1 cutefish-window-placement-v1 cutefish-status-item-v1
-        cutefish-main-menu-v1 cutefish-surface-blur-v1)
+foreach(name properdesktop-window-hints-v1 properdesktop-window-placement-v1 properdesktop-status-item-v1
+        properdesktop-main-menu-v1 properdesktop-surface-blur-v1)
     set(code ${TEST_PROTOCOL_DIR}/${name}-protocol.c)
     set(header ${TEST_PROTOCOL_DIR}/${name}-server-protocol.h)
     set(xml ${PROJECT_SOURCE_DIR}/protocols/${name}.xml)
@@ -156,7 +156,7 @@ foreach(name cutefish-window-hints-v1 cutefish-window-placement-v1 cutefish-stat
     list(APPEND TEST_PROTOCOL_SOURCES ${code} ${header})
 endforeach()
 
-add_executable(cutefish-toolkit-wayland-tests
+add_executable(properdesktop-toolkit-wayland-tests
     wayland/connection_test.cpp
     wayland/data_device_test.cpp
     wayland/main_menu_test.cpp
@@ -167,19 +167,19 @@ add_executable(cutefish-toolkit-wayland-tests
     wayland/window_hints_test.cpp
     ${TEST_PROTOCOL_SOURCES}
 )
-target_include_directories(cutefish-toolkit-wayland-tests PRIVATE ${TEST_PROTOCOL_DIR})
-target_link_libraries(cutefish-toolkit-wayland-tests PRIVATE cutefish-toolkit GTest::gtest_main
+target_include_directories(properdesktop-toolkit-wayland-tests PRIVATE ${TEST_PROTOCOL_DIR})
+target_link_libraries(properdesktop-toolkit-wayland-tests PRIVATE properdesktop-toolkit GTest::gtest_main
     PkgConfig::WaylandServer PkgConfig::WaylandClient PkgConfig::Xkbcommon Threads::Threads)
 
-gtest_discover_tests(cutefish-toolkit-wayland-tests PROPERTIES FIXTURES_REQUIRED isolation)
+gtest_discover_tests(properdesktop-toolkit-wayland-tests PROPERTIES FIXTURES_REQUIRED isolation)
 
 # The last test fails when a test left a process behind or ran outside the
 # launcher; ctest runs it after every other test, also when only some are
 # chosen.
-add_test(NAME isolation-start COMMAND ${CUTEFISH_PYTHON} ${CMAKE_CURRENT_SOURCE_DIR}/isolate.py
-    --start ${CUTEFISH_TEST_RECORD})
+add_test(NAME isolation-start COMMAND ${PROPERDESKTOP_PYTHON} ${CMAKE_CURRENT_SOURCE_DIR}/isolate.py
+    --start ${PROPERDESKTOP_TEST_RECORD})
 add_test(NAME isolation-check
-    COMMAND ${CUTEFISH_PYTHON} ${CMAKE_CURRENT_SOURCE_DIR}/isolate.py --check ${CUTEFISH_TEST_RECORD}/writes.log
-        --since ${CUTEFISH_TEST_RECORD}/since --ctest ${CMAKE_CTEST_COMMAND} ${CMAKE_BINARY_DIR})
+    COMMAND ${PROPERDESKTOP_PYTHON} ${CMAKE_CURRENT_SOURCE_DIR}/isolate.py --check ${PROPERDESKTOP_TEST_RECORD}/writes.log
+        --since ${PROPERDESKTOP_TEST_RECORD}/since --ctest ${CMAKE_CTEST_COMMAND} ${CMAKE_BINARY_DIR})
 set_tests_properties(isolation-start PROPERTIES FIXTURES_SETUP isolation)
 set_tests_properties(isolation-check PROPERTIES FIXTURES_CLEANUP isolation)

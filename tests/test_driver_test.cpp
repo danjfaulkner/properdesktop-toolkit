@@ -22,8 +22,8 @@
 #include "ui/text_field.h"
 #include "ui/window.h"
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 
 namespace {
 

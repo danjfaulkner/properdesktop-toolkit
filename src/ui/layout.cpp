@@ -5,7 +5,7 @@
 
 #include <algorithm>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Where a child of the given length starts in the given space.
 static double aligned(Alignment alignment, double space, double length)
@@ -340,4 +340,4 @@ void Grid::layout()
     }
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -28,7 +28,7 @@
 #include "ui/painter.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 namespace fs = std::filesystem;
 
 namespace {
@@ -38,11 +38,11 @@ constexpr Color kBlue = Color::rgb(0x0000FF);
 constexpr Color kWhite = Color::rgb(0xFFFFFF);
 
 // One per process: ctest runs the tests of this suite side by side.
-const fs::path kDirectory = "/tmp/cutefish-toolkit-image-test-" + std::to_string(getpid());
+const fs::path kDirectory = "/tmp/properdesktop-toolkit-image-test-" + std::to_string(getpid());
 // The thumbnail cache keys are this fixed path's, so build trees testing at
 // the same time take turns through the lock file next to it.
-const fs::path kThumbnailDirectory = "/tmp/cutefish-toolkit-thumbnail-test";
-const fs::path kThumbnailLock = "/tmp/cutefish-toolkit-thumbnail-test.lock";
+const fs::path kThumbnailDirectory = "/tmp/properdesktop-toolkit-thumbnail-test";
+const fs::path kThumbnailLock = "/tmp/properdesktop-toolkit-thumbnail-test.lock";
 
 bool near(Color a, Color b, int tolerance = 6)
 {
@@ -193,7 +193,7 @@ bool waitForLoads(const std::vector<ImageView*>& views)
         return false;
     };
     const auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(5);
-    cutefish::base::Timer poll(&loop);
+    properdesktop::base::Timer poll(&loop);
     poll.onTimeout = [&] {
         if (!loading() || std::chrono::steady_clock::now() > deadline)
             loop.quit();
@@ -341,7 +341,7 @@ TEST_F(ImageViewTest, DecodesAFileWrittenOverAgain)
     EXPECT_EQ(shown.view->status(), ImageView::Status::Ready);
     auto& loop = Application::instance()->loop();
     const auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(5);
-    cutefish::base::Timer poll(&loop);
+    properdesktop::base::Timer poll(&loop);
     poll.onTimeout = [&] {
         shown.window->grab();
         if (shown.view->sizeHint() == SizeF{20, 40} || std::chrono::steady_clock::now() > deadline)
@@ -428,8 +428,8 @@ TEST_F(ImageViewTest, SharesTheFreedesktopThumbnailCache)
     fs::remove_all(kThumbnailDirectory);
     fs::create_directories(kThumbnailDirectory);
     const std::string path = writePng("a b[1].png", 300, 150, kThumbnailDirectory);
-    // The URI key is file:///tmp/cutefish-toolkit-thumbnail-test/a%20b[1].png.
-    const fs::path cached = fs::path(cutefish::base::paths::cacheHome()) / "thumbnails/large/c32fda64f3ffbd3ab831d5adc027bd5e.png";
+    // The URI key is file:///tmp/properdesktop-toolkit-thumbnail-test/a%20b[1].png.
+    const fs::path cached = fs::path(properdesktop::base::paths::cacheHome()) / "thumbnails/large/c32fda64f3ffbd3ab831d5adc027bd5e.png";
     fs::remove(cached);
 
     Shown shown = show(path, {200, 100}, ImageView::FillMode::PreserveAspectCrop, 1,
@@ -449,8 +449,8 @@ TEST_F(ImageViewTest, SharesTheFreedesktopThumbnailCache)
     ASSERT_NE(file, nullptr);
     std::fputs("not an image", file);
     std::fclose(file);
-    const fs::path marker = fs::path(cutefish::base::paths::cacheHome())
-            / "thumbnails/fail/cutefish/7727b713e72d1077247ab07020b1c845.png";
+    const fs::path marker = fs::path(properdesktop::base::paths::cacheHome())
+            / "thumbnails/fail/properdesktop/7727b713e72d1077247ab07020b1c845.png";
     fs::remove(marker);
     Shown failed = show(broken, {100, 100}, ImageView::FillMode::Stretch, 1,
                         [](ImageView* view) { view->setThumbnail(true); });

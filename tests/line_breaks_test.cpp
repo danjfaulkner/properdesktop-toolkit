@@ -15,7 +15,7 @@
 #include "ui/theme.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 namespace {
 
@@ -73,7 +73,7 @@ TEST(LineBreaksTest, BreakOpportunitiesMatchReference)
     const std::vector<Case> cases = {
         {u"Import the configuration file your VPN provider gives you, such as an OpenVPN .ovpn or a WireGuard .conf file.",
          {7, 11, 25, 30, 35, 39, 48, 54, 59, 64, 67, 70, 78, 84, 87, 89, 99, 105, 110}},
-        {u"Visit https://github.com/cutefishos/settings/issues?q=is%3Aopen+label%3Abug for open bugs.",
+        {u"Visit https://github.com/danjfaulkner/properdesktop-settings/issues?q=is%3Aopen+label%3Abug for open bugs.",
          {6, 14, 25, 36, 45, 52, 76, 80, 85, 90}},
         {u"Files in /usr/share/icons/hicolor/48x48/apps/ and ~/.local/share/icons stay.",
          {6, 9, 10, 14, 20, 26, 34, 40, 46, 50, 59, 65, 71, 76}},
@@ -155,7 +155,7 @@ TEST(LineBreaksTest, WrapsAtReferenceWidths)
         {u"Import the configuration file your VPN provider gives you, such as an OpenVPN .ovpn or a WireGuard .conf file.",
          {{60, {0, 7, 11, 19, 30, 35, 39, 48, 54, 59, 67, 70, 76, 84, 89, 96, 105}}, {100, {0, 11, 25, 39, 54, 67, 78, 89, 99}}, {160, {0, 11, 35, 59, 78, 99}}, {240, {0, 35, 70, 99}}, {590, {0, 87}}},
          {{60, {0, 7, 11, 19, 30, 35, 39, 48, 54, 59, 67, 70, 76, 84, 89, 96, 105}}, {100, {0, 11, 25, 39, 54, 67, 78, 89, 99}}, {160, {0, 11, 35, 59, 78, 99}}, {240, {0, 35, 70, 99}}, {590, {0, 89}}}},
-        {u"Visit https://github.com/cutefishos/settings/issues?q=is%3Aopen+label%3Abug for open bugs.",
+        {u"Visit https://github.com/danjfaulkner/properdesktop-settings/issues?q=is%3Aopen+label%3Abug for open bugs.",
          {{60, {0, 6, 14, 22, 25, 33, 36, 45, 52, 59, 66, 73, 80, 85}}, {100, {0, 14, 25, 36, 45, 52, 64, 76}}, {160, {0, 14, 36, 52, 71}}, {240, {0, 36, 52, 80}}, {590, {0, 80}}},
          {{60, {0, 6, 14, 22, 25, 33, 36, 45, 52, 59, 66, 73, 80, 85}}, {100, {0, 14, 25, 36, 45, 52, 64, 76}}, {160, {0, 14, 36, 52, 72}}, {240, {0, 36, 52, 80}}, {590, {0, 85}}}},
         {u"Files in /usr/share/icons/hicolor/48x48/apps/ and ~/.local/share/icons stay.",

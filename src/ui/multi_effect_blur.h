@@ -9,7 +9,7 @@
 #include "include/core/SkBitmap.h"
 #include "include/core/SkPixmap.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Premultiplied RGBA in floats, sampled as a linearly filtered texture
 // clamped at its edges.
@@ -71,4 +71,4 @@ int multiEffectBlurLevels(double blurMax);
 SkBitmap composite(const Texture& source, const std::vector<Texture>& blurs, const std::array<double, 6>& weights,
                    int firstRow, int lastRow);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

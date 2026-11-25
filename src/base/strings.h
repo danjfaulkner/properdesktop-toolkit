@@ -17,7 +17,7 @@
 
 // Helpers for UTF-8 std::string text. Case folding and whitespace are ASCII
 // only; text that needs Unicode rules goes through ICU.
-namespace cutefish::base::strings {
+namespace properdesktop::base::strings {
 
 enum class CaseSensitivity { Sensitive, Insensitive };
 enum class SplitBehavior { KeepEmptyParts, SkipEmptyParts };
@@ -186,4 +186,4 @@ std::optional<T> toNumber(std::string_view text, int base)
     }
 }
 
-} // namespace cutefish::base::strings
+} // namespace properdesktop::base::strings

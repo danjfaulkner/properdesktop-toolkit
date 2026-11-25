@@ -15,7 +15,7 @@
 
 class GrDirectContext;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class EmbeddedWindow;
 
@@ -114,4 +114,4 @@ private:
     bool m_gpuSurfaceOpaque = false;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

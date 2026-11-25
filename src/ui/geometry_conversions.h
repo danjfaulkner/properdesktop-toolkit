@@ -8,7 +8,7 @@
 
 // Between the views' plain structs and the base classes. Kept out of
 // ui/geometry.h: files using both namespaces would see two PointF.
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 inline base::PointF toBase(const PointF& point)
 {
@@ -60,4 +60,4 @@ inline Margins fromBase(const base::InsetsF& insets)
     return {insets.left(), insets.top(), insets.right(), insets.bottom()};
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

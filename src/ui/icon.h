@@ -13,7 +13,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // One of the toolkit's single-colour glyphs, such as "check", "chevron-down" or
 // "search", in a colour; the theme's text colour unless set. Drawn square,
@@ -99,4 +99,4 @@ void reloadThemeIcons();
 // from the cache when it is there; null when the theme has none.
 Bitmap themeIconBitmap(const std::string& name, int size, double scale);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

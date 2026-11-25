@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<protocol name="cutefish_shell_v1">
+<protocol name="properdesktop_shell_v1">
 
   <description summary="the desktop surface of the trusted session client">
     This protocol lets the trusted client the session starts on its own
@@ -20,14 +20,14 @@
     bumping the interface version.
   </description>
 
-  <interface name="cutefish_shell_v1" version="1">
+  <interface name="properdesktop_shell_v1" version="1">
     <description summary="private shell interface">
-      A factory for cutefish_shell_surface_v1 objects.
+      A factory for properdesktop_shell_surface_v1 objects.
     </description>
 
     <enum name="error">
       <entry name="role" value="0"
-             summary="the wl_surface already has a cutefish_shell_surface_v1"/>
+             summary="the wl_surface already has a properdesktop_shell_surface_v1"/>
     </enum>
 
     <request name="destroy" type="destructor">
@@ -38,7 +38,7 @@
 
     <request name="get_shell_surface">
       <description summary="extend a wl_surface with shell metadata">
-        Creates a cutefish_shell_surface_v1 for the given wl_surface.
+        Creates a properdesktop_shell_surface_v1 for the given wl_surface.
 
         The wl_surface must belong to the same client and the same connection.
         Giving a surface two shell surfaces raises the role error.
@@ -47,12 +47,12 @@
         buffer is committed on the surface, so the compositor never has to
         place the surface as an ordinary window first.
       </description>
-      <arg name="id" type="new_id" interface="cutefish_shell_surface_v1"/>
+      <arg name="id" type="new_id" interface="properdesktop_shell_surface_v1"/>
       <arg name="surface" type="object" interface="wl_surface"/>
     </request>
   </interface>
 
-  <interface name="cutefish_shell_surface_v1" version="1">
+  <interface name="properdesktop_shell_surface_v1" version="1">
     <description summary="shell metadata attached to a wl_surface">
       Describes what the compositor should make of a shell surface. All state
       here takes effect immediately rather than on the next wl_surface.commit:

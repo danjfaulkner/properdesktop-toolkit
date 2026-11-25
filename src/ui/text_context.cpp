@@ -29,7 +29,7 @@
 #include "ui/text_configuration.h"
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Character fallbacks remembered before the cache starts over.
 static constexpr size_t kMaximumFallbacks = 65536;
@@ -775,4 +775,4 @@ void TextContext::readFontconfigDefaults()
     m_subpixelPositioning = true;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

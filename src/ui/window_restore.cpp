@@ -12,7 +12,7 @@
 #include "ui/platform_window.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The end of a resize comes before the configure carrying its last size.
 static constexpr auto kSaveDelay = std::chrono::milliseconds(300);
@@ -20,9 +20,9 @@ static constexpr auto kSaveDelay = std::chrono::milliseconds(300);
 static std::string storePath()
 {
     std::string process = Application::instance()->applicationId();
-    if (process.rfind("cutefish-", 0) == 0)
+    if (process.rfind("properdesktop-", 0) == 0)
         process.erase(0, 9);
-    return process.empty() ? std::string() : base::paths::cutefishConfig(process);
+    return process.empty() ? std::string() : base::paths::properdesktopConfig(process);
 }
 
 void Window::setRestoresSize(std::string windowId)
@@ -110,4 +110,4 @@ void Window::saveMaximized()
         settings.remove(key);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

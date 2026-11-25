@@ -16,7 +16,7 @@
 
 class SkRegion;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Bitmap;
 class DropOffer;
@@ -389,4 +389,4 @@ private:
     uint64_t m_measurementStamp = 0;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -13,7 +13,7 @@
 #include "base/uuid.h"
 #include "base/weak_ptr.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 using namespace std::chrono_literals;
 
 namespace {

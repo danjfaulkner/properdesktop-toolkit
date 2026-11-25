@@ -13,7 +13,7 @@
 #include <system_error>
 #include <unistd.h>
 
-namespace cutefish::base::file {
+namespace properdesktop::base::file {
 
 std::optional<std::string> read(const std::string& path)
 {
@@ -169,4 +169,4 @@ bool TemporaryFile::write(std::string_view contents)
     return m_fd >= 0;
 }
 
-} // namespace cutefish::base::file
+} // namespace properdesktop::base::file

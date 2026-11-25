@@ -19,9 +19,9 @@
 #include <wayland-client.h>
 #include <wayland-server.h>
 
-#include "cutefish-surface-blur-v1-server-protocol.h"
-#include "cutefish-window-hints-v1-server-protocol.h"
-#include "cutefish-window-placement-v1-server-protocol.h"
+#include "properdesktop-surface-blur-v1-server-protocol.h"
+#include "properdesktop-window-hints-v1-server-protocol.h"
+#include "properdesktop-window-placement-v1-server-protocol.h"
 #include "fractional-scale-v1-server-protocol.h"
 #include "viewporter-server-protocol.h"
 #include "xdg-shell-server-protocol.h"
@@ -31,8 +31,8 @@
 #include "ui/path.h"
 #include "wayland/shell_surface.h"
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 
 namespace {
 
@@ -61,10 +61,10 @@ public:
         global(&xdg_wm_base_interface, 1);
         global(&wp_viewporter_interface, 1);
         global(&wp_fractional_scale_manager_v1_interface, 1);
-        global(&cutefish_window_hints_v1_interface, 1);
-        global(&cutefish_surface_blur_v1_interface, 1);
+        global(&properdesktop_window_hints_v1_interface, 1);
+        global(&properdesktop_surface_blur_v1_interface, 1);
         if (placement)
-            global(&cutefish_window_placement_v1_interface, 1);
+            global(&properdesktop_window_placement_v1_interface, 1);
         m_client = wl_client_create(m_display, fds[0]);
         m_thread = std::thread([this] {
             wl_event_loop* loop = wl_display_get_event_loop(m_display);
@@ -114,12 +114,12 @@ public:
         post([this] { xdg_surface_send_configure(m_xdgSurfaces.back(), wl_display_next_serial(m_display)); });
     }
 
-    // cutefish_window_placement_v1.position for the surface made last.
+    // properdesktop_window_placement_v1.position for the surface made last.
     void sendPosition(int x, int y)
     {
         post([this, x, y] {
             for (wl_resource* placement : m_placements)
-                cutefish_window_placement_v1_send_position(placement, m_surfaces.back(), x, y);
+                properdesktop_window_placement_v1_send_position(placement, m_surfaces.back(), x, y);
         });
     }
 
@@ -148,7 +148,7 @@ private:
     {
         wl_resource* resource = wl_resource_create(m_client, &interface, version, id);
         wl_resource_set_dispatcher(resource, dispatch, nullptr, this, nullptr);
-        if (&interface == &cutefish_window_placement_v1_interface)
+        if (&interface == &properdesktop_window_placement_v1_interface)
             m_placements.push_back(resource);
         else if (&interface == &wl_surface_interface)
             m_surfaces.push_back(resource);
@@ -160,9 +160,9 @@ private:
     {
         auto* resource = static_cast<wl_resource*>(object);
         auto* self = static_cast<FakeCompositor*>(wl_resource_get_user_data(resource));
-        const bool hints = wl_resource_instance_of(resource, &cutefish_window_hints_v1_interface, nullptr)
-                           || wl_resource_instance_of(resource, &cutefish_window_placement_v1_interface, nullptr)
-                           || wl_resource_instance_of(resource, &cutefish_surface_blur_v1_interface, nullptr);
+        const bool hints = wl_resource_instance_of(resource, &properdesktop_window_hints_v1_interface, nullptr)
+                           || wl_resource_instance_of(resource, &properdesktop_window_placement_v1_interface, nullptr)
+                           || wl_resource_instance_of(resource, &properdesktop_surface_blur_v1_interface, nullptr);
         Request request{message->name, {}};
         int index = 0;
         for (const char* c = message->signature; *c; ++c) {
@@ -286,11 +286,11 @@ TEST(WindowHintsProtocolTest, PlacementAnchorIsSentAndUnset)
     });
     ASSERT_EQ(hints.size(), 3u);
     EXPECT_EQ(hints[0].name, "set_placement_anchor");
-    EXPECT_EQ(hints[0].arguments, (std::vector<int64_t>{700, 13, 0, 0, CUTEFISH_WINDOW_HINTS_V1_PLACEMENT_EDGE_BOTTOM,
-                                                        CUTEFISH_WINDOW_HINTS_V1_PLACEMENT_EDGE_BOTTOM}));
+    EXPECT_EQ(hints[0].arguments, (std::vector<int64_t>{700, 13, 0, 0, PROPERDESKTOP_WINDOW_HINTS_V1_PLACEMENT_EDGE_BOTTOM,
+                                                        PROPERDESKTOP_WINDOW_HINTS_V1_PLACEMENT_EDGE_BOTTOM}));
     EXPECT_EQ(hints[1].arguments,
-              (std::vector<int64_t>{11, 20, 30, 41, CUTEFISH_WINDOW_HINTS_V1_PLACEMENT_EDGE_TOP_LEFT,
-                                    CUTEFISH_WINDOW_HINTS_V1_PLACEMENT_EDGE_BOTTOM_RIGHT}));
+              (std::vector<int64_t>{11, 20, 30, 41, PROPERDESKTOP_WINDOW_HINTS_V1_PLACEMENT_EDGE_TOP_LEFT,
+                                    PROPERDESKTOP_WINDOW_HINTS_V1_PLACEMENT_EDGE_BOTTOM_RIGHT}));
     EXPECT_EQ(hints[2].name, "unset_placement_anchor");
 }
 
@@ -374,7 +374,7 @@ TEST(WindowHintsProtocolTest, SubsurfaceBlurIsSentAndUnset)
     EXPECT_EQ(requests[2].name, "unset_over_subsurfaces_shape");
     EXPECT_EQ(requests[3].name, "set_over_subsurfaces_fill");
     EXPECT_EQ(requests[3].arguments,
-              (std::vector<int64_t>{0, 0, 0, wl_fixed_from_double(0.5), CUTEFISH_SURFACE_BLUR_V1_BACKDROP_BLEND_COLOR,
+              (std::vector<int64_t>{0, 0, 0, wl_fixed_from_double(0.5), PROPERDESKTOP_SURFACE_BLUR_V1_BACKDROP_BLEND_COLOR,
                                     wl_fixed_from_double(1), 0, 0, wl_fixed_from_double(1)}));
     EXPECT_EQ(requests[4].name, "unset_over_subsurfaces");
 }

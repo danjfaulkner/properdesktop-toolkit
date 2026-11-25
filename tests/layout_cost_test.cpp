@@ -21,7 +21,7 @@
 #include "ui/theme.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 // This thread's CPU time, so the tests running beside this one do not count.
 static double threadMilliseconds()

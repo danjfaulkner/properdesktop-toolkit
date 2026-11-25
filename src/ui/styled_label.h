@@ -7,7 +7,7 @@
 
 #include "ui/label.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A Label with a raised or sunken style: the text drawn first in the style
 // colour one logical pixel down (Raised) or up (Sunken), then
@@ -38,4 +38,4 @@ private:
     Color m_styleColor;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

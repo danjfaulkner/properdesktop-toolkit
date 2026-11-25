@@ -40,7 +40,7 @@
 #include "ui/window_header.h"
 #include "wayland/wayland_window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Each window's cursor picture, kept outside the class, which keeps its
 // layout.
@@ -137,7 +137,7 @@ static std::string typeName(const View& view)
     char* demangled = abi::__cxa_demangle(mangled, nullptr, nullptr, &status);
     std::string name = status == 0 ? demangled : mangled;
     free(demangled);
-    const std::string prefix = "cutefish::ui::";
+    const std::string prefix = "properdesktop::ui::";
     if (name.starts_with(prefix))
         name.erase(0, prefix.size());
     return name;
@@ -1752,7 +1752,7 @@ bool Window::layoutIfNeeded()
     if (s_verifiesLayout && pending()) {
         const auto report = [](const auto& self, const View* view) -> void {
             if (view->m_needsLayout) {
-                fprintf(stderr, "cutefish-toolkit: %s still asks for layout after %d passes\n",
+                fprintf(stderr, "properdesktop-toolkit: %s still asks for layout after %d passes\n",
                         viewPath(view).c_str(), kLayoutPasses);
             }
             for (const auto& child : view->children())
@@ -1796,7 +1796,7 @@ void Window::verifyLayout()
             const std::string path = viewPath(view);
             const RectF& before = it->second;
             const RectF& after = view->geometry();
-            fprintf(stderr, "cutefish-toolkit: %s at %g %g %g %g, %g %g %g %g when laid out in full\n",
+            fprintf(stderr, "properdesktop-toolkit: %s at %g %g %g %g, %g %g %g %g when laid out in full\n",
                     path.c_str(), before.x, before.y, before.width, before.height, after.x, after.y, after.width,
                     after.height);
         }
@@ -1848,4 +1848,4 @@ void Window::interruptFrameClients(int interruption)
     }
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

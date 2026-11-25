@@ -12,7 +12,7 @@
 
 #include "base/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Pixels in memory for offscreen work: decoding, scaling, painting and
 // encoding, with raw access for uploads.
@@ -117,4 +117,4 @@ private:
 // the common image scaling has it.
 base::Size scaledSize(base::Size size, base::Size box, Bitmap::Scaling scaling);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

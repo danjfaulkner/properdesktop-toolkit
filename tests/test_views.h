@@ -5,7 +5,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui::test {
+namespace properdesktop::ui::test {
 
 // A view with a fixed size hint.
 class Box : public View
@@ -22,4 +22,4 @@ private:
     SizeF m_size;
 };
 
-} // namespace cutefish::ui::test
+} // namespace properdesktop::ui::test

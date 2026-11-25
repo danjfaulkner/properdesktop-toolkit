@@ -11,7 +11,7 @@
 
 struct wl_display;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Window;
 struct SubsurfacePrivate;
@@ -103,4 +103,4 @@ private:
     std::unique_ptr<SubsurfacePrivate> d;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

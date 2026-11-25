@@ -6,7 +6,7 @@
 #include <concepts>
 #include <memory>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 namespace internal {
 
@@ -92,4 +92,4 @@ private:
     std::shared_ptr<internal::WeakFlag> m_flag;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

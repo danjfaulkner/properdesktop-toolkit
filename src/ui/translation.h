@@ -9,9 +9,9 @@
 #include "base/i18n.h"
 
 // The toolkit's own text, in its own catalog whatever the program's domain.
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
-inline constexpr const char* kTranslationDomain = "cutefish-toolkit";
+inline constexpr const char* kTranslationDomain = "properdesktop-toolkit";
 
 inline const char* tr(const char* text)
 {
@@ -28,4 +28,4 @@ inline std::string trn(const char* singular, const char* plural, uint64_t n)
     return i18n::dtrn(kTranslationDomain, singular, plural, n);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

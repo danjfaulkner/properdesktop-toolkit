@@ -30,7 +30,7 @@
 #include "ui/painter.h"
 #include "ui/text_layout.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 struct Canvas2D::Owned
 {
@@ -742,4 +742,4 @@ void Canvas2D::drawText(TextLayout& layout, PointF origin)
     applyMatrix();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -12,7 +12,7 @@
 
 class GrDirectContext;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class EmbeddedGpuScope;
 
@@ -62,4 +62,4 @@ private:
     float m_clearColor[4] = {};
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -15,7 +15,7 @@
 #include "base/paths.h"
 #include "base/thread_pool.h"
 
-namespace cutefish::ui::gpu {
+namespace properdesktop::ui::gpu {
 
 static std::string hexDigest(std::string_view data)
 {
@@ -23,7 +23,7 @@ static std::string hexDigest(std::string_view data)
 }
 
 ProgramCache::ProgramCache(const std::string& driver)
-    : m_root(base::paths::cacheHome() + "/cutefish-toolkit/programs")
+    : m_root(base::paths::cacheHome() + "/properdesktop-toolkit/programs")
     , m_directory(m_root + "/" + hexDigest(driver).substr(0, 16))
 {
 }
@@ -59,4 +59,4 @@ void ProgramCache::store(const SkData& key, const SkData& data, const SkString&)
     });
 }
 
-} // namespace cutefish::ui::gpu
+} // namespace properdesktop::ui::gpu

@@ -8,7 +8,7 @@
 
 #include "ui/toggle_control.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Animation;
 
@@ -34,4 +34,4 @@ private:
     std::unique_ptr<Animation> m_colorAnimation;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

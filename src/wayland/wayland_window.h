@@ -17,11 +17,11 @@
 class SkSurface;
 struct wl_egl_window;
 
-namespace cutefish::ui::gpu {
+namespace properdesktop::ui::gpu {
 class EglContext;
 }
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 class Connection;
 class MainMenuMirror;
@@ -189,4 +189,4 @@ private:
     int m_bufferHeight = 0;
 };
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

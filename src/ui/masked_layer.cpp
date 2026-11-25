@@ -17,7 +17,7 @@
 #include "include/core/SkPixmap.h"
 #include "include/core/SkShader.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 namespace {
 
@@ -335,4 +335,4 @@ void drawMaskedLayer(SkCanvas* canvas, const MaskedLayerTextures& textures, doub
     canvas->drawRect(quad, paint);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

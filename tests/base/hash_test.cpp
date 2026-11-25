@@ -6,7 +6,7 @@
 #include "base/hash.h"
 #include "base/strings.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 
 using Algorithm = CryptographicHash::Algorithm;
 

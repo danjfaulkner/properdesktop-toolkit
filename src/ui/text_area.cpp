@@ -30,7 +30,7 @@
 
 namespace textlayout = skia::textlayout;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A coarse timer of half the cursor flash time fires up to 5% early.
 static constexpr auto kBlinkInterval = std::chrono::milliseconds(475);
@@ -1085,4 +1085,4 @@ void TextArea::startBlinking()
     });
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

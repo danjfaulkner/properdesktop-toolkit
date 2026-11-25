@@ -9,7 +9,7 @@
 #include "base/dbus.h"
 #include "ui/application.h"
 
-using namespace cutefish;
+using namespace properdesktop;
 
 // A headless application asked for the session bus has the loop's shared
 // connection, which reaches the bus the process was started on.

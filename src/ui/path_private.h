@@ -8,7 +8,7 @@
 #include "base/transform.h"
 #include "ui/path.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 struct PathAccess
 {
@@ -26,4 +26,4 @@ private:
                             unsigned* start);
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

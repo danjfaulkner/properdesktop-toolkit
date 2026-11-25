@@ -12,14 +12,14 @@
 #include "ui/bitmap.h"
 #include "ui/fast_blur_effect.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 // The references are the FastBlur effect's own output on a 106 x 40 item, its
 // source black text, a bar and a dot, rendered on the GPU at each scale and
 // kept as the result's alpha (the source is black, so that is all of it).
 static std::string dataPath(const std::string& name)
 {
-    return std::string(CUTEFISH_TOOLKIT_TEST_DATA_DIR) + "/fast_blur/" + name;
+    return std::string(PROPERDESKTOP_TOOLKIT_TEST_DATA_DIR) + "/fast_blur/" + name;
 }
 
 static std::string scaleName(double scale)

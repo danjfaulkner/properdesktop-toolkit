@@ -16,7 +16,7 @@
 #include "base/file.h"
 #include "base/strings.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 static constexpr unsigned kFatalBit = 1u << unsigned(LogLevel::Fatal);
 
@@ -266,4 +266,4 @@ std::string streamToString(const std::function<void(std::ostream&)>& write)
     return std::move(stream).str();
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

@@ -10,7 +10,7 @@
 #include "base/file.h"
 #include "base/settings.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 
 // The reference file for the values below, byte for byte.
 static constexpr const char* kReferenceFile = R"([General]

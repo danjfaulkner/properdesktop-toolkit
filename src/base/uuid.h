@@ -9,7 +9,7 @@
 #include <string>
 #include <string_view>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 class Uuid
 {
@@ -36,4 +36,4 @@ private:
     std::array<uint8_t, 16> m_bytes{};
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

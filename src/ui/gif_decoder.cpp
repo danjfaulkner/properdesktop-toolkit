@@ -7,7 +7,7 @@
 #include <cstring>
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A 256 MiB allocation limit, in pixels of four bytes.
 static constexpr int64_t kMaximumPixels = int64_t(256) * 1024 * 1024 / 4;
@@ -310,4 +310,4 @@ bool GifDecoder::readImage(const Control& control)
     return true;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

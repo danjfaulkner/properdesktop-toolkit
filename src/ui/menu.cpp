@@ -24,7 +24,7 @@
 #include "ui/view.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Row, separator and surface metrics.
 static constexpr double kRowHeight = 26;
@@ -1279,4 +1279,4 @@ void Menu::scheduleSubmenuCheck()
     });
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -16,7 +16,7 @@
 #include "base/event_loop.h"
 #include "wayland/shell_surface.h"
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 struct KeyboardListeners
 {
@@ -289,4 +289,4 @@ void Keyboard::stopRepeat()
     m_repeatKeycode = 0;
 }
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

@@ -5,11 +5,11 @@
 
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A fontconfig file read after the system's configuration in place of the
 // user's, by the text contexts made afterwards: text that renders the same
 // whoever's home it runs in. Call it before the application is made.
 void setTextConfigurationFile(const std::string& path);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

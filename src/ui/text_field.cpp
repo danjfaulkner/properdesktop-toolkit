@@ -30,7 +30,7 @@
 
 namespace textlayout = skia::textlayout;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr double kMinimumWidth = 200;
 // A medium icon and half the small spacing.
@@ -1112,4 +1112,4 @@ void TextField::startBlinking()
     });
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

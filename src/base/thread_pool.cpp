@@ -5,7 +5,7 @@
 
 #include <algorithm>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 ThreadPool::ThreadPool(int maxThreads)
     : m_maxThreads(std::max(maxThreads, 1))
@@ -67,4 +67,4 @@ void ThreadPool::threadMain()
     }
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

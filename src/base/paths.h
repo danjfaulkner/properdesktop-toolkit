@@ -8,7 +8,7 @@
 
 // The user's and the system's standard directories. They are the XDG base
 // directory defaults; the XDG_* variables are not read.
-namespace cutefish::base::paths {
+namespace properdesktop::base::paths {
 
 std::string home();
 // ~/.config
@@ -26,8 +26,8 @@ std::string runtimeDirectory();
 std::vector<std::string> dataDirectories();
 // /etc/xdg
 std::vector<std::string> configDirectories();
-// ~/.config/cutefish/<name>.conf, a Cutefish process's own settings.
-std::string cutefishConfig(const std::string& name);
+// ~/.config/properdesktop/<name>.conf, a Proper Desktop process's own settings.
+std::string properdesktopConfig(const std::string& name);
 
 enum class UserDirectory {
     Desktop,
@@ -51,4 +51,4 @@ std::string userDirectory(UserDirectory directory, const std::string& userDirsFi
 // directories, then /snap/bin, or itself when it has a slash; empty when not executable.
 std::string findExecutable(const std::string& program);
 
-} // namespace cutefish::base::paths
+} // namespace properdesktop::base::paths

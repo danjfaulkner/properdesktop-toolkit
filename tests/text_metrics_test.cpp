@@ -10,7 +10,7 @@
 #include "ui/theme.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 // Reference numbers for Noto Sans in labels: font metrics, line layout
 // with design metrics and tight ink bounds, measured on the test laptop at

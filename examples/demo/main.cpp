@@ -22,7 +22,7 @@
 #include "ui/view.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 static constexpr double kTitleBarHeight = 44;
 static constexpr double kCloseButtonSize = 28;
@@ -205,7 +205,7 @@ public:
         content->setSpacing(12);
         content->setLayoutHints({.fillWidth = true});
 
-        auto* heading = content->addChild<Label>("cutefish-toolkit");
+        auto* heading = content->addChild<Label>("properdesktop-toolkit");
         heading->setFontSize(24);
         heading->setWeight(600);
 

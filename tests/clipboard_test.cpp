@@ -7,7 +7,7 @@
 
 #include "ui/clipboard.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 static bool contains(const std::vector<std::string>& types, const std::string& type)
 {

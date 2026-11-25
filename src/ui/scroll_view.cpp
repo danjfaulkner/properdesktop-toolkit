@@ -9,7 +9,7 @@
 #include "ui/scroller.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Connects the scroll view to its scroller, which needs the window and so
 // is made on the first scroll.
@@ -254,4 +254,4 @@ bool ScrollView::scroll(const ScrollEvent& event)
     return scroller && scroller->handleScroll(event);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

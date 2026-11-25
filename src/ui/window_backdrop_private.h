@@ -3,7 +3,7 @@
 
 #pragma once
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Window;
 
@@ -12,4 +12,4 @@ class Window;
 bool windowHasUnderlays(const Window* window);
 bool windowHasBackdrop(const Window* window);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

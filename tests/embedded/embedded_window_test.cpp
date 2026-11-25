@@ -21,10 +21,10 @@
 #include "ui/theme.h"
 #include "ui/view.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using namespace std::chrono_literals;
 
-extern cutefish::base::EventLoop* g_hostLoop;
+extern properdesktop::base::EventLoop* g_hostLoop;
 
 static constexpr uint64_t kStart = 1000000000;
 
@@ -350,7 +350,7 @@ static bool waitReadable(int fd, int timeoutMs)
 
 TEST(EmbeddedTest, TimersRunThroughTheHostsLoop)
 {
-    cutefish::base::EventLoop& loop = Application::instance()->loop();
+    properdesktop::base::EventLoop& loop = Application::instance()->loop();
     EmbeddedWindow window;
     auto content = std::make_unique<Free>();
     TextField* field = content->addChild<TextField>();
@@ -370,7 +370,7 @@ TEST(EmbeddedTest, TimersRunThroughTheHostsLoop)
     }
     EXPECT_EQ(requests, 1);
 
-    cutefish::base::Timer timer;
+    properdesktop::base::Timer timer;
     bool fired = false;
     timer.onTimeout = [&fired] { fired = true; };
     timer.setSingleShot(true);
@@ -405,5 +405,5 @@ TEST(EmbeddedApplicationTest, UsesTheHostLoop)
 {
     ASSERT_NE(g_hostLoop, nullptr);
     EXPECT_EQ(&Application::instance()->loop(), g_hostLoop);
-    EXPECT_EQ(cutefish::base::EventLoop::current(), g_hostLoop);
+    EXPECT_EQ(properdesktop::base::EventLoop::current(), g_hostLoop);
 }

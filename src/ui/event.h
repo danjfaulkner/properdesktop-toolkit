@@ -9,7 +9,7 @@
 
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 enum Modifier : uint32_t {
     NoModifier = 0,
@@ -212,4 +212,4 @@ enum class CursorShape {
     Image,
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

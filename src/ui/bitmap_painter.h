@@ -13,7 +13,7 @@
 #include "ui/geometry.h"
 #include "ui/path.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Draws into a Bitmap on the CPU, in coordinates the transform maps to the
 // bitmap's pixels. Antialiasing starts off, as the common 2D painter has it.
@@ -95,4 +95,4 @@ private:
     std::unique_ptr<Canvas> m_canvas;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

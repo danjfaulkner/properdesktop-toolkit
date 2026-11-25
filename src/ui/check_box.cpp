@@ -12,7 +12,7 @@
 #include "ui/cell_layout.h"
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr SizeF kIndicator = {20, 20};
 static constexpr double kPadding = 4;
@@ -171,4 +171,4 @@ void RadioButton::paintIndicator(Painter& painter, const RectF& rect)
     painter.restore();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

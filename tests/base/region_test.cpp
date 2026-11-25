@@ -9,7 +9,7 @@
 
 #include "base/region.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 
 static constexpr int kGrid = 24;
 

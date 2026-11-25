@@ -14,7 +14,7 @@
 
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class View;
 
@@ -60,4 +60,4 @@ struct FrameDamage
     std::vector<Watch> watches;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -13,7 +13,7 @@
 #include "base/event_loop.h"
 #include "base/file.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 using namespace std::chrono_literals;
 namespace fs = std::filesystem;
 
@@ -77,7 +77,7 @@ TEST(ApplicationBundleTest, FindsTheBundleOfAPath)
 
 TEST(ApplicationBundleTest, ReadsABundleAsAnEntry)
 {
-    file::TemporaryDirectory directory(fs::temp_directory_path().string(), "cutefish-test-");
+    file::TemporaryDirectory directory(fs::temp_directory_path().string(), "properdesktop-test-");
     ASSERT_TRUE(directory.isValid());
     const std::string path = directory.path() + "/My Editor.app";
     ASSERT_TRUE(makeBundle(path, "Editor 100%"));
@@ -127,7 +127,7 @@ TEST(ApplicationBundleTest, ReadsABundleAsAnEntry)
 
 TEST(ApplicationBundleTest, OpensItsDocumentTypes)
 {
-    file::TemporaryDirectory directory(fs::temp_directory_path().string(), "cutefish-test-");
+    file::TemporaryDirectory directory(fs::temp_directory_path().string(), "properdesktop-test-");
     ASSERT_TRUE(directory.isValid());
     const std::string path = directory.path() + "/Viewer.app";
     ASSERT_TRUE(makeBundle(path, "Viewer"));
@@ -209,7 +209,7 @@ TEST(ApplicationBundleTest, OpensItsDocumentTypes)
 
 TEST(ApplicationBundleTest, IsATerminalWithTheShellRole)
 {
-    file::TemporaryDirectory directory(fs::temp_directory_path().string(), "cutefish-test-");
+    file::TemporaryDirectory directory(fs::temp_directory_path().string(), "properdesktop-test-");
     ASSERT_TRUE(directory.isValid());
     const std::string path = directory.path() + "/Shell.app";
     ASSERT_TRUE(makeBundle(path, "Shell"));
@@ -242,8 +242,8 @@ TEST(ApplicationBundleTest, IsATerminalWithTheShellRole)
 
 TEST(ApplicationBundleTest, ListsInstalledBundlesWhenAnEntryRunsThem)
 {
-    file::TemporaryDirectory applications(fs::temp_directory_path().string(), "cutefish-test-");
-    file::TemporaryDirectory bundles(fs::temp_directory_path().string(), "cutefish-test-");
+    file::TemporaryDirectory applications(fs::temp_directory_path().string(), "properdesktop-test-");
+    file::TemporaryDirectory bundles(fs::temp_directory_path().string(), "properdesktop-test-");
     ASSERT_TRUE(applications.isValid() && bundles.isValid());
     const std::string installed = bundles.path() + "/Editor.app";
     ASSERT_TRUE(makeBundle(installed, "Editor"));
@@ -295,9 +295,9 @@ TEST(ApplicationBundleTest, ListsInstalledBundlesWhenAnEntryRunsThem)
 
 TEST(ApplicationBundleTest, ListsBundlesOfEveryApplicationsFolder)
 {
-    file::TemporaryDirectory applications(fs::temp_directory_path().string(), "cutefish-test-");
-    file::TemporaryDirectory user(fs::temp_directory_path().string(), "cutefish-test-");
-    file::TemporaryDirectory system(fs::temp_directory_path().string(), "cutefish-test-");
+    file::TemporaryDirectory applications(fs::temp_directory_path().string(), "properdesktop-test-");
+    file::TemporaryDirectory user(fs::temp_directory_path().string(), "properdesktop-test-");
+    file::TemporaryDirectory system(fs::temp_directory_path().string(), "properdesktop-test-");
     ASSERT_TRUE(applications.isValid() && user.isValid() && system.isValid());
     ASSERT_TRUE(file::writeAtomically(applications.path() + "/runner.desktop", kHandler));
     ASSERT_TRUE(makeBundle(user.path() + "/Editor.app", "Editor"));
@@ -329,8 +329,8 @@ TEST(ApplicationBundleTest, ListsBundlesOfEveryApplicationsFolder)
 
 TEST(ApplicationBundleTest, ListsABundleWrittenInPlaceOnceItsInfoAppears)
 {
-    file::TemporaryDirectory applications(fs::temp_directory_path().string(), "cutefish-test-");
-    file::TemporaryDirectory bundles(fs::temp_directory_path().string(), "cutefish-test-");
+    file::TemporaryDirectory applications(fs::temp_directory_path().string(), "properdesktop-test-");
+    file::TemporaryDirectory bundles(fs::temp_directory_path().string(), "properdesktop-test-");
     ASSERT_TRUE(applications.isValid() && bundles.isValid());
     ASSERT_TRUE(file::writeAtomically(applications.path() + "/runner.desktop", kHandler));
 
@@ -357,8 +357,8 @@ TEST(ApplicationBundleTest, ListsABundleWrittenInPlaceOnceItsInfoAppears)
 
 TEST(ApplicationBundleTest, ReadsOtherBundlesOnAThread)
 {
-    file::TemporaryDirectory applications(fs::temp_directory_path().string(), "cutefish-test-");
-    file::TemporaryDirectory elsewhere(fs::temp_directory_path().string(), "cutefish-test-");
+    file::TemporaryDirectory applications(fs::temp_directory_path().string(), "properdesktop-test-");
+    file::TemporaryDirectory elsewhere(fs::temp_directory_path().string(), "properdesktop-test-");
     ASSERT_TRUE(applications.isValid() && elsewhere.isValid());
     ASSERT_TRUE(file::writeAtomically(applications.path() + "/runner.desktop", kHandler));
     const std::string other = elsewhere.path() + "/Image/Editor.app";

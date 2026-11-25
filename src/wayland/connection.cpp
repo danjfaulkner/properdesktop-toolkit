@@ -17,12 +17,12 @@
 #include <wayland-client.h>
 
 #include <cursor-shape-v1-client-protocol.h>
-#include <cutefish-main-menu-v1-client-protocol.h>
-#include <cutefish-shell-v1-client-protocol.h>
-#include <cutefish-status-item-v1-client-protocol.h>
-#include <cutefish-surface-blur-v1-client-protocol.h>
-#include <cutefish-window-hints-v1-client-protocol.h>
-#include <cutefish-window-placement-v1-client-protocol.h>
+#include <properdesktop-main-menu-v1-client-protocol.h>
+#include <properdesktop-shell-v1-client-protocol.h>
+#include <properdesktop-status-item-v1-client-protocol.h>
+#include <properdesktop-surface-blur-v1-client-protocol.h>
+#include <properdesktop-window-hints-v1-client-protocol.h>
+#include <properdesktop-window-placement-v1-client-protocol.h>
 #include <fractional-scale-v1-client-protocol.h>
 #include <pointer-gestures-unstable-v1-client-protocol.h>
 #include <text-input-unstable-v3-client-protocol.h>
@@ -46,7 +46,7 @@
 #include "wayland/text_input.h"
 #include "wayland/shell_surface.h"
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 static std::vector<Connection*> s_connections;
 
@@ -112,17 +112,17 @@ struct ConnectionListeners
         } else if (strcmp(interface, xdg_wm_dialog_v1_interface.name) == 0) {
             self->m_dialogManager = bind<xdg_wm_dialog_v1>(registry, name,
                                                           &xdg_wm_dialog_v1_interface, version, 1);
-        } else if (strcmp(interface, cutefish_surface_blur_v1_interface.name) == 0) {
-            self->m_surfaceBlur = bind<cutefish_surface_blur_v1>(
-                registry, name, &cutefish_surface_blur_v1_interface, version, 1);
-        } else if (strcmp(interface, cutefish_window_hints_v1_interface.name) == 0) {
-            self->m_windowHints = bind<cutefish_window_hints_v1>(
-                registry, name, &cutefish_window_hints_v1_interface, version, 1);
-            cutefish_window_hints_v1_add_listener(self->m_windowHints, &windowHints, self);
-        } else if (strcmp(interface, cutefish_window_placement_v1_interface.name) == 0) {
-            self->m_windowPlacement = bind<cutefish_window_placement_v1>(
-                registry, name, &cutefish_window_placement_v1_interface, version, 1);
-            cutefish_window_placement_v1_add_listener(self->m_windowPlacement, &windowPlacement, self);
+        } else if (strcmp(interface, properdesktop_surface_blur_v1_interface.name) == 0) {
+            self->m_surfaceBlur = bind<properdesktop_surface_blur_v1>(
+                registry, name, &properdesktop_surface_blur_v1_interface, version, 1);
+        } else if (strcmp(interface, properdesktop_window_hints_v1_interface.name) == 0) {
+            self->m_windowHints = bind<properdesktop_window_hints_v1>(
+                registry, name, &properdesktop_window_hints_v1_interface, version, 1);
+            properdesktop_window_hints_v1_add_listener(self->m_windowHints, &windowHints, self);
+        } else if (strcmp(interface, properdesktop_window_placement_v1_interface.name) == 0) {
+            self->m_windowPlacement = bind<properdesktop_window_placement_v1>(
+                registry, name, &properdesktop_window_placement_v1_interface, version, 1);
+            properdesktop_window_placement_v1_add_listener(self->m_windowPlacement, &windowPlacement, self);
         } else if (strcmp(interface, zwp_virtual_keyboard_manager_v1_interface.name) == 0) {
             self->m_virtualKeyboards = bind<zwp_virtual_keyboard_manager_v1>(
                 registry, name, &zwp_virtual_keyboard_manager_v1_interface, version, 1);
@@ -136,14 +136,14 @@ struct ConnectionListeners
             wl_output_add_listener(output, &outputListener, self);
             self->m_outputs.push_back({name, output, nullptr, {}});
             self->watchOutput(self->m_outputs.back());
-        } else if (strcmp(interface, cutefish_status_item_manager_v1_interface.name) == 0) {
-            self->m_statusItems = bind<cutefish_status_item_manager_v1>(
-                registry, name, &cutefish_status_item_manager_v1_interface, version, 1);
-        } else if (strcmp(interface, cutefish_main_menu_manager_v1_interface.name) == 0) {
-            self->m_mainMenus = bind<cutefish_main_menu_manager_v1>(
-                registry, name, &cutefish_main_menu_manager_v1_interface, version, 1);
-        } else if (strcmp(interface, cutefish_shell_v1_interface.name) == 0) {
-            self->m_shell = bind<cutefish_shell_v1>(registry, name, &cutefish_shell_v1_interface, version, 1);
+        } else if (strcmp(interface, properdesktop_status_item_manager_v1_interface.name) == 0) {
+            self->m_statusItems = bind<properdesktop_status_item_manager_v1>(
+                registry, name, &properdesktop_status_item_manager_v1_interface, version, 1);
+        } else if (strcmp(interface, properdesktop_main_menu_manager_v1_interface.name) == 0) {
+            self->m_mainMenus = bind<properdesktop_main_menu_manager_v1>(
+                registry, name, &properdesktop_main_menu_manager_v1_interface, version, 1);
+        } else if (strcmp(interface, properdesktop_shell_v1_interface.name) == 0) {
+            self->m_shell = bind<properdesktop_shell_v1>(registry, name, &properdesktop_shell_v1_interface, version, 1);
         } else if (strcmp(interface, wl_shm_interface.name) == 0) {
             self->m_shm = bind<wl_shm>(registry, name, &wl_shm_interface, version, 1);
         } else if (strcmp(interface, xdg_toplevel_drag_manager_v1_interface.name) == 0) {
@@ -232,20 +232,20 @@ struct ConnectionListeners
     }
     static void xdgOutputDescription(void*, zxdg_output_v1*, const char*) {}
 
-    static void interactiveResize(void*, cutefish_window_hints_v1*, wl_surface* surface, uint32_t active)
+    static void interactiveResize(void*, properdesktop_window_hints_v1*, wl_surface* surface, uint32_t active)
     {
         if (ShellSurface* shell = shellSurfaceFor(surface))
             shell->delegate()->interactiveResize(active != 0);
     }
 
-    static void fullscreenReveal(void*, cutefish_window_hints_v1*, wl_surface* surface, int32_t offset,
+    static void fullscreenReveal(void*, properdesktop_window_hints_v1*, wl_surface* surface, int32_t offset,
                                  uint32_t duration)
     {
         if (ShellSurface* shell = shellSurfaceFor(surface))
             shell->delegate()->fullScreenReveal(offset, int(duration));
     }
 
-    static void workArea(void* data, cutefish_window_hints_v1*, const char* output, int32_t x, int32_t y,
+    static void workArea(void* data, properdesktop_window_hints_v1*, const char* output, int32_t x, int32_t y,
                          int32_t width, int32_t height, uint32_t primary)
     {
         auto* self = static_cast<Connection*>(data);
@@ -255,7 +255,7 @@ struct ConnectionListeners
             self->onOutputsChanged();
     }
 
-    static void windowPosition(void*, cutefish_window_placement_v1*, wl_surface* surface, int32_t x, int32_t y)
+    static void windowPosition(void*, properdesktop_window_placement_v1*, wl_surface* surface, int32_t x, int32_t y)
     {
         if (ShellSurface* shell = shellSurfaceFor(surface))
             shell->delegate()->screenPosition({double(x), double(y)});
@@ -573,8 +573,8 @@ struct ConnectionListeners
     static constexpr zwp_pointer_gesture_hold_v1_listener hold = {holdBegin, holdEnd};
     static constexpr zwp_pointer_gesture_pinch_v1_listener pinch = {pinchBegin, pinchUpdate, pinchEnd};
     static constexpr xdg_wm_base_listener wmBase = {ping};
-    static constexpr cutefish_window_hints_v1_listener windowHints = {interactiveResize, workArea, fullscreenReveal};
-    static constexpr cutefish_window_placement_v1_listener windowPlacement = {windowPosition};
+    static constexpr properdesktop_window_hints_v1_listener windowHints = {interactiveResize, workArea, fullscreenReveal};
+    static constexpr properdesktop_window_placement_v1_listener windowPlacement = {windowPosition};
     static constexpr wl_seat_listener seat = {capabilities, seatName};
     static constexpr wl_pointer_listener pointer = {
         pointerEnter,
@@ -604,7 +604,7 @@ std::unique_ptr<Connection> Connection::open(base::EventLoop& loop)
 {
     wl_display* display = wl_display_connect(nullptr);
     if (!display) {
-        fprintf(stderr, "cutefish-toolkit: cannot connect to the Wayland compositor\n");
+        fprintf(stderr, "properdesktop-toolkit: cannot connect to the Wayland compositor\n");
         return nullptr;
     }
     std::unique_ptr<Connection> connection(new Connection(loop, display));
@@ -620,7 +620,7 @@ std::unique_ptr<Connection> Connection::openFd(base::EventLoop& loop, int fd)
     fcntl(fd, F_SETFD, fcntl(fd, F_GETFD) | FD_CLOEXEC);
     wl_display* display = wl_display_connect_to_fd(fd);
     if (!display) {
-        fprintf(stderr, "cutefish-toolkit: cannot connect over the descriptor given\n");
+        fprintf(stderr, "properdesktop-toolkit: cannot connect over the descriptor given\n");
         return nullptr;
     }
     std::unique_ptr<Connection> connection(new Connection(loop, display));
@@ -739,19 +739,19 @@ Connection::~Connection()
     if (m_seat)
         wl_seat_release(m_seat);
     if (m_windowHints)
-        cutefish_window_hints_v1_destroy(m_windowHints);
+        properdesktop_window_hints_v1_destroy(m_windowHints);
     if (m_windowPlacement)
-        cutefish_window_placement_v1_destroy(m_windowPlacement);
+        properdesktop_window_placement_v1_destroy(m_windowPlacement);
     if (m_virtualKeyboard)
         zwp_virtual_keyboard_v1_destroy(m_virtualKeyboard);
     if (m_virtualKeyboards)
         zwp_virtual_keyboard_manager_v1_destroy(m_virtualKeyboards);
     if (m_surfaceBlur)
-        cutefish_surface_blur_v1_destroy(m_surfaceBlur);
+        properdesktop_surface_blur_v1_destroy(m_surfaceBlur);
     if (m_statusItems)
-        cutefish_status_item_manager_v1_destroy(m_statusItems);
+        properdesktop_status_item_manager_v1_destroy(m_statusItems);
     if (m_mainMenus)
-        cutefish_main_menu_manager_v1_destroy(m_mainMenus);
+        properdesktop_main_menu_manager_v1_destroy(m_mainMenus);
     if (m_dialogManager)
         xdg_wm_dialog_v1_destroy(m_dialogManager);
     for (const auto& pending : m_activations)
@@ -777,7 +777,7 @@ Connection::~Connection()
     if (m_toplevelDragManager)
         xdg_toplevel_drag_manager_v1_destroy(m_toplevelDragManager);
     if (m_shell)
-        cutefish_shell_v1_destroy(m_shell);
+        properdesktop_shell_v1_destroy(m_shell);
     if (m_shm)
         wl_shm_destroy(m_shm);
     if (m_subcompositor)
@@ -800,7 +800,7 @@ bool Connection::initialize()
     wl_display_roundtrip(m_display);
 
     if (!m_compositor || !m_wmBase || !m_viewporter || !m_fractionalScaleManager) {
-        fprintf(stderr, "cutefish-toolkit: the compositor lacks a required global\n");
+        fprintf(stderr, "properdesktop-toolkit: the compositor lacks a required global\n");
         return false;
     }
     if (m_seat && m_dataDeviceManager)
@@ -844,7 +844,7 @@ void Connection::handleConnectionLost()
     m_loop.removePrepareHook(m_hook);
     m_hook = 0;
     m_lost = true;
-    fprintf(stderr, "cutefish-toolkit: lost the Wayland connection\n");
+    fprintf(stderr, "properdesktop-toolkit: lost the Wayland connection\n");
     m_loop.quit(1);
 }
 
@@ -859,7 +859,7 @@ bool Connection::sendKey(uint32_t evdevCode, bool pressed)
         return false;
     if (!m_virtualKeyboard) {
         const std::string& keymap = m_keyboard->keymapText();
-        const int fd = memfd_create("cutefish-keymap", MFD_CLOEXEC);
+        const int fd = memfd_create("properdesktop-keymap", MFD_CLOEXEC);
         if (fd < 0)
             return false;
         if (write(fd, keymap.c_str(), keymap.size() + 1) != ssize_t(keymap.size() + 1)) {
@@ -1012,7 +1012,7 @@ void Connection::setCursorImage(ShellSurface* shell, const Bitmap& image, int sc
     const int height = pixels.height();
     const size_t stride = size_t(width) * 4;
     const size_t size = stride * size_t(height);
-    const int fd = memfd_create("cutefish-cursor", MFD_CLOEXEC);
+    const int fd = memfd_create("properdesktop-cursor", MFD_CLOEXEC);
     if (fd < 0)
         return;
     if (ftruncate(fd, off_t(size)) < 0) {
@@ -1216,4 +1216,4 @@ void Connection::flush()
     wl_display_flush(m_display);
 }
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

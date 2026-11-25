@@ -11,10 +11,10 @@
 
 // The user's mimeapps.list and xdg-terminals.list, edited line by line so
 // comments and entries this code does not touch survive; a port of
-// cutefish-framework's MimeApps. Desktop entries come from
+// properdesktop-framework's MimeApps. Desktop entries come from
 // ApplicationRegistry, so ask once it has loaded. MIME types are named, and
 // an alias stands for its type.
-namespace cutefish::base::mimeapps {
+namespace properdesktop::base::mimeapps {
 
 // The user's files under ~/.config, which every choice is written to.
 std::string userListPath();
@@ -46,7 +46,7 @@ std::string defaultApplication(const std::vector<std::string>& paths, const std:
 
 // Starts what opens the URI's scheme (its x-scheme-handler type, as the
 // lists and the entries' MimeType give it) with the URI, once the installed
-// applications are read, through org.cutefish.AppRuntime with the activation
+// applications are read, through org.properdesktop.AppRuntime with the activation
 // token, or itself when the runtime is not on the bus; done(false) when
 // nothing does.
 void openUri(const std::string& uri, const std::string& activationToken = {},
@@ -57,4 +57,4 @@ void openUri(const std::string& uri, const std::string& activationToken = {},
 std::string defaultTerminal(const std::string& path);
 bool setDefaultTerminal(const std::string& path, const std::string& desktopId);
 
-} // namespace cutefish::base::mimeapps
+} // namespace properdesktop::base::mimeapps

@@ -7,7 +7,7 @@
 
 #include "include/gpu/ganesh/GrContextOptions.h"
 
-namespace cutefish::ui::gpu {
+namespace properdesktop::ui::gpu {
 
 // Linked GL programs kept on disk between runs, so a first frame does not
 // compile the shaders earlier runs drew with. A binary only loads on the
@@ -30,4 +30,4 @@ private:
     bool m_pruned = false;
 };
 
-} // namespace cutefish::ui::gpu
+} // namespace properdesktop::ui::gpu

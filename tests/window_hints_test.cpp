@@ -15,7 +15,7 @@
 #include "ui/window.h"
 #include "ui/window_header.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 TEST(SubsurfaceTest, HeadlessWindowsHaveNone)
 {

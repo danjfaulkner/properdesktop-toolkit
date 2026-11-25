@@ -9,7 +9,7 @@
 #include "base/geometry.h"
 #include "base/region.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 // A 2D affine transform with row vectors, laid out and composed as the
 // common 2D graphics transform: a point maps to
@@ -100,4 +100,4 @@ private:
 
 std::ostream& operator<<(std::ostream& stream, const AffineTransform& transform);
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

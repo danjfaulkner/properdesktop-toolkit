@@ -13,7 +13,7 @@
 // Points, sizes and rectangles in whole and fractional pixels. Rectangles are
 // half-open: right() is x() + width(), and a rectangle never has a negative
 // width or height. ui/geometry.h keeps its own plain structs for views.
-namespace cutefish::base {
+namespace properdesktop::base {
 
 // Half away from zero, as truncate(value ± 0.5): 0.49999999999999994 gives
 // 1, as the x86 build of the common rounding helper does. Saturates at the
@@ -565,4 +565,4 @@ std::ostream& operator<<(std::ostream& stream, const InsetsF& insets);
 std::ostream& operator<<(std::ostream& stream, const Rect& rect);
 std::ostream& operator<<(std::ostream& stream, const RectF& rect);
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

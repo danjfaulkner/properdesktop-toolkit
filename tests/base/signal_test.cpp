@@ -10,7 +10,7 @@
 
 #include "base/signal.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 
 TEST(SignalTest, CompilesAfterKeywordMacros)
 {

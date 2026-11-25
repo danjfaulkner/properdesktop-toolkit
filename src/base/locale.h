@@ -10,7 +10,7 @@
 #include <string_view>
 #include <vector>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 // A day of the proleptic Gregorian calendar.
 struct CalendarDate
@@ -69,7 +69,7 @@ enum class TemperatureUnit {
 };
 
 // The region and the format choices of Settings' Language & Region page, as
-// cutefish-services keeps them in services.conf [Region]; what is not set
+// properdesktop-services keeps them in services.conf [Region]; what is not set
 // follows the region.
 struct RegionalPreferences
 {
@@ -84,7 +84,7 @@ struct RegionalPreferences
 
     // From [Region] of the settings file at the path.
     static RegionalPreferences read(const std::string& path);
-    // cutefish-services' settings file.
+    // properdesktop-services' settings file.
     static std::string sessionPath();
 
     bool operator==(const RegionalPreferences&) const = default;
@@ -241,4 +241,4 @@ private:
     bool m_groupDigits = true;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

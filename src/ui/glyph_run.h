@@ -11,7 +11,7 @@
 
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Painter;
 struct GlyphRendererPrivate;
@@ -139,4 +139,4 @@ struct FontFamily
 // it is fixed pitch.
 std::vector<FontFamily> fontFamilies();
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

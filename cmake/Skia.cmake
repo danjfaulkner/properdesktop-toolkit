@@ -11,7 +11,7 @@ find_program(SKIA_NINJA ninja REQUIRED)
 find_program(SKIA_CC clang REQUIRED)
 find_program(SKIA_CXX clang++ REQUIRED)
 
-# Codecs and fonts come from the system; everything Cutefish does not draw
+# Codecs and fonts come from the system; everything Proper Desktop does not draw
 # with is left out.
 set(SKIA_ARGS
     "is_official_build = true"

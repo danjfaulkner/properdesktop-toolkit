@@ -8,7 +8,7 @@
 
 #include "ui/bubble_shape.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 namespace {
 

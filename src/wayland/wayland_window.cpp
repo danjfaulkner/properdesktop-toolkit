@@ -8,7 +8,7 @@
 #include <cmath>
 #include <wayland-egl.h>
 
-#include <cutefish-main-menu-v1-client-protocol.h>
+#include <properdesktop-main-menu-v1-client-protocol.h>
 
 #include "include/core/SkBlendMode.h"
 #include "include/core/SkCanvas.h"
@@ -33,7 +33,7 @@
 #include "wayland/main_menu.h"
 #include "wayland/text_input.h"
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 WaylandWindow::WaylandWindow(Window* window)
     : WaylandWindow(window, Application::instance()->connection(), Application::instance()->gpu())
@@ -546,7 +546,7 @@ void WaylandWindow::setMainMenu(Menu* menu)
     if (mirror == m_mainMenu)
         return;
     m_mainMenu = std::move(mirror);
-    cutefish_main_menu_manager_v1_set_main_menu(m_connection->mainMenus(), m_shell->surface(),
+    properdesktop_main_menu_manager_v1_set_main_menu(m_connection->mainMenus(), m_shell->surface(),
                                                 m_mainMenu ? m_mainMenu->proxy() : nullptr);
 }
 
@@ -558,7 +558,7 @@ void WaylandWindow::setDockMenu(Menu* menu)
     if (mirror == m_dockMenu)
         return;
     m_dockMenu = std::move(mirror);
-    cutefish_main_menu_manager_v1_set_dock_menu(m_connection->mainMenus(), m_shell->surface(),
+    properdesktop_main_menu_manager_v1_set_dock_menu(m_connection->mainMenus(), m_shell->surface(),
                                                 m_dockMenu ? m_dockMenu->proxy() : nullptr);
 }
 
@@ -756,4 +756,4 @@ void WaylandWindow::textInput(const TextInputEvent& event)
     notifyTextInput(event);
 }
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

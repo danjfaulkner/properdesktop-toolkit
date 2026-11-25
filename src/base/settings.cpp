@@ -10,7 +10,7 @@
 
 #include "base/file.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 static bool startsWith(std::string_view text, std::string_view prefix)
 {
@@ -795,4 +795,4 @@ std::string Settings::formatDouble(double value)
     return std::string(buffer, end);
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

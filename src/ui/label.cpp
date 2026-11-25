@@ -31,7 +31,7 @@
 
 namespace textlayout = skia::textlayout;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Wide enough that nothing wraps while measuring.
 static constexpr double kUnboundedWidth = 1e6;
@@ -934,4 +934,4 @@ textlayout::Paragraph* Label::layoutParagraph(double width) const
     return m_elided.get();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -8,7 +8,7 @@
 #include "ui/bitmap.h"
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Painter;
 
@@ -63,4 +63,4 @@ Bitmap render(const State& state, double scale, Bitmap::Format format = Bitmap::
 
 } // namespace window_controls
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

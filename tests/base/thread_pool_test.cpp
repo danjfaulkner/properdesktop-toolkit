@@ -12,7 +12,7 @@
 #include "base/event_loop.h"
 #include "base/thread_pool.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 using namespace std::chrono_literals;
 
 TEST(ThreadPoolTest, ResultArrivesOnTheLoopThread)

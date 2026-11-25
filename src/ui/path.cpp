@@ -14,7 +14,7 @@
 #include "include/pathops/SkPathOps.h"
 #include "ui/path_private.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The control point distance that makes a cubic follow a quarter circle.
 static constexpr double kKappa = 0.5522847498;
@@ -719,4 +719,4 @@ Path Path::stroked(double width, LineCap cap, LineJoin join, double miterLimit) 
     return result;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

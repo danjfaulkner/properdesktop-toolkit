@@ -8,7 +8,7 @@
 
 #include "base/locale.h"
 
-namespace cutefish::i18n {
+namespace properdesktop::i18n {
 
 void setDomain(const char* domain)
 {
@@ -18,7 +18,7 @@ void setDomain(const char* domain)
 
 void bindDomain(const char* domain)
 {
-    bindtextdomain(domain, CUTEFISH_LOCALE_DIR);
+    bindtextdomain(domain, PROPERDESKTOP_LOCALE_DIR);
     bind_textdomain_codeset(domain, "UTF-8");
 }
 
@@ -84,4 +84,4 @@ std::string format(std::string_view pattern,
     return result;
 }
 
-} // namespace cutefish::i18n
+} // namespace properdesktop::i18n

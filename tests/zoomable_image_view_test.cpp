@@ -17,13 +17,13 @@
 #include "ui/window.h"
 #include "ui/zoomable_image_view.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 namespace fs = std::filesystem;
 
 namespace {
 
 // One per process: ctest runs the tests of this suite side by side.
-const fs::path kDirectory = "/tmp/cutefish-toolkit-zoomable-image-test-" + std::to_string(getpid());
+const fs::path kDirectory = "/tmp/properdesktop-toolkit-zoomable-image-test-" + std::to_string(getpid());
 
 std::string writePng(const std::string& name, int width, int height)
 {
@@ -132,7 +132,7 @@ TEST_F(ZoomableImageViewTest, AQuarterTurnTurnsThePictureWithoutDecodingAgain)
     show(path);
     // Until the fitted decode is in.
     auto& loop = Application::instance()->loop();
-    cutefish::base::Timer poll(&loop);
+    properdesktop::base::Timer poll(&loop);
     const auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(5);
     poll.onTimeout = [&] {
         if (!view->isLoading() || std::chrono::steady_clock::now() > deadline)

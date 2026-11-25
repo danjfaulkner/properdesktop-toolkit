@@ -29,7 +29,7 @@
 #include "ui/window.h"
 #include "ui/window_header.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 // A fixed frame time, so captures show animations at one phase.
 static constexpr uint64_t kCaptureFrameNs = 1000000000;
@@ -223,7 +223,7 @@ static int capture(const std::string& directory)
             char file[64];
             snprintf(file, sizeof(file), "/gallery-%s-%g.png", name, scale);
             if (!window.grab(kCaptureFrameNs).savePng(directory + file)) {
-                fprintf(stderr, "cutefish-toolkit-gallery: cannot write %s%s\n", directory.c_str(), file);
+                fprintf(stderr, "properdesktop-toolkit-gallery: cannot write %s%s\n", directory.c_str(), file);
                 ++failures;
             }
         }

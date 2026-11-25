@@ -7,10 +7,10 @@
 #include "include/core/SkPixmap.h"
 #include "ui/bitmap.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 SkColorType skColorType(Bitmap::Format format);
 // Read-only view of the pixels.
 SkPixmap skPixmap(const Bitmap& bitmap);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

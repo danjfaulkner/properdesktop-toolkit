@@ -7,7 +7,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Lines up its visible children along one direction. Each gets its preferred
 // length; the space left over goes to the children that fill that direction,
@@ -109,4 +109,4 @@ private:
     Margins m_margins;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

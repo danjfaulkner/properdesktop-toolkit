@@ -7,7 +7,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A sidebar's edge, which resizes it: a drag moves the edge within the
 // width range, a double click puts back the default width. It is kWidth
@@ -51,4 +51,4 @@ private:
     double m_startX = 0;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

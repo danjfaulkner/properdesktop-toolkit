@@ -12,7 +12,7 @@
 
 #include "ui/image_decoder.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 Image::Image(int width, int height)
     : m_width(width)
@@ -63,4 +63,4 @@ std::string Image::encodePng() const
     return std::string(static_cast<const char*>(data->data()), data->size());
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

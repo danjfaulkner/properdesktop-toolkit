@@ -7,7 +7,7 @@
 #include <cmath>
 
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 Animation::Animation(Window* window)
     : FrameClient(window)
@@ -95,4 +95,4 @@ double Animation::ease(double t) const
     return t;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

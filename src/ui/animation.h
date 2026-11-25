@@ -9,7 +9,7 @@
 
 #include "ui/frame_client.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Runs on its window's frames: every rendered frame ticks it once.
 class Animation : public FrameClient
@@ -61,4 +61,4 @@ private:
     uint64_t m_elapsedNs = 0;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

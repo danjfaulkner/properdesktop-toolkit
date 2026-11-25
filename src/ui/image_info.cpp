@@ -23,7 +23,7 @@
 #include "base/file.h"
 #include "ui/image_formats.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static uint32_t be16(const unsigned char* p)
 {
@@ -509,4 +509,4 @@ ImageInfo readImageInfo(const std::string& path, const std::string& mimeType)
     return saneSize(readHeader(path, mimeType));
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

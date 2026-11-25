@@ -10,11 +10,11 @@
 #include "base/dbus.h"
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
-static constexpr const char* kService = "org.cutefish.Services";
-static constexpr const char* kPath = "/org/cutefish/Services/Appearance";
-static constexpr const char* kInterface = "org.cutefish.Services.Appearance";
+static constexpr const char* kService = "org.properdesktop.Services";
+static constexpr const char* kPath = "/org/properdesktop/Services/Appearance";
+static constexpr const char* kInterface = "org.properdesktop.Services.Appearance";
 
 // The accents, in the order of the setting's index.
 static const Color kAccents[] = {
@@ -163,4 +163,4 @@ void AppearanceWatcher::apply(sd_bus_message* reply)
     Theme::setCurrent(theme);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

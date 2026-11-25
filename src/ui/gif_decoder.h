@@ -7,7 +7,7 @@
 #include <string_view>
 #include <vector>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // GIF frames composited onto the logical screen one after another: each
 // frame's disposal applied when the next one starts, "restore to
@@ -65,4 +65,4 @@ private:
     int m_lastHeight = 0;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

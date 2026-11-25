@@ -13,7 +13,7 @@
 #include "base/settings.h"
 #include "base/strings.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 static std::string trimmed(std::string_view text)
 {
@@ -235,13 +235,13 @@ static std::string substituteToken(const std::string& token, const DesktopEntry&
 
 std::vector<std::string> DesktopEntry::currentDesktops()
 {
-    return {"Cutefish"};
+    return {"ProperDesktop"};
 }
 
 std::string DesktopEntry::displayLanguage()
 {
-    // The session language lives in cutefish-services' settings.
-    const Settings settings(paths::cutefishConfig("services"));
+    // The session language lives in properdesktop-services' settings.
+    const Settings settings(paths::properdesktopConfig("services"));
     std::string language = settings.stringValue("Language/language");
     if (language.empty())
         return Locale::systemLanguage();
@@ -395,4 +395,4 @@ std::optional<DesktopEntry> DesktopEntry::parse(const std::string& id, const std
     return data;
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

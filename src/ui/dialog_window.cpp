@@ -20,7 +20,7 @@
 #include "ui/window_controls.h"
 #include "ui/window_header.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The dialog's metrics.
 static constexpr double kHeaderHeight = 44;
@@ -630,4 +630,4 @@ void ConfirmDialog::finish(bool accepted)
         onRejected();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<protocol name="cutefish_window_placement_v1">
-  <interface name="cutefish_window_placement_v1" version="1">
+<protocol name="properdesktop_window_placement_v1">
+  <interface name="properdesktop_window_placement_v1" version="1">
     <description summary="windows that place themselves on the screen">
       Lets a client put its normal windows at positions of its own choosing
       and learn where they are, in the compositor's global logical
@@ -15,7 +15,7 @@
         A surface that is not yet a mapped toplevel maps with its window
         geometry's top left at the position, the next time it maps, in place
         of the compositor's own placement and of set_restore_id; a placement
-        anchor of cutefish_window_hints_v1 takes precedence. A mapped normal
+        anchor of properdesktop_window_hints_v1 takes precedence. A mapped normal
         window moves there at once. Either way the compositor keeps enough
         of the window on an output to grab it again. Maximized, fullscreen
         and tiled windows, and windows the user is dragging, ignore it.

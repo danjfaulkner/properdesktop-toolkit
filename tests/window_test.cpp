@@ -28,7 +28,7 @@
 
 #include "test_views.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 TEST(WindowTest, HeaderDoubleClickTogglesMaximized)
 {
@@ -653,7 +653,7 @@ TEST(WindowTest, ThemeChangeIsAnnounced)
     const Theme original = Theme::current();
     int announced = 0;
     bool darkWhenAnnounced = false;
-    cutefish::base::Subscription subscription = Theme::changed().connect([&] {
+    properdesktop::base::Subscription subscription = Theme::changed().connect([&] {
         ++announced;
         darkWhenAnnounced = Theme::current().darkMode;
     });
@@ -751,7 +751,7 @@ TEST(WindowTest, ToolTipHidesWhenThePointerLeavesItsView)
     window.show();
     window.grab();
     TestInput::movePointer(window, {200, 140});
-    cutefish::base::EventLoop& loop = Application::instance()->loop();
+    properdesktop::base::EventLoop& loop = Application::instance()->loop();
     loop.startTimer(std::chrono::milliseconds(800), false, [&loop] { loop.quit(); });
     loop.run();
     ASSERT_NE(TestInput::toolTip(window), nullptr);

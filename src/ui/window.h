@@ -20,7 +20,7 @@ class SkCanvas;
 struct SkIRect;
 class SkRegion;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class DropOffer;
 struct DragSource;
@@ -95,7 +95,7 @@ struct WindowStates
     bool operator==(const WindowStates&) const = default;
 };
 
-// cutefish_surface_blur_v1's glass material, every parameter as the
+// properdesktop_surface_blur_v1's glass material, every parameter as the
 // protocol names it; the defaults are the compositor's. Lengths are logical
 // pixels, angles degrees.
 struct GlassMaterial
@@ -221,7 +221,7 @@ public:
     // The rounded body the compositor blurs behind, outlines and shadows.
     void setBackgroundBlur(const RectF& rect, double radius);
     // The outline that masks the blur instead of the rounded rect, such as
-    // a bubble's, as cutefish_surface_blur_v1.set_shape; empty for none.
+    // a bubble's, as properdesktop_surface_blur_v1.set_shape; empty for none.
     // Several subpaths blur several areas; the blur rect must cover them.
     void setBackgroundBlurShape(const Path& path);
     // A rounded rect the compositor blurs over the subsurfaces placed below
@@ -245,7 +245,7 @@ public:
     // Whether the compositor draws the blur and glass asked for above.
     bool backgroundGlassAvailable() const;
     // A size the window picks itself keeps its centre where it was, instead
-    // of its top left corner, as cutefish_window_hints_v1's center anchor.
+    // of its top left corner, as properdesktop_window_hints_v1's center anchor.
     void setResizeAroundCenter(bool aroundCenter);
     // The compositor reopens the window where the last window of this
     // application with the same id was closed. Before show().
@@ -376,7 +376,7 @@ public:
 
     // Opens at the size the user last left a window of this id at, and
     // maximized when it was left maximized. Kept in
-    // ~/.config/cutefish/<name>.conf, the application id without "cutefish-"
+    // ~/.config/properdesktop/<name>.conf, the application id without "properdesktop-"
     // being the name; windows of one id share it. Before show().
     void setRestoresSize(std::string windowId);
     const WindowStates& states() const { return m_states; }
@@ -724,4 +724,4 @@ private:
     int m_nextShortcutId = 1;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

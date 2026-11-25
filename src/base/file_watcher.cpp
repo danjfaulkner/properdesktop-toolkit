@@ -13,7 +13,7 @@
 
 #include "base/event_loop.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 static constexpr uint32_t kMask = IN_CREATE | IN_DELETE | IN_MOVED_FROM | IN_MOVED_TO | IN_CLOSE_WRITE | IN_ATTRIB
     | IN_DELETE_SELF | IN_MOVE_SELF | IN_ONLYDIR;
@@ -236,4 +236,4 @@ FileWatch FileWatch::directory(const std::string& path, std::function<void(const
     return result;
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

@@ -28,7 +28,7 @@
 #include "ui/text_context.h"
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static uint64_t monotonicNs()
 {
@@ -563,4 +563,4 @@ uint32_t EmbeddedWindow::drop()
     return handleDrop();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

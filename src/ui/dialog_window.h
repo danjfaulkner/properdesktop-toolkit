@@ -11,7 +11,7 @@
 #include "base/signal.h"
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Label;
 class Window;
@@ -184,4 +184,4 @@ private:
     base::Subscription m_languageChanged;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

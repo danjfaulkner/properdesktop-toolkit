@@ -1,5 +1,5 @@
 # Checks every catalog of PO_FILES with msgfmt: syntax, plural forms, header
-# and the "{name}" placeholders; see CutefishTranslations.cmake.
+# and the "{name}" placeholders; see ProperDesktopTranslations.cmake.
 string(REPLACE "|" ";" PO_FILES "${PO_FILES}")
 
 set(failed FALSE)

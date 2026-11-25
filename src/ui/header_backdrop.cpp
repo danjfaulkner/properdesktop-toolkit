@@ -28,7 +28,7 @@
 #include "ui/theme.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Content below the bar feeds the blur, so its edge does not fade out.
 static constexpr double kBlurPadding = 32;
@@ -71,7 +71,7 @@ static sk_sp<SkRuntimeEffect> makeEffect(const char* code)
 {
     SkRuntimeEffect::Result result = SkRuntimeEffect::MakeForShader(SkString(code));
     if (!result.effect)
-        fprintf(stderr, "cutefish-toolkit: %s\n", result.errorText.c_str());
+        fprintf(stderr, "properdesktop-toolkit: %s\n", result.errorText.c_str());
     return result.effect;
 }
 
@@ -327,4 +327,4 @@ void HeaderBackdrop::paint(Painter& painter)
     painter.restore();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

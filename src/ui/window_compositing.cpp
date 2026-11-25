@@ -26,7 +26,7 @@
 #include "ui/window.h"
 #include "ui/window_backdrop_private.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Frames whose damage is kept for buffer age; older buffers repaint whole.
 static constexpr size_t kDamageHistory = 4;
@@ -862,4 +862,4 @@ std::vector<Rect> Window::paintFrame(SkCanvas* canvas, int bufferAge)
     return rects;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -21,10 +21,10 @@
 #include "ui/test_input.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using test::Box;
 
-// Mirrors cutefish-framework's scrolling tests, so both toolkits keep one feel.
+// Mirrors properdesktop-framework's scrolling tests, so both toolkits keep one feel.
 // Deltas point towards the end of the content, the other way from the
 // framework's.
 

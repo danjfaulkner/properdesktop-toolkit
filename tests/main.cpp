@@ -13,18 +13,18 @@
 int main(int argc, char** argv)
 {
     testing::InitGoogleTest(&argc, argv);
-    cutefish::ui::setTextConfigurationFile(CUTEFISH_TOOLKIT_TEST_FONTS_CONF);
+    properdesktop::ui::setTextConfigurationFile(PROPERDESKTOP_TOOLKIT_TEST_FONTS_CONF);
     // --verify-layout: every pass is checked against a full one.
     bool verifiesLayout = false;
     for (int i = 1; i < argc; ++i) {
         if (strcmp(argv[i], "--verify-layout") == 0)
             verifiesLayout = true;
     }
-    cutefish::ui::Application application(argc, argv,
-                                          cutefish::ui::Application::Platform::Headless);
-    cutefish::ui::TestInput::setVerifiesLayout(verifiesLayout);
+    properdesktop::ui::Application application(argc, argv,
+                                          properdesktop::ui::Application::Platform::Headless);
+    properdesktop::ui::TestInput::setVerifiesLayout(verifiesLayout);
     const int result = RUN_ALL_TESTS();
     if (verifiesLayout)
-        printf("%d views laid out differently in full\n", cutefish::ui::TestInput::layoutMismatches());
+        printf("%d views laid out differently in full\n", properdesktop::ui::TestInput::layoutMismatches());
     return result;
 }

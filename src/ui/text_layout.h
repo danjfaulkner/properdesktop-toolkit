@@ -12,7 +12,7 @@
 #include "ui/geometry.h"
 #include "ui/glyph_run.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Painter;
 struct TextLayoutPrivate;
@@ -122,4 +122,4 @@ private:
 // font's point size.
 FontSpec systemFixedFont();
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

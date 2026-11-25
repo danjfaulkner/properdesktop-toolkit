@@ -42,7 +42,7 @@
 U_CAPI UResourceBundle* U_EXPORT2 ures_getByKeyWithFallback(const UResourceBundle* resourceBundle, const char* key,
                                                             UResourceBundle* fillIn, UErrorCode* status);
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 struct Locale::Data
 {
@@ -955,7 +955,7 @@ RegionalPreferences RegionalPreferences::read(const std::string& path)
 
 std::string RegionalPreferences::sessionPath()
 {
-    return paths::cutefishConfig("services");
+    return paths::properdesktopConfig("services");
 }
 
 std::string Locale::dateFormat(FormatType type) const
@@ -1487,4 +1487,4 @@ std::string Locale::languageName(std::string_view language, std::string_view in,
     return fromCodePoint(u_totitle(first)) + toUtf8(buffer + rest, length - rest);
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

@@ -19,7 +19,7 @@
 #include <wayland-client.h>
 #include <wayland-server.h>
 
-#include "cutefish-window-hints-v1-server-protocol.h"
+#include "properdesktop-window-hints-v1-server-protocol.h"
 #include "fractional-scale-v1-server-protocol.h"
 #include "viewporter-server-protocol.h"
 #include "xdg-output-unstable-v1-server-protocol.h"
@@ -28,8 +28,8 @@
 #include "base/event_loop.h"
 #include "wayland/connection.h"
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 
 namespace {
 
@@ -53,7 +53,7 @@ public:
         global(&wp_fractional_scale_manager_v1_interface, 1);
         wl_global_create(m_display, &wl_output_interface, 3, this, bindOutput);
         wl_global_create(m_display, &zxdg_output_manager_v1_interface, 3, this, bindOutputManager);
-        wl_global_create(m_display, &cutefish_window_hints_v1_interface, 1, this, bindWindowHints);
+        wl_global_create(m_display, &properdesktop_window_hints_v1_interface, 1, this, bindWindowHints);
         wl_client_create(m_display, fds[0]);
         m_thread = std::thread([this] {
             wl_event_loop* loop = wl_display_get_event_loop(m_display);
@@ -89,12 +89,12 @@ public:
         });
     }
 
-    // cutefish_window_hints_v1.work_area for the output.
+    // properdesktop_window_hints_v1.work_area for the output.
     void sendWorkArea(int x, int y, int width, int height, bool primary)
     {
         post([this, x, y, width, height, primary] {
             for (wl_resource* hints : m_windowHints)
-                cutefish_window_hints_v1_send_work_area(hints, "eDP-1", x, y, width, height, primary ? 1 : 0);
+                properdesktop_window_hints_v1_send_work_area(hints, "eDP-1", x, y, width, height, primary ? 1 : 0);
         });
     }
 
@@ -151,7 +151,7 @@ private:
     static void bindWindowHints(wl_client* client, void* data, uint32_t version, uint32_t id)
     {
         auto* self = static_cast<FakeCompositor*>(data);
-        wl_resource* hints = wl_resource_create(client, &cutefish_window_hints_v1_interface, int(version), id);
+        wl_resource* hints = wl_resource_create(client, &properdesktop_window_hints_v1_interface, int(version), id);
         wl_resource_set_dispatcher(hints, ignore, nullptr, nullptr, nullptr);
         self->m_windowHints.push_back(hints);
     }

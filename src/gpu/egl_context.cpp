@@ -23,7 +23,7 @@
 #include "base/event_loop.h"
 #include "gpu/program_cache.h"
 
-namespace cutefish::ui::gpu {
+namespace properdesktop::ui::gpu {
 
 // How long after the last frame a window counts as idle.
 static constexpr auto kIdleDelay = std::chrono::seconds(5);
@@ -107,14 +107,14 @@ bool EglContext::initialize(wl_display* display)
 {
     m_display = eglGetPlatformDisplay(EGL_PLATFORM_WAYLAND_KHR, display, nullptr);
     if (m_display == EGL_NO_DISPLAY || !eglInitialize(m_display, nullptr, nullptr)) {
-        fprintf(stderr, "cutefish-toolkit: cannot initialise EGL\n");
+        fprintf(stderr, "properdesktop-toolkit: cannot initialise EGL\n");
         return false;
     }
     eglBindAPI(EGL_OPENGL_ES_API);
 
     m_config = chooseConfig(m_display);
     if (!m_config) {
-        fprintf(stderr, "cutefish-toolkit: no suitable EGL config\n");
+        fprintf(stderr, "properdesktop-toolkit: no suitable EGL config\n");
         return false;
     }
     eglGetConfigAttrib(m_display, m_config, EGL_STENCIL_SIZE, &m_stencilBits);
@@ -135,7 +135,7 @@ bool EglContext::initialize(wl_display* display)
     const EGLint contextAttributes[] = {EGL_CONTEXT_MAJOR_VERSION, 3, EGL_NONE};
     m_context = eglCreateContext(m_display, m_config, EGL_NO_CONTEXT, contextAttributes);
     if (m_context == EGL_NO_CONTEXT) {
-        fprintf(stderr, "cutefish-toolkit: cannot create a GLES 3 context\n");
+        fprintf(stderr, "properdesktop-toolkit: cannot create a GLES 3 context\n");
         return false;
     }
 
@@ -151,7 +151,7 @@ bool EglContext::initialize(wl_display* display)
     options.fPersistentCache = m_programCache.get();
     m_skiaContext = GrDirectContexts::MakeGL(GrGLInterfaces::MakeEGL(), options);
     if (!m_skiaContext) {
-        fprintf(stderr, "cutefish-toolkit: Skia cannot use the GLES context\n");
+        fprintf(stderr, "properdesktop-toolkit: Skia cannot use the GLES context\n");
         return false;
     }
     return true;
@@ -183,7 +183,7 @@ EGLSurface EglContext::createSurface(wl_egl_window* window)
     waitUntilReady();
     EGLSurface surface = eglCreatePlatformWindowSurface(m_display, m_config, window, nullptr);
     if (surface == EGL_NO_SURFACE) {
-        fprintf(stderr, "cutefish-toolkit: cannot create an EGL window surface\n");
+        fprintf(stderr, "properdesktop-toolkit: cannot create an EGL window surface\n");
         return surface;
     }
     bindDrawingToBack(m_display, surface, m_context);
@@ -267,4 +267,4 @@ bool EglContext::swapBuffers(EGLSurface surface, const std::vector<Rect>& damage
     return m_swapBuffersWithDamage(m_display, surface, rects.data(), EGLint(damage.size()));
 }
 
-} // namespace cutefish::ui::gpu
+} // namespace properdesktop::ui::gpu

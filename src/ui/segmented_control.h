@@ -13,7 +13,7 @@
 #include "ui/color_mixer.h"
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A row of equal buttons, one of them current: a segmented control, a pill, or
 // its tab bar, a rounded box. Each button is a Tab stop of its own; Space
@@ -106,4 +106,4 @@ public:
     }
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

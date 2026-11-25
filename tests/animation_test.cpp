@@ -9,7 +9,7 @@
 #include "ui/view.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using namespace std::chrono_literals;
 
 static constexpr uint64_t kStart = 1000000000;

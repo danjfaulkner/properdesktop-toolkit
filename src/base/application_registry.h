@@ -18,7 +18,7 @@
 #include "base/thread_pool.h"
 #include "base/timer.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 class EventLoop;
 
@@ -118,4 +118,4 @@ private:
     bool m_scanQueued = false;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

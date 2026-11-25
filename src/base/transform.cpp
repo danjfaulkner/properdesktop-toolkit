@@ -8,7 +8,7 @@
 #include <ostream>
 #include <vector>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 AffineTransform AffineTransform::fromRotation(double degrees)
 {
@@ -424,4 +424,4 @@ std::ostream& operator<<(std::ostream& stream, const AffineTransform& transform)
     return stream << transform.toString();
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

@@ -7,7 +7,7 @@
 #include <cstddef>
 #include <memory>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Skia's GPU backend on a GLES context the host owns and keeps current, for
 // EmbeddedWindow::render() into the host's textures: no context of the
@@ -90,4 +90,4 @@ private:
     std::unique_ptr<Private> d;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

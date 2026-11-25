@@ -18,7 +18,7 @@
 #include <wayland-client.h>
 #include <wayland-server.h>
 
-#include "cutefish-main-menu-v1-server-protocol.h"
+#include "properdesktop-main-menu-v1-server-protocol.h"
 #include "fractional-scale-v1-server-protocol.h"
 #include "viewporter-server-protocol.h"
 #include "xdg-shell-server-protocol.h"
@@ -28,8 +28,8 @@
 #include "wayland/connection.h"
 #include "wayland/main_menu.h"
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 
 namespace {
 
@@ -61,7 +61,7 @@ public:
         global(&xdg_wm_base_interface, 3);
         global(&wp_viewporter_interface, 1);
         global(&wp_fractional_scale_manager_v1_interface, 1);
-        global(&cutefish_main_menu_manager_v1_interface, 1);
+        global(&properdesktop_main_menu_manager_v1_interface, 1);
         m_client = wl_client_create(m_display, fds[0]);
         m_thread = std::thread([this] {
             wl_event_loop* loop = wl_display_get_event_loop(m_display);
@@ -267,28 +267,28 @@ TEST_F(MainMenuTest, RowsBecomeItemsAndSubmenusMenus)
     settle(compositor, *connection);
 
     const std::vector<FakeCompositor::Request> requests = compositor.requests();
-    const std::vector<FakeCompositor::Request> menus = only(requests, "cutefish_main_menu_manager_v1.create_menu");
+    const std::vector<FakeCompositor::Request> menus = only(requests, "properdesktop_main_menu_manager_v1.create_menu");
     ASSERT_EQ(2u, menus.size());
     const uint32_t root = made(menus[0]);
     const uint32_t submenu = made(menus[1]);
 
-    const std::vector<FakeCompositor::Request> items = only(requests, "cutefish_main_menu_manager_v1.create_item");
+    const std::vector<FakeCompositor::Request> items = only(requests, "properdesktop_main_menu_manager_v1.create_item");
     ASSERT_EQ(5u, items.size());
     // The root's first row, then the submenu's rows, then the root's second.
-    EXPECT_EQ(CUTEFISH_MENU_ITEM_V1_KIND_NORMAL, items[0].arguments[1]);
-    EXPECT_EQ(CUTEFISH_MENU_ITEM_V1_KIND_SEPARATOR, items[2].arguments[1]);
+    EXPECT_EQ(PROPERDESKTOP_MENU_ITEM_V1_KIND_NORMAL, items[0].arguments[1]);
+    EXPECT_EQ(PROPERDESKTOP_MENU_ITEM_V1_KIND_SEPARATOR, items[2].arguments[1]);
 
-    const std::vector<FakeCompositor::Request> roles = only(requests, "cutefish_menu_v1.set_role");
+    const std::vector<FakeCompositor::Request> roles = only(requests, "properdesktop_menu_v1.set_role");
     ASSERT_EQ(1u, roles.size());
     EXPECT_EQ(submenu, roles[0].object);
-    EXPECT_EQ(CUTEFISH_MENU_V1_ROLE_APPLICATION, roles[0].arguments[0]);
+    EXPECT_EQ(PROPERDESKTOP_MENU_V1_ROLE_APPLICATION, roles[0].arguments[0]);
 
     std::vector<std::string> titles;
-    for (const FakeCompositor::Request& request : only(requests, "cutefish_menu_item_v1.set_title"))
+    for (const FakeCompositor::Request& request : only(requests, "properdesktop_menu_item_v1.set_title"))
         titles.push_back(request.text);
     EXPECT_EQ((std::vector<std::string>{"Keka", "About Keka", "Quit Keka", "File"}), titles);
 
-    std::vector<FakeCompositor::Request> inserts = only(requests, "cutefish_menu_v1.insert_item");
+    std::vector<FakeCompositor::Request> inserts = only(requests, "properdesktop_menu_v1.insert_item");
     std::erase_if(inserts, [root](const FakeCompositor::Request& request) { return request.object != root; });
     ASSERT_EQ(2u, inserts.size());
     EXPECT_EQ(made(items[0]), inserts[0].arguments[0]);
@@ -296,21 +296,21 @@ TEST_F(MainMenuTest, RowsBecomeItemsAndSubmenusMenus)
     EXPECT_EQ(made(items[4]), inserts[1].arguments[0]);
     EXPECT_EQ(1, inserts[1].arguments[1]);
 
-    const std::vector<FakeCompositor::Request> submenus = only(requests, "cutefish_menu_item_v1.set_submenu");
+    const std::vector<FakeCompositor::Request> submenus = only(requests, "properdesktop_menu_item_v1.set_submenu");
     ASSERT_EQ(1u, submenus.size());
     EXPECT_EQ(made(items[0]), submenus[0].object);
     EXPECT_EQ(submenu, submenus[0].arguments[0]);
 
-    std::vector<FakeCompositor::Request> enabled = only(requests, "cutefish_menu_item_v1.set_enabled");
+    std::vector<FakeCompositor::Request> enabled = only(requests, "properdesktop_menu_item_v1.set_enabled");
     std::erase_if(enabled, [&](const FakeCompositor::Request& request) { return request.object != made(items[4]); });
     ASSERT_EQ(1u, enabled.size());
     EXPECT_EQ(0, enabled[0].arguments[0]);
 
-    std::vector<FakeCompositor::Request> keys = only(requests, "cutefish_menu_item_v1.set_key_equivalent");
+    std::vector<FakeCompositor::Request> keys = only(requests, "properdesktop_menu_item_v1.set_key_equivalent");
     std::erase_if(keys, [&](const FakeCompositor::Request& request) { return request.object != made(items[3]); });
     ASSERT_EQ(1u, keys.size());
     EXPECT_EQ("q", keys[0].text);
-    EXPECT_EQ(CUTEFISH_MENU_ITEM_V1_MODIFIER_CONTROL, keys[0].arguments[0]);
+    EXPECT_EQ(PROPERDESKTOP_MENU_ITEM_V1_MODIFIER_CONTROL, keys[0].arguments[0]);
 
     // One export for every window showing the menu.
     EXPECT_EQ(mirror, connection->mainMenu(&menu));
@@ -325,7 +325,7 @@ TEST_F(MainMenuTest, ChangesFollowOnTheNextLoopTurn)
     menu.addItem("Close", [] {});
     std::shared_ptr<wayland::MainMenuMirror> mirror = connection->mainMenu(&menu);
     settle(compositor, *connection);
-    const uint32_t openItem = made(only(compositor.requests(), "cutefish_main_menu_manager_v1.create_item")[0]);
+    const uint32_t openItem = made(only(compositor.requests(), "properdesktop_main_menu_manager_v1.create_item")[0]);
     compositor.clearRequests();
 
     menu.setItemText(open, "Open…");
@@ -337,20 +337,20 @@ TEST_F(MainMenuTest, ChangesFollowOnTheNextLoopTurn)
     settle(compositor, *connection);
     std::vector<FakeCompositor::Request> requests = compositor.requests();
     ASSERT_EQ(2u, requests.size());
-    EXPECT_EQ("cutefish_menu_item_v1.set_title", requests[0].name);
+    EXPECT_EQ("properdesktop_menu_item_v1.set_title", requests[0].name);
     EXPECT_EQ(openItem, requests[0].object);
     EXPECT_EQ("Open…", requests[0].text);
-    EXPECT_EQ("cutefish_menu_item_v1.set_state", requests[1].name);
-    EXPECT_EQ(CUTEFISH_MENU_ITEM_V1_STATE_MIXED, requests[1].arguments[0]);
+    EXPECT_EQ("properdesktop_menu_item_v1.set_state", requests[1].name);
+    EXPECT_EQ(PROPERDESKTOP_MENU_ITEM_V1_STATE_MIXED, requests[1].arguments[0]);
     compositor.clearRequests();
 
     menu.addSeparator();
     loop.dispatch();
     settle(compositor, *connection);
     requests = compositor.requests();
-    EXPECT_EQ(2u, only(requests, "cutefish_menu_item_v1.destroy").size());
-    EXPECT_EQ(3u, only(requests, "cutefish_main_menu_manager_v1.create_item").size());
-    EXPECT_EQ(3u, only(requests, "cutefish_menu_v1.insert_item").size());
+    EXPECT_EQ(2u, only(requests, "properdesktop_menu_item_v1.destroy").size());
+    EXPECT_EQ(3u, only(requests, "properdesktop_main_menu_manager_v1.create_item").size());
+    EXPECT_EQ(3u, only(requests, "properdesktop_menu_v1.insert_item").size());
 }
 
 // Before the bar opens a menu, its onAboutToShow runs and what it adds is
@@ -369,22 +369,22 @@ TEST_F(MainMenuTest, AMenuIsFilledBeforeItIsReady)
     windows->onClosed = [&] { ++closed; };
     std::shared_ptr<wayland::MainMenuMirror> mirror = connection->mainMenu(&menu);
     settle(compositor, *connection);
-    const uint32_t submenu = made(only(compositor.requests(), "cutefish_main_menu_manager_v1.create_menu")[1]);
+    const uint32_t submenu = made(only(compositor.requests(), "properdesktop_main_menu_manager_v1.create_menu")[1]);
     compositor.clearRequests();
 
-    compositor.post([&] { cutefish_menu_v1_send_will_open(compositor.object(submenu), 42); });
+    compositor.post([&] { properdesktop_menu_v1_send_will_open(compositor.object(submenu), 42); });
     settle(compositor, *connection);
     EXPECT_EQ(1, shown);
     std::vector<FakeCompositor::Request> requests = compositor.requests();
     ASSERT_FALSE(requests.empty());
-    EXPECT_EQ("cutefish_menu_v1.ready", requests.back().name);
+    EXPECT_EQ("properdesktop_menu_v1.ready", requests.back().name);
     EXPECT_EQ(submenu, requests.back().object);
     EXPECT_EQ(42, requests.back().arguments[0]);
-    std::vector<FakeCompositor::Request> titles = only(requests, "cutefish_menu_item_v1.set_title");
+    std::vector<FakeCompositor::Request> titles = only(requests, "properdesktop_menu_item_v1.set_title");
     ASSERT_EQ(1u, titles.size());
     EXPECT_EQ("Document 1", titles[0].text);
 
-    compositor.post([&] { cutefish_menu_v1_send_closed(compositor.object(submenu)); });
+    compositor.post([&] { properdesktop_menu_v1_send_closed(compositor.object(submenu)); });
     settle(compositor, *connection);
     EXPECT_EQ(1, closed);
 }
@@ -401,12 +401,12 @@ TEST_F(MainMenuTest, ActivatingAnItemRunsItsAction)
     std::shared_ptr<wayland::MainMenuMirror> mirror = connection->mainMenu(&menu);
     settle(compositor, *connection);
     const std::vector<FakeCompositor::Request> items =
-        only(compositor.requests(), "cutefish_main_menu_manager_v1.create_item");
+        only(compositor.requests(), "properdesktop_main_menu_manager_v1.create_item");
     ASSERT_EQ(2u, items.size());
 
     compositor.post([&] {
-        cutefish_menu_item_v1_send_activated(compositor.object(made(items[0])), 41);
-        cutefish_menu_item_v1_send_activated(compositor.object(made(items[1])), 42);
+        properdesktop_menu_item_v1_send_activated(compositor.object(made(items[0])), 41);
+        properdesktop_menu_item_v1_send_activated(compositor.object(made(items[1])), 42);
     });
     settle(compositor, *connection);
     EXPECT_EQ(1, opened);
@@ -427,8 +427,8 @@ TEST_F(MainMenuTest, TheLastHolderDestroysTheExport)
     mirror.reset();
     settle(compositor, *connection);
     const std::vector<FakeCompositor::Request> requests = compositor.requests();
-    EXPECT_EQ(2u, only(requests, "cutefish_menu_v1.destroy").size());
-    EXPECT_EQ(2u, only(requests, "cutefish_menu_item_v1.destroy").size());
+    EXPECT_EQ(2u, only(requests, "properdesktop_menu_v1.destroy").size());
+    EXPECT_EQ(2u, only(requests, "properdesktop_menu_item_v1.destroy").size());
 
     // A menu destroyed before its export leaves the export nothing to touch.
     mirror = connection->mainMenu(menu.get());

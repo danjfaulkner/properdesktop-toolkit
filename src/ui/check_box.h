@@ -9,7 +9,7 @@
 
 #include "ui/toggle_control.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Icon;
 class RadioButton;
@@ -73,4 +73,4 @@ private:
     ButtonGroup* m_group = nullptr;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

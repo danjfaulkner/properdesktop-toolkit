@@ -10,7 +10,7 @@
 
 #include "include/core/SkImageInfo.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 Texture readTexture(const SkPixmap& pixmap)
 {
@@ -222,4 +222,4 @@ SkBitmap composite(const Texture& source, const std::vector<Texture>& blurs, con
     return bitmap;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

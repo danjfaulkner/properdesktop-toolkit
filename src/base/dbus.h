@@ -22,11 +22,11 @@ struct sd_bus_message;
 struct sd_bus_slot;
 struct sd_bus_vtable;
 
-namespace cutefish::base {
+namespace properdesktop::base {
 class EventLoop;
 }
 
-namespace cutefish::base::dbus {
+namespace properdesktop::base::dbus {
 
 class Connection;
 
@@ -566,4 +566,4 @@ void Object::addProperty(const std::string& name, Getter getter, Setter setter)
     };
 }
 
-} // namespace cutefish::base::dbus
+} // namespace properdesktop::base::dbus

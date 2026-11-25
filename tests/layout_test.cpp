@@ -10,7 +10,7 @@
 #include "ui/test_input.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using test::Box;
 
 // A view whose size hint changes, counting its measurements and layouts.

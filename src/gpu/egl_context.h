@@ -17,11 +17,11 @@ class GrDirectContext;
 struct wl_display;
 struct wl_egl_window;
 
-namespace cutefish::base {
+namespace properdesktop::base {
 class EventLoop;
 }
 
-namespace cutefish::ui::gpu {
+namespace properdesktop::ui::gpu {
 
 class ProgramCache;
 
@@ -104,4 +104,4 @@ private:
     bool m_idleArmed = false;
 };
 
-} // namespace cutefish::ui::gpu
+} // namespace properdesktop::ui::gpu

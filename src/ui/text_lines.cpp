@@ -35,7 +35,7 @@
 
 namespace textlayout = skia::textlayout;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 std::vector<TextLineBox> textLineBoxes(textlayout::Paragraph* paragraph, const SkTypeface* typeface,
                                        double pixelSize, double scale, bool hintedLayout)
@@ -475,7 +475,7 @@ static const sk_sp<SkBlender>& subpixelBlender(SkColor color, sk_sp<SkBlender>* 
     static const sk_sp<SkRuntimeEffect> effect = [] {
         const SkRuntimeEffect::Result result = SkRuntimeEffect::MakeForBlender(SkString(embeddedText("subpixel_text.sksl").c_str()));
         if (!result.effect)
-            fprintf(stderr, "cutefish-toolkit: %s\n", result.errorText.c_str());
+            fprintf(stderr, "properdesktop-toolkit: %s\n", result.errorText.c_str());
         return result.effect;
     }();
     if (!effect) {
@@ -1119,4 +1119,4 @@ RectF inkBoundingRect(textlayout::Paragraph* paragraph, double pixelSize, double
     return {left, top, right - left, bottom - top};
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

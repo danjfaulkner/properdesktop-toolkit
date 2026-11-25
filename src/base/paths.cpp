@@ -10,7 +10,7 @@
 
 #include "base/file.h"
 
-namespace cutefish::base::paths {
+namespace properdesktop::base::paths {
 
 std::string home()
 {
@@ -64,9 +64,9 @@ std::vector<std::string> configDirectories()
     return {"/etc/xdg"};
 }
 
-std::string cutefishConfig(const std::string& name)
+std::string properdesktopConfig(const std::string& name)
 {
-    return configHome() + "/cutefish/" + name + ".conf";
+    return configHome() + "/properdesktop/" + name + ".conf";
 }
 
 std::string userDirectory(UserDirectory directory)
@@ -137,4 +137,4 @@ std::string findExecutable(const std::string& program)
     return {};
 }
 
-} // namespace cutefish::base::paths
+} // namespace properdesktop::base::paths

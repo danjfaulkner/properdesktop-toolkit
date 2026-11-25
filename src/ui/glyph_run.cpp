@@ -40,7 +40,7 @@
 #include "ui/painter.h"
 #include "ui/text_context.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // FreeType's oblique shear, 0x0366A in 16.16.
 static constexpr float kObliqueSkew = -float(0x0366A) / 65536.0f;
@@ -1001,4 +1001,4 @@ std::vector<FontFamily> fontFamilies()
     return listFamilies();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

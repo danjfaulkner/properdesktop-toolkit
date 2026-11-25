@@ -14,7 +14,7 @@
 #include "ui/theme.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 // e and a combining acute accent: one grapheme of three bytes.
 static const std::string kAccented = "é";

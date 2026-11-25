@@ -10,7 +10,7 @@
 
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 namespace gpu {
 class EglContext;
@@ -21,7 +21,7 @@ class Connection;
 }
 
 // A second Wayland connection the session hands over as a socket descriptor,
-// on which the compositor offers the trusted cutefish_shell_v1: the desktop
+// on which the compositor offers the trusted properdesktop_shell_v1: the desktop
 // window lives there (Window(TrustedConnection&)), everything else on the
 // application's own connection. It shares the application's loop, has its
 // own GPU context, and goes after every window made on it.
@@ -59,4 +59,4 @@ private:
     std::unique_ptr<gpu::EglContext> m_gpu;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

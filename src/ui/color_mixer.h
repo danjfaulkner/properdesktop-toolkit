@@ -11,7 +11,7 @@
 #include "ui/color_id.h"
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class ColorProvider;
 struct Theme;
@@ -73,4 +73,4 @@ private:
 // Gives a mixer its recipes for the theme.
 using ColorMixerFunction = std::function<void(ColorMixer& mixer, const Theme& theme)>;
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

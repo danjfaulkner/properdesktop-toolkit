@@ -9,7 +9,7 @@
 
 #include "base/json.h"
 
-using namespace cutefish::base::json;
+using namespace properdesktop::base::json;
 
 TEST(JsonTest, ReadsDocuments)
 {

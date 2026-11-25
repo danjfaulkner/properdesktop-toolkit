@@ -9,7 +9,7 @@
 #include <cstdio>
 #include <limits>
 
-namespace cutefish::base::json {
+namespace properdesktop::base::json {
 
 // Deeper nesting fails to parse.
 static constexpr int kMaximumDepth = 1024;
@@ -545,4 +545,4 @@ std::string Value::serialize(bool compact) const
     return out;
 }
 
-} // namespace cutefish::base::json
+} // namespace properdesktop::base::json

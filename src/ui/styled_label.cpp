@@ -5,7 +5,7 @@
 
 #include <utility>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 StyledLabel::StyledLabel(std::string text)
     : Label(std::move(text))
@@ -40,4 +40,4 @@ void StyledLabel::paint(Painter& painter)
     paintText(painter, {}, std::nullopt);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

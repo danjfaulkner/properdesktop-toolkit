@@ -24,7 +24,7 @@ namespace skia::textlayout {
 class FontCollection;
 }
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A font's vertical metrics, in logical pixels.
 struct VerticalMetrics
@@ -150,4 +150,4 @@ private:
     SkPixelGeometry m_pixelGeometry = kUnknown_SkPixelGeometry;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

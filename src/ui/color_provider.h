@@ -12,7 +12,7 @@
 #include "ui/geometry.h"
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Every colour of a theme, made by the toolkit's mixer and then the
 // application's, in the order they were added.
@@ -59,4 +59,4 @@ Color color(Id id)
     return ColorProvider::current().get(id);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

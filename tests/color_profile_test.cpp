@@ -24,12 +24,12 @@
 #include "ui/painter.h"
 #include "ui/window.h"
 
-using namespace cutefish;
+using namespace properdesktop;
 using ui::Bitmap;
 
 namespace fs = std::filesystem;
 
-static const fs::path kDirectory = "/tmp/cutefish-toolkit-color-test-" + std::to_string(getpid());
+static const fs::path kDirectory = "/tmp/properdesktop-toolkit-color-test-" + std::to_string(getpid());
 
 static constexpr int kSize = 16;
 // A colour inside both gamuts, and what it is in sRGB when the file's
@@ -348,7 +348,7 @@ TEST_F(ColorProfileTest, ConvertsHeifByIccAndByCodePoints)
 {
     // AV1 files of kColor: Display P3 by an ICC profile and by code points,
     // and sRGB by code points. libheif installs no encoder with its decoders.
-    const std::string directory = CUTEFISH_TOOLKIT_TEST_DATA_DIR "/heif/";
+    const std::string directory = PROPERDESKTOP_TOOLKIT_TEST_DATA_DIR "/heif/";
     const std::string byIcc = directory + "p3-icc.heif";
     const std::string byCodePoints = directory + "p3-nclx.heif";
     const std::string plain = directory + "srgb-nclx.heif";

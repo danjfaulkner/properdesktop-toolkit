@@ -11,7 +11,7 @@
 #include "include/core/SkPathBuilder.h"
 #include "include/core/SkRRect.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static double continuousCornerExtent(double radius, double halfSize)
 {
@@ -86,4 +86,4 @@ SkPath roundedRectPath(const SkRect& rect, double radius, bool continuous)
     return path.detach().makeOffset(rect.left(), rect.top());
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

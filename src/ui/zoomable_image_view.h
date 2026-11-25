@@ -12,7 +12,7 @@
 #include "ui/image_info.h"
 #include "ui/scroll_view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Animation;
 
@@ -114,4 +114,4 @@ private:
     double m_topInset = 0;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

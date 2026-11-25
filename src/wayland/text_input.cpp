@@ -10,7 +10,7 @@
 
 #include "wayland/shell_surface.h"
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 static uint32_t wirePurpose(TextPurpose purpose)
 {
@@ -176,4 +176,4 @@ void TextInput::apply()
     m_inputMethodCause = false;
 }
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

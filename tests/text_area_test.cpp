@@ -15,7 +15,7 @@
 #include "ui/text_area.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 namespace {
 
@@ -233,7 +233,7 @@ TEST(TextAreaTest, SelectingPastAnEdgeKeepsScrolling)
     TestInput::press(scrolled.window, {box.x + 10, box.y + 10});
     TestInput::movePointer(scrolled.window, {box.right() + 40, box.y + 10});
     const double first = scrolled.scroll->scrollPosition().x;
-    cutefish::base::EventLoop& loop = Application::instance()->loop();
+    properdesktop::base::EventLoop& loop = Application::instance()->loop();
     loop.startTimer(std::chrono::milliseconds(200), false, [&loop] { loop.quit(); });
     loop.run();
     // The pointer stood still; the view went on towards it.

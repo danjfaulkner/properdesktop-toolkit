@@ -10,7 +10,7 @@
 #include "base/geometry.h"
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Painter;
 class Window;
@@ -55,4 +55,4 @@ private:
     std::unique_ptr<AnimatedImagePrivate> d;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

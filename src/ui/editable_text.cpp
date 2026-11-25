@@ -8,7 +8,7 @@
 #include "ui/application.h"
 #include "ui/text_context.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr size_t kHistoryLimit = 100;
 
@@ -317,4 +317,4 @@ void EditableText::redo()
     m_lastEdit = Edit::None;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

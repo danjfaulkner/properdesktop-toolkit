@@ -35,7 +35,7 @@
 #include "ui/text_field.h"
 #include "ui/view.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using namespace std::chrono_literals;
 
 namespace {
@@ -166,7 +166,7 @@ private:
 
 static void runLoop(std::chrono::milliseconds duration)
 {
-    cutefish::base::EventLoop& loop = Application::instance()->loop();
+    properdesktop::base::EventLoop& loop = Application::instance()->loop();
     const auto end = std::chrono::steady_clock::now() + duration;
     while (std::chrono::steady_clock::now() < end) {
         pollfd entry{loop.fd(), POLLIN, 0};
@@ -620,7 +620,7 @@ TEST(EmbeddedHostTest, DragsStartThroughTheHost)
 
     DropAction finished = AskAction;
     DragSource source;
-    source.mimeTypes = {"application/x-cutefish-dock-item"};
+    source.mimeTypes = {"application/x-properdesktop-dock-item"};
     source.data = [](const std::string& type) { return "item:" + type; };
     source.actions = MoveAction;
     source.icon = Bitmap(48, 48, Bitmap::Format::Argb32Premultiplied);
@@ -636,8 +636,8 @@ TEST(EmbeddedHostTest, DragsStartThroughTheHost)
     window.pointerButton(MouseButton::Left, false);
     EXPECT_EQ(probe->events, (std::vector<std::string>{"press", "drag"}));
     ASSERT_TRUE(host.drag);
-    EXPECT_EQ(host.drag->mimeTypes, std::vector<std::string>{"application/x-cutefish-dock-item"});
-    EXPECT_EQ(host.drag->data("application/x-cutefish-dock-item"), "item:application/x-cutefish-dock-item");
+    EXPECT_EQ(host.drag->mimeTypes, std::vector<std::string>{"application/x-properdesktop-dock-item"});
+    EXPECT_EQ(host.drag->data("application/x-properdesktop-dock-item"), "item:application/x-properdesktop-dock-item");
     EXPECT_EQ(host.drag->icon.width(), 48);
     host.drag->onFinished(MoveAction);
     EXPECT_EQ(finished, MoveAction);
@@ -823,7 +823,7 @@ TEST(EmbeddedHostTest, ThemeIconsTintAsSilhouettes)
 // one drawn; a raster twice its size takes it as well.
 TEST(EmbeddedHostTest, ThemeSizeIconsPreferTheFittedDrawing)
 {
-    char pattern[] = "/tmp/cutefish-fitted-icon-XXXXXX";
+    char pattern[] = "/tmp/properdesktop-fitted-icon-XXXXXX";
     const std::filesystem::path root = mkdtemp(pattern);
     const auto write = [&root](const char* directory, int x) {
         std::filesystem::create_directories(root / directory);
@@ -865,7 +865,7 @@ TEST(EmbeddedHostTest, ThemeSizeIconsPreferTheFittedDrawing)
 TEST(EmbeddedHostTest, ThemeIconMissesKeepTheIconCache)
 {
     if (themeIconPath("utilities-terminal", 24, 2).find("/apps@2x/scalable/") == std::string::npos)
-        GTEST_SKIP() << "no Cutefish theme with its cache";
+        GTEST_SKIP() << "no Proper Desktop theme with its cache";
     EXPECT_EQ(themeIconPath("org.example.NoSuchIcon", 24, 2), "");
     themeIconPath("ai.storyteller.photocraft", 24, 2);
     // Not the cached answer: another size.

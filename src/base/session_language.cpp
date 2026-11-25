@@ -9,11 +9,11 @@
 #include "base/dbus.h"
 #include "base/locale.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
-static constexpr const char* kService = "org.cutefish.Services";
-static constexpr const char* kPath = "/org/cutefish/Services/Language";
-static constexpr const char* kInterface = "org.cutefish.Services.Language";
+static constexpr const char* kService = "org.properdesktop.Services";
+static constexpr const char* kPath = "/org/properdesktop/Services/Language";
+static constexpr const char* kInterface = "org.properdesktop.Services.Language";
 
 struct SessionLanguage::Private
 {
@@ -90,4 +90,4 @@ bool SessionLanguage::apply(const std::map<std::string, std::string>& variables)
     return true;
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

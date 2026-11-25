@@ -16,7 +16,7 @@
 #include "ui/window.h"
 #include "ui/window_controls.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The artwork is drawn on a 24-pixel grid; any other size would be soft.
 static constexpr double kArtwork = 24;
@@ -229,4 +229,4 @@ void HeaderButton::pointerRelease(const PointerEvent& event)
         onClicked();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

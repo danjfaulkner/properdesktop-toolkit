@@ -18,7 +18,7 @@
 #include "ui/view.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr std::chrono::milliseconds kAnimation{400};
 // RowLayout's and GridLayout's default spacing.
@@ -295,4 +295,4 @@ void Toast::show(std::string message, std::chrono::milliseconds timeout, std::st
                                           [stack] { stack->requestLayout(); }));
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -19,7 +19,7 @@
 #include "ui/text_field.h"
 #include "ui/view.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using namespace std::chrono_literals;
 
 namespace {
@@ -184,7 +184,7 @@ TEST(EmbeddedControlsTest, BarePasswordInput)
 
 TEST(EmbeddedControlsTest, IconPixmapsByNameOrPath)
 {
-    char directory[] = "/tmp/cutefish-toolkit-icons-XXXXXX";
+    char directory[] = "/tmp/properdesktop-toolkit-icons-XXXXXX";
     ASSERT_NE(mkdtemp(directory), nullptr);
     const std::string path = std::string(directory) + "/square.svg";
     std::ofstream(path) << R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">)"

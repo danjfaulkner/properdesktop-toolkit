@@ -5,7 +5,7 @@
 
 #include "ui/header_button_group.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Back and forward for a header, one square each of a single plate in the
 // window controls' style.
@@ -22,4 +22,4 @@ private:
     HeaderButton* m_forward;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -25,7 +25,7 @@
 #include "wayland/connection.h"
 #include "wayland/wayland_window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 struct SubsurfacePrivate final : wayland::SubsurfaceClient
 {
@@ -214,7 +214,7 @@ Subsurface::Subsurface(Window* window, Stacking stacking)
     const EGLint attributes[] = {EGL_CONTEXT_MAJOR_VERSION, 3, EGL_NONE};
     d->context = eglCreateContext(d->eglDisplay, d->eglConfig, EGL_NO_CONTEXT, attributes);
     if (d->context == EGL_NO_CONTEXT)
-        fprintf(stderr, "cutefish-toolkit: cannot create a GLES 3 context for a subsurface\n");
+        fprintf(stderr, "properdesktop-toolkit: cannot create a GLES 3 context for a subsurface\n");
     parent->addSubsurface(d.get());
 }
 
@@ -384,7 +384,7 @@ base::Size Subsurface::beginFrame(void* eglContext)
         d->eglWindow = wl_egl_window_create(d->surface, size.width(), size.height());
         d->eglSurface = eglCreatePlatformWindowSurface(d->eglDisplay, d->eglConfig, d->eglWindow, nullptr);
         if (d->eglSurface == EGL_NO_SURFACE) {
-            fprintf(stderr, "cutefish-toolkit: cannot create an EGL surface for a subsurface\n");
+            fprintf(stderr, "properdesktop-toolkit: cannot create an EGL surface for a subsurface\n");
             return {};
         }
     } else if (!(size == d->eglSize)) {
@@ -469,4 +469,4 @@ bool Subsurface::waitForFrame(int timeoutMs)
     return true;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

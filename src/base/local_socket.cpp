@@ -15,7 +15,7 @@
 
 #include "base/event_loop.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 LocalSocket::LocalSocket(EventLoop* loop)
     : m_loop(loop ? *loop : *EventLoop::current())
@@ -267,4 +267,4 @@ void LocalServer::acceptPending()
     }
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

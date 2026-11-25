@@ -16,7 +16,7 @@ namespace skia::textlayout {
 class Paragraph;
 }
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 struct AdvanceRule;
 struct TextLineBox;
@@ -250,4 +250,4 @@ private:
     mutable std::vector<std::pair<double, double>> m_measuredHeights;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

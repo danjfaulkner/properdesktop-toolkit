@@ -10,7 +10,7 @@
 #include "ui/animation.h"
 #include "ui/painter.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr SizeF kIndicator = {38, 20};
 static constexpr double kHandle = 16;
@@ -74,4 +74,4 @@ void Switch::paintIndicator(Painter& painter, const RectF& rect)
     painter.restore();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

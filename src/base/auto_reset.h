@@ -6,7 +6,7 @@
 #include <functional>
 #include <utility>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 // Restores a variable's value when the scope ends.
 template<typename T>
@@ -50,4 +50,4 @@ private:
     std::function<void()> m_function;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

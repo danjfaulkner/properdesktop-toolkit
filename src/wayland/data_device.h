@@ -20,7 +20,7 @@ struct wl_surface;
 struct xdg_toplevel_drag_v1;
 struct wp_viewport;
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 struct DataDeviceListeners;
 class ShellSurface;
@@ -89,4 +89,4 @@ private:
     size_t m_iconSize = 0;
 };
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

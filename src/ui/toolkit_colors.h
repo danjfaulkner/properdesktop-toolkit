@@ -5,9 +5,9 @@
 
 #include "ui/color_mixer.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The toolkit's recipes, which every provider starts from.
 void addToolkitColors(ColorMixer& mixer, const Theme& theme);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

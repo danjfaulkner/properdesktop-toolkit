@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <vector>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 class EventLoop;
 
@@ -125,4 +125,4 @@ private:
     std::string m_error;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

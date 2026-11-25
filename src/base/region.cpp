@@ -5,7 +5,7 @@
 
 #include <ostream>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 // The end of the band starting at `begin`.
 static size_t bandEnd(const std::vector<Rect>& rects, size_t begin)
@@ -306,4 +306,4 @@ std::ostream& operator<<(std::ostream& stream, const Region& region)
     return stream << region.toString();
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

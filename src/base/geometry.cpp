@@ -6,7 +6,7 @@
 #include <format>
 #include <ostream>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 static int clampToInt(int64_t value)
 {
@@ -212,4 +212,4 @@ std::ostream& operator<<(std::ostream& stream, const RectF& rect)
     return stream << rect.toString();
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

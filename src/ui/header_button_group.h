@@ -8,7 +8,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class HeaderButton;
 
@@ -36,4 +36,4 @@ private:
     std::vector<HeaderButton*> m_buttons;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

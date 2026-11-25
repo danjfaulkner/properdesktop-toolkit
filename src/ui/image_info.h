@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // What a viewer needs of an image before decoding it, from its header: the
 // pixel size after the EXIF orientation, whether it moves, whether it is
@@ -27,4 +27,4 @@ struct ImageInfo
 const std::vector<std::string>& imageMimeTypes();
 ImageInfo readImageInfo(const std::string& path, const std::string& mimeType);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

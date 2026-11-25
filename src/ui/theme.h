@@ -9,7 +9,7 @@
 #include "base/signal.h"
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The desktop's colours and metrics. Lengths are logical pixels; font sizes are
 // kept in points, as the appearance settings store them.
@@ -40,7 +40,7 @@ struct Theme
     // The appearance's fixed-pitch family; empty for the platform's default.
     std::string fixedFontFamily;
     double fontPointSize = 9;
-    std::string iconTheme = "Cutefish";
+    std::string iconTheme = "ProperDesktop";
     // The compositor's window corners on large panels.
     bool continuousCorners = true;
     // The title bar controls as red, yellow and green dots instead of plates.
@@ -73,4 +73,4 @@ inline constexpr Color orange = Color::rgb(0xFEA042);
 inline constexpr Color grey = Color::rgb(0x4F596B);
 } // namespace accent
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -12,7 +12,7 @@
 // Application bundles: folders named <name>.app that hold Contents/Info.plist
 // and run as one program, Contents/MacOS/<CFBundleExecutable>. A desktop
 // entry whose MimeType lists kType runs them.
-namespace cutefish::base::bundle {
+namespace properdesktop::base::bundle {
 
 inline constexpr char kType[] = "application/x-apple-app";
 
@@ -36,4 +36,4 @@ std::optional<DesktopEntry> read(const std::string& path, const DesktopEntry& ha
 // MIME types or descends from one, or is in a group it opens.
 bool opensType(const DesktopEntry& entry, const std::string& type);
 
-} // namespace cutefish::base::bundle
+} // namespace properdesktop::base::bundle

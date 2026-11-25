@@ -9,7 +9,7 @@
 
 #include "ui/toolkit_colors.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Shows a colour no mixer gave, or one made from itself.
 static constexpr Color kPlaceholder = Color::rgb(0xFF00FF);
@@ -104,13 +104,13 @@ ColorProvider::ColorProvider(const Theme& theme)
 Color ColorProvider::get(uint16_t id) const
 {
     if (id >= m_recipes.size() || !m_recipes[id]) {
-        fprintf(stderr, "cutefish-toolkit: no recipe for colour %u\n", unsigned(id));
+        fprintf(stderr, "properdesktop-toolkit: no recipe for colour %u\n", unsigned(id));
         return kPlaceholder;
     }
     if (m_colors[id])
         return *m_colors[id];
     if (m_resolving[id]) {
-        fprintf(stderr, "cutefish-toolkit: colour %u is made from itself\n", unsigned(id));
+        fprintf(stderr, "properdesktop-toolkit: colour %u is made from itself\n", unsigned(id));
         return kPlaceholder;
     }
     m_resolving[id] = true;
@@ -120,4 +120,4 @@ Color ColorProvider::get(uint16_t id) const
     return color;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

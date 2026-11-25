@@ -7,7 +7,7 @@
 #include <string_view>
 #include <vector>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 // An option: one-letter names are written -x, longer ones --name. With a
 // value name the option takes a value, as `--name value` or `--name=value`
@@ -108,4 +108,4 @@ private:
     int m_versionIndex = -1;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

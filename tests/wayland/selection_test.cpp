@@ -14,7 +14,7 @@
 #include "base/timer.h"
 #include "wayland/selection.h"
 
-using namespace cutefish;
+using namespace properdesktop;
 using namespace std::chrono_literals;
 
 // A paste target that closes its end before the data is all written must

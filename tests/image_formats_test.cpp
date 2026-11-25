@@ -20,7 +20,7 @@
 #include "ui/view.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 namespace {
 
@@ -283,7 +283,7 @@ TEST(ImageFormatsTest, DrawsIcnsPlatesAsLargeAsThemePlates)
     for (int shift = 24; shift >= 0; shift -= 8)
         data += char((length >> shift) & 0xFF);
     data += body;
-    const std::string path = "/tmp/cutefish-toolkit-icns-test-" + std::to_string(getpid()) + ".icns";
+    const std::string path = "/tmp/properdesktop-toolkit-icns-test-" + std::to_string(getpid()) + ".icns";
     {
         FILE* file = fopen(path.c_str(), "wb");
         ASSERT_NE(file, nullptr);
@@ -323,7 +323,7 @@ TEST(ImageFormatsTest, DrawsIcnsPlatesAsLargeAsThemePlates)
 TEST(AnimatedImageTest, PlaysGifFramesOnTheFrameClock)
 {
     const std::string data = gif(2, 2, {{0, 0, 2, 2, {0, 0, 0, 0}, 5}, {0, 0, 2, 2, {1, 1, 1, 1}, 5}}, 0);
-    const std::string path = "/tmp/cutefish-toolkit-animated-test-" + std::to_string(getpid()) + ".gif";
+    const std::string path = "/tmp/properdesktop-toolkit-animated-test-" + std::to_string(getpid()) + ".gif";
     {
         FILE* file = fopen(path.c_str(), "wb");
         ASSERT_NE(file, nullptr);
@@ -349,7 +349,7 @@ TEST(AnimatedImageTest, PlaysGifFramesOnTheFrameClock)
     Application::instance()->loop().stopTimer(timeout);
     ASSERT_TRUE(loaded);
     EXPECT_EQ(image.frameCount(), 2);
-    EXPECT_EQ(image.size(), cutefish::base::Size(2, 2));
+    EXPECT_EQ(image.size(), properdesktop::base::Size(2, 2));
     EXPECT_EQ(image.loopCount(), -1);
     EXPECT_EQ(image.currentFrame(), 0);
     // 50 ms frames (delay 5): a frame clock of 16.7 ms moves on every third.

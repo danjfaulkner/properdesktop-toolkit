@@ -10,9 +10,9 @@
 #include "ui/frame_client.h"
 #include "ui/geometry.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
-// Touchpad and wheel scrolling of one view. It follows cutefish-framework's
+// Touchpad and wheel scrolling of one view. It follows properdesktop-framework's
 // Scroller, so every view in the session scrolls alike: finger
 // samples are resampled to each frame of the window, and the coast and the
 // rubber band run on the same frame clock. A paged view moves along one axis
@@ -135,4 +135,4 @@ private:
     bool m_frameRequested = false;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

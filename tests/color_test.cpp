@@ -7,7 +7,7 @@
 
 #include "ui/geometry.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 static void expectNear(Color actual, Color expected)
 {

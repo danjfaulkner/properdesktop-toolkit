@@ -9,7 +9,7 @@
 
 #include "base/strings.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 static constexpr std::array<uint32_t, 64> kSha256Constants = {
     0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
@@ -169,4 +169,4 @@ std::string CryptographicHash::hashHex(std::string_view data, Algorithm algorith
     return strings::toHex(hash(data, algorithm));
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

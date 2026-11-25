@@ -12,7 +12,7 @@
 
 // Property lists, the XML and binary (bplist00) files application bundles
 // describe themselves in.
-namespace cutefish::base::plist {
+namespace properdesktop::base::plist {
 
 // A value as far as bundles need one: strings, booleans, arrays and
 // dictionaries, with every other type standing in as Other.
@@ -49,4 +49,4 @@ std::optional<Value> read(std::string_view data);
 // dictionary.
 std::optional<std::map<std::string, std::string>> rootStrings(std::string_view data);
 
-} // namespace cutefish::base::plist
+} // namespace properdesktop::base::plist

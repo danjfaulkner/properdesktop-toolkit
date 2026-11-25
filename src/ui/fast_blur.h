@@ -8,7 +8,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A copy of a view blurred as the FastBlur effect does it (radius in logical
 // pixels, transparentBorder off): the content is drawn into a texture the size
@@ -51,4 +51,4 @@ private:
     std::unique_ptr<Cache> m_cache;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

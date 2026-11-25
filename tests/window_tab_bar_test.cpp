@@ -8,7 +8,7 @@
 #include "ui/window.h"
 #include "ui/window_tab_bar.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 namespace {
 

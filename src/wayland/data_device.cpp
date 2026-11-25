@@ -19,7 +19,7 @@
 #include "wayland/connection.h"
 #include "wayland/shell_surface.h"
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 static ShellSurface* shellFor(wl_surface* surface)
 {
@@ -321,7 +321,7 @@ void DataDevice::createIcon(const DragSource& source)
     const int height = pixels.height();
     const size_t stride = size_t(width) * 4;
     m_iconSize = stride * size_t(height);
-    const int fd = memfd_create("cutefish-drag-icon", MFD_CLOEXEC);
+    const int fd = memfd_create("properdesktop-drag-icon", MFD_CLOEXEC);
     if (fd < 0)
         return;
     if (ftruncate(fd, off_t(m_iconSize)) < 0) {
@@ -470,4 +470,4 @@ void DataDevice::requestSelection(std::function<void(std::string)> callback)
     });
 }
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

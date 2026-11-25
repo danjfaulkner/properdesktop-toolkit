@@ -13,13 +13,13 @@
 #include <string_view>
 #include <type_traits>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 enum class LogLevel { Debug, Info, Warning, Critical, Fatal };
 
 // A named switch for a group of messages, defined once with static storage:
 //
-//   const LogCategory cfInput("cutefish.input");
+//   const LogCategory cfInput("properdesktop.input");
 //   CF_DEBUG(cfInput) << "button" << code;
 //   CF_WARNING(cfInput).format("{} devices", count);
 //
@@ -63,7 +63,7 @@ namespace logging {
 // Later rules win; they replace any earlier set and apply to categories
 // created afterwards as well. Malformed rules are ignored.
 //
-//   "cutefish.*.debug=true;cutefish.drm.debug=false"
+//   "properdesktop.*.debug=true;properdesktop.drm.debug=false"
 void setRules(std::string_view rules);
 
 // Receives every enabled message instead of standard error; null restores
@@ -145,16 +145,16 @@ std::string LogStream::streamed(const T& value)
     return streamToString([&value](std::ostream& stream) { stream << value; });
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base
 
 // The arguments after << are only evaluated when the level is enabled.
 #define CF_LOG(category, level) \
     if (!(category).isEnabled(level)) { \
     } else \
-        ::cutefish::base::LogStream((category), (level))
+        ::properdesktop::base::LogStream((category), (level))
 
-#define CF_DEBUG(category) CF_LOG(category, ::cutefish::base::LogLevel::Debug)
-#define CF_INFO(category) CF_LOG(category, ::cutefish::base::LogLevel::Info)
-#define CF_WARNING(category) CF_LOG(category, ::cutefish::base::LogLevel::Warning)
-#define CF_CRITICAL(category) CF_LOG(category, ::cutefish::base::LogLevel::Critical)
-#define CF_FATAL(category) CF_LOG(category, ::cutefish::base::LogLevel::Fatal)
+#define CF_DEBUG(category) CF_LOG(category, ::properdesktop::base::LogLevel::Debug)
+#define CF_INFO(category) CF_LOG(category, ::properdesktop::base::LogLevel::Info)
+#define CF_WARNING(category) CF_LOG(category, ::properdesktop::base::LogLevel::Warning)
+#define CF_CRITICAL(category) CF_LOG(category, ::properdesktop::base::LogLevel::Critical)
+#define CF_FATAL(category) CF_LOG(category, ::properdesktop::base::LogLevel::Fatal)

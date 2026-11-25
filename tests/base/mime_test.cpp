@@ -19,7 +19,7 @@
 #include "base/paths.h"
 #include "base/timer.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 namespace fs = std::filesystem;
 
 namespace {
@@ -29,7 +29,7 @@ class MimeAppsTest : public testing::Test
 protected:
     void SetUp() override
     {
-        m_directory = fs::temp_directory_path() / ("cutefish-mimeapps-" + std::to_string(getpid()));
+        m_directory = fs::temp_directory_path() / ("properdesktop-mimeapps-" + std::to_string(getpid()));
         fs::create_directories(m_directory);
     }
     void TearDown() override { fs::remove_all(m_directory); }
@@ -72,7 +72,7 @@ TEST_F(MimeAppsTest, SetsDefaultAndUpdatesAssociations)
                                             "[Added Associations]\ntext/plain=old.desktop;new.desktop;\n"
                                             "[Removed Associations]\ntext/plain=new.desktop;other.desktop;\n"));
     ASSERT_TRUE(mimeapps::setDefault(list, "text/plain", "new.desktop"));
-    // What MimeApps::setDefault in cutefish-framework writes, byte for byte: the
+    // What MimeApps::setDefault in properdesktop-framework writes, byte for byte: the
     // file's last line break makes an empty line, which the group keeps.
     EXPECT_EQ(file::read(list).value_or(""),
               "# kept\n[Default Applications]\ntext/plain=new.desktop;\n"
@@ -115,7 +115,7 @@ TEST_F(MimeAppsTest, KeepsTheTerminalList)
 // Reference types measured on the laptop, for these files.
 TEST(MimeTest, DetectsTypesOfFiles)
 {
-    const fs::path directory = fs::temp_directory_path() / ("cutefish-mime-detect-" + std::to_string(getpid()));
+    const fs::path directory = fs::temp_directory_path() / ("properdesktop-mime-detect-" + std::to_string(getpid()));
     fs::create_directories(directory / "folder");
     const auto write = [&directory](const std::string& name, std::string_view contents) {
         ASSERT_TRUE(file::writeAtomically((directory / name).string(), contents));
@@ -202,15 +202,15 @@ TEST_F(MimeAppsTest, OpensAUriWithWhatTakesItsScheme)
     Timer timeout(&loop);
     timeout.setSingleShot(true);
     timeout.onTimeout = [&loop] { loop.quit(); };
-    mimeapps::openUri("HTTPS://cutefish.org/a b", {}, opened, {path("mimeapps.list")});
+    mimeapps::openUri("HTTPS://properdesktop.org/a b", {}, opened, {path("mimeapps.list")});
     timeout.start(std::chrono::seconds(5));
     loop.run();
-    mimeapps::openUri("gopher://cutefish.org", {}, opened, {path("mimeapps.list")});
+    mimeapps::openUri("gopher://properdesktop.org", {}, opened, {path("mimeapps.list")});
     mimeapps::openUri("not a uri", {}, opened, {path("mimeapps.list")});
     ASSERT_EQ(results, (std::vector<bool> {true, false, false}));
     for (int i = 0; i < 500 && !fs::exists(out); ++i)
         usleep(10000);
-    EXPECT_EQ(file::read(out), "HTTPS://cutefish.org/a b");
+    EXPECT_EQ(file::read(out), "HTTPS://properdesktop.org/a b");
 }
 
 // With the application runtime on the bus, it starts the handler, given the
@@ -223,7 +223,7 @@ TEST_F(MimeAppsTest, OpensAUriThroughTheApplicationRuntime)
     std::string appId;
     std::vector<std::string> arguments;
     std::string token;
-    dbus::Object runtime(runtimeBus.get(), "/AppRuntime", "org.cutefish.AppRuntime");
+    dbus::Object runtime(runtimeBus.get(), "/AppRuntime", "org.properdesktop.AppRuntime");
     runtime.addMethod(
             "launchApplication",
             [&](const std::string& id, const std::vector<std::string>& args, const std::string& activationToken) {
@@ -234,7 +234,7 @@ TEST_F(MimeAppsTest, OpensAUriThroughTheApplicationRuntime)
             },
             dbus::ArgumentNames {{"appId", "arguments", "activationToken"}, {"pid"}});
     runtime.publish();
-    ASSERT_TRUE(runtimeBus->requestName("org.cutefish.AppRuntime"));
+    ASSERT_TRUE(runtimeBus->requestName("org.properdesktop.AppRuntime"));
 
     fs::create_directories(path("applications"));
     std::ofstream(path("applications/handler.desktop"))
@@ -246,7 +246,7 @@ TEST_F(MimeAppsTest, OpensAUriThroughTheApplicationRuntime)
     Timer timeout(&loop);
     timeout.setSingleShot(true);
     timeout.onTimeout = [&loop] { loop.quit(); };
-    mimeapps::openUri("https://cutefish.org/", "token-1", [&](bool ok) {
+    mimeapps::openUri("https://properdesktop.org/", "token-1", [&](bool ok) {
         started = ok;
         loop.quit();
     }, {path("mimeapps.list")});
@@ -254,6 +254,6 @@ TEST_F(MimeAppsTest, OpensAUriThroughTheApplicationRuntime)
     loop.run();
     EXPECT_EQ(started, true);
     EXPECT_EQ(appId, path("applications/handler.desktop"));
-    EXPECT_EQ(arguments, std::vector<std::string> {"https://cutefish.org/"});
+    EXPECT_EQ(arguments, std::vector<std::string> {"https://properdesktop.org/"});
     EXPECT_EQ(token, "token-1");
 }

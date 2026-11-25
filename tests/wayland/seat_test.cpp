@@ -33,8 +33,8 @@
 #include "wayland/connection.h"
 #include "wayland/shell_surface.h"
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 
 namespace {
 

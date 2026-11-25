@@ -9,7 +9,7 @@
 #include <string_view>
 #include <vector>
 
-namespace cutefish::ui::image_formats {
+namespace properdesktop::ui::image_formats {
 
 // Premultiplied 0xAARRGGBB words, row by row.
 struct RawImage
@@ -40,4 +40,4 @@ RawImage decodeTga(std::string_view data);
 bool isIcns(std::string_view data);
 std::string_view icnsPng(std::string_view data, int pixels = 0);
 
-} // namespace cutefish::ui::image_formats
+} // namespace properdesktop::ui::image_formats

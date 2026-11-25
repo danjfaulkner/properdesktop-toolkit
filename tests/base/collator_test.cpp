@@ -10,7 +10,7 @@
 
 #include "base/collator.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 
 static std::vector<std::string> sorted(std::vector<std::string> names, const Collator& collator)
 {

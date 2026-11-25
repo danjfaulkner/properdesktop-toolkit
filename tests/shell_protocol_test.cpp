@@ -26,19 +26,19 @@ static std::vector<std::string> messages(const std::string& xml, const std::stri
     return names;
 }
 
-// The desktop's trimmed cutefish_shell_v1: the requests the toolkit sends
+// The desktop's trimmed properdesktop_shell_v1: the requests the toolkit sends
 // keep these opcodes.
 TEST(ShellProtocolTest, DesktopInterfaceIsTheTrimmedOne)
 {
-    std::ifstream file(CUTEFISH_TOOLKIT_PROTOCOL_DIR "/cutefish-shell-v1.xml");
+    std::ifstream file(PROPERDESKTOP_TOOLKIT_PROTOCOL_DIR "/properdesktop-shell-v1.xml");
     ASSERT_TRUE(file.good());
     std::stringstream stream;
     stream << file.rdbuf();
     const std::string xml = stream.str();
 
-    EXPECT_EQ(messages(xml, "cutefish_shell_v1", "request"),
+    EXPECT_EQ(messages(xml, "properdesktop_shell_v1", "request"),
               (std::vector<std::string>{"destroy", "get_shell_surface"}));
-    EXPECT_EQ(messages(xml, "cutefish_shell_surface_v1", "request"),
+    EXPECT_EQ(messages(xml, "properdesktop_shell_surface_v1", "request"),
               (std::vector<std::string>{"destroy", "set_role", "set_focus_policy", "activate", "set_output"}));
-    EXPECT_EQ(messages(xml, "cutefish_shell_surface_v1", "event"), (std::vector<std::string>{"work_area"}));
+    EXPECT_EQ(messages(xml, "properdesktop_shell_surface_v1", "event"), (std::vector<std::string>{"work_area"}));
 }

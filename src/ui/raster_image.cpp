@@ -7,7 +7,7 @@
 #include "include/core/SkImage.h"
 #include "include/core/SkImageInfo.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 RasterImage::RasterImage(int width, int height, std::vector<uint32_t> pixels, bool premultiplied)
 {
@@ -40,4 +40,4 @@ const SkImage* RasterImage::skImage() const
     return m_image.get();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

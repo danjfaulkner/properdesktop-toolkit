@@ -17,7 +17,7 @@
 #include "ui/text_layout.h"
 #include "ui/theme.h"
 
-using namespace cutefish;
+using namespace properdesktop;
 using ui::Bitmap;
 using ui::ColorF;
 using ui::Canvas2D;

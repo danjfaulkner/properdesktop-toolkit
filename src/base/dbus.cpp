@@ -20,7 +20,7 @@
 
 #include "base/event_loop.h"
 
-namespace cutefish::base::dbus {
+namespace properdesktop::base::dbus {
 
 static const Variant::Items s_noItems;
 static const std::string s_noBytes;
@@ -349,7 +349,7 @@ const Variant::Items& Message::arguments() const
 Message& Message::appendAs(const Variant& value)
 {
     if (m_data && VariantAccess::append(m_data->message, value) < 0)
-        fprintf(stderr, "cutefish-toolkit: cannot append a D-Bus value of type %s\n", value.signature().c_str());
+        fprintf(stderr, "properdesktop-toolkit: cannot append a D-Bus value of type %s\n", value.signature().c_str());
     return *this;
 }
 
@@ -1132,4 +1132,4 @@ int ObjectAccess::setProperty(sd_bus*, const char*, const char*, const char* pro
     return 1;
 }
 
-} // namespace cutefish::base::dbus
+} // namespace properdesktop::base::dbus

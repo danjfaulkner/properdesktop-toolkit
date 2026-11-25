@@ -12,7 +12,7 @@
 #include "ui/bitmap_private.h"
 #include "ui/path_private.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 struct BitmapPainter::Canvas
 {
@@ -204,4 +204,4 @@ void BitmapPainter::drawBitmap(const base::RectF& target, const Bitmap& bitmap, 
     canvas->restore();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -4,7 +4,7 @@
 #include "ui/platform_window.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 void Window::setBackgroundBlur(const RectF& rect, double radius)
 {
@@ -170,4 +170,4 @@ void Window::setUserResizable(bool resizable)
     m_platform->setUserResizable(resizable);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -9,7 +9,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // A title bar button: window button artwork on a round plate that
 // shows on hover, dimmed while the window is inactive.
@@ -84,4 +84,4 @@ private:
     PlateAlphas m_dark = {0.12, 0.06};
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

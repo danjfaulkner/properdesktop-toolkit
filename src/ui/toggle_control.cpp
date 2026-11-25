@@ -11,7 +11,7 @@
 #include "ui/painter.h"
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 ToggleControl::ToggleControl(std::string text, SizeF indicator, double padding, Kind kind)
     : m_label(addChild<Label>(std::move(text)))
@@ -170,4 +170,4 @@ bool ToggleControl::keyRelease(const KeyEvent& event)
     return true;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

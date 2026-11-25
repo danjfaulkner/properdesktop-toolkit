@@ -64,7 +64,7 @@
 
 namespace textlayout = skia::textlayout;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Enough for every icon a few windows show at two scales.
 static constexpr size_t kCacheLimit = 512;
@@ -75,7 +75,7 @@ static const char* const kExtensions[] = {".png", ".svg"};
 static constexpr double kIcnsScale = (56.0 / 64) / (824.0 / 1024);
 // The icon theme's plate, drawn under applications' own icons from outside
 // the theme; their visible part gets as wide as the theme's logos on it.
-static constexpr const char* kPlateName = "cutefish-application-plate";
+static constexpr const char* kPlateName = "properdesktop-application-plate";
 static constexpr double kPlateContent = 44.0 / 64;
 static constexpr double kPlateExtent = 56.0 / 64;
 // A solid part this square, solid along all four sides outside its corners,
@@ -1622,4 +1622,4 @@ sk_sp<SkImage> IconLoader::themeIcon(const std::string& name, int size, double s
     return image;
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

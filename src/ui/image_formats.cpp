@@ -9,7 +9,7 @@
 
 #include "ui/gif_decoder.h"
 
-namespace cutefish::ui::image_formats {
+namespace properdesktop::ui::image_formats {
 
 // A 256 MiB allocation limit, in pixels of four bytes.
 static constexpr int64_t kMaximumPixels = int64_t(256) * 1024 * 1024 / 4;
@@ -397,4 +397,4 @@ std::string_view icnsPng(std::string_view data, int pixels)
     return fitting.empty() ? largest : fitting;
 }
 
-} // namespace cutefish::ui::image_formats
+} // namespace properdesktop::ui::image_formats

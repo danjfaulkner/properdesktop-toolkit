@@ -12,11 +12,11 @@
 
 #include "ui/clipboard.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 class EventLoop;
 }
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 class Connection;
 
@@ -84,4 +84,4 @@ private:
     std::vector<std::pair<std::string, std::string>> m_sourceData;
 };
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

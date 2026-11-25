@@ -6,7 +6,7 @@
 #include <chrono>
 #include <cstdint>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 // Time since start() on the monotonic clock. Invalid until started.
 class ElapsedTimer
@@ -38,4 +38,4 @@ private:
     Clock::time_point m_start;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

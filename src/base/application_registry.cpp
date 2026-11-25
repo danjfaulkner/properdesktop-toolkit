@@ -15,7 +15,7 @@
 #include "base/file.h"
 #include "base/paths.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 namespace fs = std::filesystem;
 
@@ -211,9 +211,9 @@ ApplicationRegistry::ApplicationRegistry(EventLoop& loop, std::vector<std::strin
 
     if (dbus::Connection* bus = dbus::Connection::session(&loop)) {
         dbus::MatchRule rule;
-        rule.sender = "org.cutefish.Services";
-        rule.path = "/org/cutefish/Services/Language";
-        rule.interface = "org.cutefish.Services.Language";
+        rule.sender = "org.properdesktop.Services";
+        rule.path = "/org/properdesktop/Services/Language";
+        rule.interface = "org.properdesktop.Services.Language";
         rule.member = "languageChanged";
         m_languageChanged = bus->subscribe(rule, [this](const dbus::Message&) {
             if (DesktopEntry::displayLanguage() != m_language)
@@ -584,4 +584,4 @@ std::shared_ptr<const DesktopEntry> ApplicationRegistry::resolveWindow(const std
     return best;
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

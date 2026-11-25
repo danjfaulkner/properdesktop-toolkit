@@ -19,7 +19,7 @@
 #include "ui/window.h"
 #include "ui/window_header.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The tab bar's timings and sizes.
 static constexpr int kSlideMs = 150;
@@ -1060,4 +1060,4 @@ void WindowTabBar::paint(Painter&)
 {
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

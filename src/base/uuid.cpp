@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <sys/random.h>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 Uuid Uuid::generate()
 {
@@ -81,4 +81,4 @@ std::string Uuid::toString() const
     return text;
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

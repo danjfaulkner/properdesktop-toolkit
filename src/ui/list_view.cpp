@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The scrolled content: as tall as all rows, holding only those in sight.
 class ListView::Rows : public View
@@ -159,4 +159,4 @@ void ListView::updateItems(bool rebind)
     }
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

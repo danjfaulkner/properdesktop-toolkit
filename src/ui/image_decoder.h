@@ -9,7 +9,7 @@
 #include "include/core/SkImage.h"
 #include "include/core/SkRefCnt.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 enum class ImageScaling {
     // The box exactly.
@@ -56,4 +56,4 @@ DecodedImage decodeImage(const ImageRequest& request);
 void scaledSize(int width, int height, int boxWidth, int boxHeight, ImageScaling scaling, int* outWidth,
                 int* outHeight);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

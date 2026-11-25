@@ -21,7 +21,7 @@
 #include "base/event_loop.h"
 #include "base/file.h"
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 namespace {
 
@@ -540,4 +540,4 @@ pid_t Process::startDetached(const std::string& program, const std::vector<std::
     return pid;
 }
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

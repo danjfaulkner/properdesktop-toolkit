@@ -14,7 +14,7 @@
 #include "ui/painter.h"
 #include "ui/text_context.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 struct BlurredCopy::Cache
 {
@@ -127,4 +127,4 @@ void BlurredCopy::paint(Painter& painter)
                                 SkScalar(std::round((origin.y - m_blurMax) * scale)), SkSamplingOptions(), &paint);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

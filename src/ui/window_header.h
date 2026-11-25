@@ -9,7 +9,7 @@
 #include "ui/view.h"
 #include "ui/window_controls.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class HeaderButton;
 
@@ -87,4 +87,4 @@ private:
     HeaderButton* m_maximize;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

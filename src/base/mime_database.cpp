@@ -12,7 +12,7 @@
 #include "base/file.h"
 #include "base/paths.h"
 
-namespace cutefish::base::mime {
+namespace properdesktop::base::mime {
 
 namespace {
 
@@ -120,4 +120,4 @@ std::vector<std::string> parents(std::string_view name)
     return {};
 }
 
-} // namespace cutefish::base::mime
+} // namespace properdesktop::base::mime

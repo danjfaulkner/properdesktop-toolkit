@@ -9,7 +9,7 @@
 #include <unordered_map>
 #include <utility>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 
 // Owns up to a total cost of values; inserting past it drops the least
 // recently used ones. Each value costs 1 unless given otherwise.
@@ -90,4 +90,4 @@ private:
     std::unordered_map<Key, Entry, Hash> m_entries;
 };
 
-} // namespace cutefish::base
+} // namespace properdesktop::base

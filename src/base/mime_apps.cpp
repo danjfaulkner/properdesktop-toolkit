@@ -27,7 +27,7 @@
 #include "base/process.h"
 #include "base/signal.h"
 
-namespace cutefish::base::mimeapps {
+namespace properdesktop::base::mimeapps {
 
 using Lines = std::vector<std::string>;
 
@@ -507,7 +507,7 @@ bool setDefaultTerminal(const std::string& path, const std::string& desktopId)
     return writeLines(path, lines);
 }
 
-static constexpr char kRuntime[] = "org.cutefish.AppRuntime";
+static constexpr char kRuntime[] = "org.properdesktop.AppRuntime";
 static constexpr char kRuntimePath[] = "/AppRuntime";
 
 // Without the runtime: the entry's command, here.
@@ -585,4 +585,4 @@ void openUri(const std::string& uri, const std::string& activationToken, std::fu
     });
 }
 
-} // namespace cutefish::base::mimeapps
+} // namespace properdesktop::base::mimeapps

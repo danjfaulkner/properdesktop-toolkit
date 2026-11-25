@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(cutefish-toolkit
+project(properdesktop-toolkit
     VERSION 1.0
-    DESCRIPTION "Cutefish UI toolkit"
+    DESCRIPTION "Proper Desktop UI toolkit"
     LANGUAGES C CXX
 )
 
@@ -35,12 +35,12 @@ pkg_check_modules(ImageCodecs REQUIRED IMPORTED_TARGET
 # libraries give themselves.
 pkg_check_modules(Jxl REQUIRED libjxl libjxl_threads)
 foreach(library jxl jxl_threads)
-    find_library(CUTEFISH_${library}_PATH NAMES ${library} HINTS ${Jxl_LIBRARY_DIRS} REQUIRED)
-    execute_process(COMMAND ${CMAKE_OBJDUMP} -p ${CUTEFISH_${library}_PATH} OUTPUT_VARIABLE dynamic)
+    find_library(PROPERDESKTOP_${library}_PATH NAMES ${library} HINTS ${Jxl_LIBRARY_DIRS} REQUIRED)
+    execute_process(COMMAND ${CMAKE_OBJDUMP} -p ${PROPERDESKTOP_${library}_PATH} OUTPUT_VARIABLE dynamic)
     if(NOT dynamic MATCHES "SONAME +([^\n]+)")
-        message(FATAL_ERROR "No SONAME in ${CUTEFISH_${library}_PATH}")
+        message(FATAL_ERROR "No SONAME in ${PROPERDESKTOP_${library}_PATH}")
     endif()
-    set(CUTEFISH_${library}_SONAME ${CMAKE_MATCH_1})
+    set(PROPERDESKTOP_${library}_SONAME ${CMAKE_MATCH_1})
 endforeach()
 pkg_check_modules(SkiaDependencies REQUIRED IMPORTED_TARGET
     freetype2 harfbuzz icu-uc libpng libjpeg zlib expat)
@@ -49,7 +49,7 @@ pkg_get_variable(WAYLAND_PROTOCOLS_DATADIR wayland-protocols pkgdatadir)
 pkg_get_variable(WAYLAND_SCANNER wayland-scanner wayland_scanner)
 
 include(cmake/Skia.cmake)
-include(cmake/CutefishTranslations.cmake)
+include(cmake/ProperDesktopTranslations.cmake)
 
 add_subdirectory(src)
 add_subdirectory(examples)
@@ -58,29 +58,29 @@ if(BUILD_TESTING)
     # Each test runs apart from the running desktop (tests/isolate.py): its
     # own session bus, runtime directory and home, with the account's home
     # out of reach.
-    find_program(CUTEFISH_PYTHON python3 REQUIRED)
-    find_program(CUTEFISH_DBUS_RUN_SESSION dbus-run-session REQUIRED)
-    set(CUTEFISH_TEST_RECORD ${CMAKE_BINARY_DIR}/Testing/isolation)
-    set(CMAKE_TEST_LAUNCHER ${CUTEFISH_PYTHON} ${CMAKE_SOURCE_DIR}/tests/isolate.py
+    find_program(PROPERDESKTOP_PYTHON python3 REQUIRED)
+    find_program(PROPERDESKTOP_DBUS_RUN_SESSION dbus-run-session REQUIRED)
+    set(PROPERDESKTOP_TEST_RECORD ${CMAKE_BINARY_DIR}/Testing/isolation)
+    set(CMAKE_TEST_LAUNCHER ${PROPERDESKTOP_PYTHON} ${CMAKE_SOURCE_DIR}/tests/isolate.py
         --keep ${CMAKE_SOURCE_DIR} --keep ${CMAKE_BINARY_DIR}
-        --record ${CUTEFISH_TEST_RECORD}/writes.log -- ${CUTEFISH_DBUS_RUN_SESSION} --)
+        --record ${PROPERDESKTOP_TEST_RECORD}/writes.log -- ${PROPERDESKTOP_DBUS_RUN_SESSION} --)
     add_subdirectory(tests)
 endif()
 
-cutefish_add_translations(cutefish-toolkit SOURCES src/base src/ui)
+properdesktop_add_translations(properdesktop-toolkit SOURCES src/base src/ui)
 
-configure_package_config_file(cmake/CutefishToolkitConfig.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/CutefishToolkitConfig.cmake
-    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CutefishToolkit
+configure_package_config_file(cmake/ProperDesktopToolkitConfig.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/ProperDesktopToolkitConfig.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ProperDesktopToolkit
 )
-write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/CutefishToolkitConfigVersion.cmake
+write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/ProperDesktopToolkitConfigVersion.cmake
     COMPATIBILITY SameMajorVersion
 )
 install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/CutefishToolkitConfig.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/CutefishToolkitConfigVersion.cmake
-    cmake/CutefishTranslations.cmake
-    cmake/CutefishTranslationsUpdate.cmake
-    cmake/CutefishTranslationsCheck.cmake
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CutefishToolkit
+    ${CMAKE_CURRENT_BINARY_DIR}/ProperDesktopToolkitConfig.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/ProperDesktopToolkitConfigVersion.cmake
+    cmake/ProperDesktopTranslations.cmake
+    cmake/ProperDesktopTranslationsUpdate.cmake
+    cmake/ProperDesktopTranslationsCheck.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ProperDesktopToolkit
 )

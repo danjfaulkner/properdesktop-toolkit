@@ -10,13 +10,13 @@
 #include <utility>
 
 // User-visible text, translated through the gettext catalogs that
-// cutefish_add_translations() installs. Each program sets its own domain
+// properdesktop_add_translations() installs. Each program sets its own domain
 // once; a library looks its text up in its own domain with the d* forms.
 // The source strings are US English.
 //
 // Placeholders are named, "{name}", so that a translation can move them;
 // format() fills them in, and the plural forms fill in "{n}" themselves.
-namespace cutefish::i18n {
+namespace properdesktop::i18n {
 
 // Binds `domain` to the installed catalogs and makes it the one tr() reads.
 void setDomain(const char* domain);
@@ -44,4 +44,4 @@ constexpr const char* trNoop(const char* text)
 std::string format(std::string_view pattern,
                    std::initializer_list<std::pair<std::string_view, std::string_view>> arguments);
 
-} // namespace cutefish::i18n
+} // namespace properdesktop::i18n

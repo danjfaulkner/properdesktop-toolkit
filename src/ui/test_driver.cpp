@@ -21,7 +21,7 @@
 #include "ui/view.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static uint64_t monotonicNow()
 {
@@ -625,4 +625,4 @@ bool TestDriver::waitFor(const std::function<bool()>& condition, std::chrono::mi
     return condition();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

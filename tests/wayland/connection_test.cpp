@@ -21,8 +21,8 @@
 #include "base/event_loop.h"
 #include "wayland/connection.h"
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 
 namespace {
 

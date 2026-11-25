@@ -32,7 +32,7 @@
 #include "ui/window.h"
 #include "ui/window_header.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 static constexpr uint64_t kFrameNs = 16666667;
 // What a translucent pixel can gain or lose in 8-bit channels by being
@@ -281,8 +281,8 @@ TEST(CompositingTest, IncrementalFramesMatchFullRepaints)
                 ++frames;
                 if (wrong) {
                     failed = true;
-                    incremental.savePng("/tmp/cutefish-toolkit-incremental.png");
-                    full.savePng("/tmp/cutefish-toolkit-full.png");
+                    incremental.savePng("/tmp/properdesktop-toolkit-incremental.png");
+                    full.savePng("/tmp/properdesktop-toolkit-full.png");
                 }
                 EXPECT_EQ(wrong, 0) << step << ", frame " << frames << " at " << scale << ", first at " << first;
             }

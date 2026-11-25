@@ -10,7 +10,7 @@
 
 #include "base/property_list.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 
 static void putNumber(std::string* out, uint64_t value, int size)
 {

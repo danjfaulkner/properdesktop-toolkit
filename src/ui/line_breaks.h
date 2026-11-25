@@ -7,7 +7,7 @@
 #include <string_view>
 #include <vector>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // Break attributes, one per UTF-16 position, the end included: whether the
 // tailored UAX #14 pair table allows a break before the position, and
@@ -27,4 +27,4 @@ BreakAttributes breakAttributes(std::u16string_view text);
 // before it.
 std::vector<uint8_t> lineBreaks(std::u16string_view text);
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

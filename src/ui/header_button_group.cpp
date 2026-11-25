@@ -9,7 +9,7 @@
 #include "ui/window.h"
 #include "ui/window_controls.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The divider stops short of the plate's top and bottom by this much.
 static constexpr double kDividerInset = 6;
@@ -75,4 +75,4 @@ void HeaderButtonGroup::paint(Painter& painter)
     }
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -7,7 +7,7 @@
 
 #include "ui/frame_submission_private.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static std::atomic<FrameDrawnHandler> drawnHandler {nullptr};
 static std::atomic<bool> offscreenBackdrops {true};
@@ -33,4 +33,4 @@ void noteFrameDrawn(const Window* window, int width, int height, bool offscreen)
         handler({window, width, height, offscreen});
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

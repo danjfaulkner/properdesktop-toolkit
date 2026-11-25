@@ -15,7 +15,7 @@
 #include "ui/multi_effect_blur.h"
 #include "ui/painter.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // calculateWeights: each level's share by how near it lies to the level of
 // detail the radius asks for.
@@ -204,4 +204,4 @@ void FastBlurredCopy::paint(Painter& painter)
     painter.canvas()->drawImage(cache.image, SkScalar(left), SkScalar(top), SkSamplingOptions(), &paint);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

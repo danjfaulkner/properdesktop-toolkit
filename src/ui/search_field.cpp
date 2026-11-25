@@ -8,7 +8,7 @@
 #include "ui/painter.h"
 #include "ui/theme.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 static constexpr double kGlyphSize = 14;
 static constexpr double kFocusRing = 2;
@@ -111,4 +111,4 @@ void SearchField::updateMargins()
     setTextMargins(glyphEnd, text().empty() ? m_inset : glyphEnd);
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

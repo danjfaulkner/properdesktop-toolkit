@@ -21,7 +21,7 @@
 #include "ui/theme.h"
 #include "ui/window.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 namespace {
 
@@ -244,7 +244,7 @@ TEST(MenuTest, SubmenuStaysWhileThePointerCrossesTheMargin)
     ASSERT_TRUE(more->isOpen());
 
     TestInput::movePointer(*popup, {popup->size().width - 2, moreRow});
-    cutefish::base::EventLoop& loop = Application::instance()->loop();
+    properdesktop::base::EventLoop& loop = Application::instance()->loop();
     loop.startTimer(std::chrono::milliseconds(200), false, [&loop] { loop.quit(); });
     loop.run();
     EXPECT_TRUE(more->isOpen());
@@ -278,7 +278,7 @@ TEST(MenuTest, SubmenusStayWhileThePointerIsInADeeperOne)
     Window* deeperWindow = deeper->window();
     deeperWindow->grab();
     TestInput::movePointer(*deeperWindow, {40, 5 + 13});
-    cutefish::base::EventLoop& loop = Application::instance()->loop();
+    properdesktop::base::EventLoop& loop = Application::instance()->loop();
     loop.startTimer(std::chrono::milliseconds(200), false, [&loop] { loop.quit(); });
     loop.run();
     EXPECT_TRUE(f.menu.isOpen());

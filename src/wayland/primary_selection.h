@@ -9,7 +9,7 @@ struct wl_seat;
 struct zwp_primary_selection_device_manager_v1;
 struct zwp_primary_selection_device_v1;
 
-namespace cutefish::ui::wayland {
+namespace properdesktop::ui::wayland {
 
 struct PrimarySelectionListeners;
 
@@ -35,4 +35,4 @@ private:
     zwp_primary_selection_device_v1* m_device = nullptr;
 };
 
-} // namespace cutefish::ui::wayland
+} // namespace properdesktop::ui::wayland

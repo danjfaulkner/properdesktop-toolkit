@@ -18,7 +18,7 @@
 
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 void TestInput::movePointer(Window& window, PointF position)
 {
@@ -252,4 +252,4 @@ uint32_t TestInput::drop(Window& window)
     return window.handleDrop();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

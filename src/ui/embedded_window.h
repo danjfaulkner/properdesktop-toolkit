@@ -13,7 +13,7 @@
 #include "ui/path.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class EmbeddedGpu;
 class EmbeddedHost;
@@ -86,7 +86,7 @@ public:
     RectF blurRect() const;
     double blurRadius() const;
     // The outline masking the blur instead of the rounded rect, in logical
-    // coordinates, as cutefish_surface_blur_v1.set_shape; empty for none.
+    // coordinates, as properdesktop_surface_blur_v1.set_shape; empty for none.
     const Path& blurShape() const;
 
     // Lays the views out now rather than at the next render, e.g. to read a
@@ -192,4 +192,4 @@ private:
     RectF m_popupGeometry;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

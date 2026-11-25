@@ -15,7 +15,7 @@
 #include "ui/view.h"
 #include "ui/window.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // The bubble behind the content, as a menu's, and Escape.
 class DropDownPopup::Surface : public View
@@ -156,4 +156,4 @@ void DropDownPopup::close()
         onClosed();
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

@@ -16,7 +16,7 @@
 #include "ui/bitmap_private.h"
 #include "ui/image_decoder.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 // As the decoders' limit: no bitmap past 256 MiB.
 static constexpr size_t kMaxBytes = size_t(256) << 20;
@@ -354,4 +354,4 @@ base::Size scaledSize(base::Size size, base::Size box, Bitmap::Scaling scaling)
     return {width, height};
 }
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

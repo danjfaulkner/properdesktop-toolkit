@@ -9,7 +9,7 @@
 #include "base/file.h"
 #include "base/paths.h"
 
-using namespace cutefish::base;
+using namespace properdesktop::base;
 using paths::UserDirectory;
 
 // The expectations are the reference results for the same file.

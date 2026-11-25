@@ -11,7 +11,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Icon;
 class Label;
@@ -80,4 +80,4 @@ private:
     bool m_fontPreview = false;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

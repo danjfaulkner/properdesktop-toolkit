@@ -7,16 +7,16 @@
 #include "ui/application.h"
 #include "ui/text_configuration.h"
 
-cutefish::base::EventLoop* g_hostLoop = nullptr;
+properdesktop::base::EventLoop* g_hostLoop = nullptr;
 
 int main(int argc, char** argv)
 {
     testing::InitGoogleTest(&argc, argv);
-    cutefish::ui::setTextConfigurationFile(CUTEFISH_TOOLKIT_TEST_FONTS_CONF);
+    properdesktop::ui::setTextConfigurationFile(PROPERDESKTOP_TOOLKIT_TEST_FONTS_CONF);
     // As the compositor does: the host's loop exists first and is shared.
-    cutefish::base::EventLoop hostLoop;
+    properdesktop::base::EventLoop hostLoop;
     g_hostLoop = &hostLoop;
-    cutefish::ui::Application application(argc, argv,
-                                          cutefish::ui::Application::Platform::Embedded);
+    properdesktop::ui::Application application(argc, argv,
+                                          properdesktop::ui::Application::Platform::Embedded);
     return RUN_ALL_TESTS();
 }

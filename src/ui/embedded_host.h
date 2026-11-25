@@ -6,7 +6,7 @@
 #include "ui/drag.h"
 #include "ui/event.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class EmbeddedWindow;
 
@@ -53,7 +53,7 @@ public:
     virtual void textInputChanged(EmbeddedWindow*, const TextInputState*, bool /*fromInputMethod*/) {}
 
     // The blur behind the window changed: EmbeddedWindow::blurRect(),
-    // blurRadius() and blurShape(), as cutefish_surface_blur_v1 takes them.
+    // blurRadius() and blurShape(), as properdesktop_surface_blur_v1 takes them.
     virtual void blurChanged(EmbeddedWindow*) {}
 
     // A view starts a drag from a press in the window: the host's drag
@@ -62,4 +62,4 @@ public:
     virtual bool startDrag(EmbeddedWindow*, DragSource) { return false; }
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui

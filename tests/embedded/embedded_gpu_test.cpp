@@ -20,7 +20,7 @@
 #include "ui/text_field.h"
 #include "ui/view.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 namespace {
 

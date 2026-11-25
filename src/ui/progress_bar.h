@@ -9,7 +9,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 
 class Animation;
 
@@ -67,4 +67,4 @@ private:
     std::unique_ptr<Animation> m_animation;
 };
 
-} // namespace cutefish::ui
+} // namespace properdesktop::ui
